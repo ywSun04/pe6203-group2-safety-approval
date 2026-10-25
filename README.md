@@ -25,7 +25,7 @@ A reviewer call stops waiting after 30 seconds. The cutoff does not read the rev
 
 ## Basic risk policy
 
-`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. The budget-aware strategy remains a separate comparison.
+`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. The budget-aware strategy remains a separate comparison. The current policy name is `basic_risk_v2`; it also checks supported explicit user prohibitions and single-recipient restrictions.
 
 See [Risk policy](docs/risk-policy.md) for the rule rationale, interface, installation, and examples. [Validation record](docs/policy-validation.md) records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
 
@@ -37,3 +37,12 @@ python -m examples.gate_smoke --log-dir logs/gate-smoke
 ```
 
 The policy example and gate smoke use synthetic inputs and no live model. Smoke logs are wiring checks, not benchmark results. Real experiments still use `build_approval_pipeline` and the model/reviewer supplied by the experiment team.
+
+
+## Individual report and presentation
+
+`reports/risk-policy-report.pdf` is a six-page individual contribution report. Its first two pages cover implementation and validation contributions, and its third page covers reflection. The report separates observed local tests from formal AgentDojo results, which are still pending. `reports/risk-policy-report.md` is the editable text.
+
+`presentations/risk-policy-slides.pptx` and `presentations/speaker-notes.md` support a two-minute individual presentation. The shared benchmark runner and real reviewer configuration remain experiment dependencies. No formal curves or cost figures have been inferred from fake-reviewer logs.
+
+The two constructed failure examples can be reproduced with `python -m examples.policy_failure_cases --output local-traces.json`. They demonstrate a blocked safe send and an unchecked object-level read. Their diagnostic labels never enter the policy request and are not benchmark results.

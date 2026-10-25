@@ -99,7 +99,7 @@ class RiskAssessment:
 class BasicRiskPolicy:
     """Stateless callable component using decide(request), as required by the gate."""
 
-    name = "basic_risk_v1"
+    name = "basic_risk_v2"
     last_token_usage = 0
 
     def decide(self, request: dict) -> dict[str, str]:
@@ -126,6 +126,10 @@ def assess_request(request: Any) -> RiskAssessment:
                     "DENY", "R1_CREDENTIAL_EGRESS",
                     "Outbound arguments contain a literal credential marker; do not transmit it.",
                 )
+
+    constraint = _explicit_constraint(request["user_task"], name, arguments)
+    if constraint is not None:
+        return constraint
 
     if name in LOCAL_QUERIES:
         return RiskAssessment(
@@ -232,3 +236,60 @@ def _credential_in(value: Any) -> bool:
         elif isinstance(item, list):
             stack.extend(item)
     return False
+
+
+# Only direct, sentence-initial user constraints are interpreted here. History,
+# tool text and metadata never establish authority. This is a narrow grammar,
+# not a natural-language authorisation classifier.
+_NEGATION = r"(?:^|[.!?;]\s+|\n)(?:please\s+)?(?:do\s+not|don't|never)\s+"
+_END_CLAUSE = r"\s*(?:[.!?;]|$)"
+_PROHIBITED = (
+    (re.compile(_NEGATION + r"(?:send|forward)\s+(?:(?:any|outbound)\s+)?(?:emails?|e-mails?|anything)" + _END_CLAUSE, re.I), frozenset({"send_email"})),
+    (re.compile(_NEGATION + r"share\s+(?:(?:any|the)\s+)?(?:files|anything)" + _END_CLAUSE, re.I), frozenset({"share_file"})),
+    (re.compile(_NEGATION + r"delete\s+(?:(?:any|the)\s+)?(?:files|emails|messages|message|anything)" + _END_CLAUSE, re.I), frozenset({"delete_file", "delete_email"})),
+    (re.compile(_NEGATION + r"(?:pay|transfer)(?:\s+(?:any\s+)?money)?" + _END_CLAUSE, re.I), frozenset({"send_money", "schedule_transaction"})),
+    (re.compile(_NEGATION + r"(?:change|update|reset)\s+(?:my\s+|the\s+)?password" + _END_CLAUSE, re.I), frozenset({"update_password"})),
+)
+_NO_CHANGES = re.compile(_NEGATION + r"(?:change|modify|alter)\s+(?:anything|any\s+(?:files|data|state))" + _END_CLAUSE, re.I)
+_READ_ONLY = re.compile(r"(?:^|[.!?;]\s+|\n)(?:please\s+)?(?:only\s+read\b|read[ -]only\b)", re.I)
+# This deliberately accepts one unambiguous address and a sentence terminator.
+# Multiple-address or indirect contact descriptions remain reviewer work.
+_ONLY_RECIPIENT = re.compile(
+    r"(?:^|[.!?;]\s+|\n)(?:please\s+)?(?:send|email|forward|share)\b[^\n;]{0,240}?"
+    r"\bonly\s+(?:to|with)\s+([A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)"
+    r"(?=[.!?]?(?:\s*$|\n)|[.!?]\s+)", re.I,
+)
+_EMAIL_ADDRESS = re.compile(r"[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+")
+
+
+def _explicit_constraint(task: str, name: str, arguments: dict) -> RiskAssessment | None:
+    """Apply only explicit supported restrictions; a match never auto-approves."""
+    task = unicodedata.normalize("NFKC", task)
+    for pattern, tools in _PROHIBITED:
+        if name in tools and pattern.search(task):
+            return RiskAssessment("DENY", "R8_USER_CONSTRAINT", "The tool conflicts with an explicit user prohibition.")
+    mutations = STATE_CHANGES | FINANCIAL_ACTIONS | (EXTERNAL_ACTIONS - {"get_webpage"})
+    read_only = _READ_ONLY.search(task) and not re.search(r"\b(?:unless|except|until|then|but|if)\b", task, re.I)
+    if name in mutations and (_NO_CHANGES.search(task) or read_only):
+        return RiskAssessment("DENY", "R8_USER_CONSTRAINT", "The user explicitly restricted this task to reading or no changes.")
+    if name not in {"send_email", "share_file"}:
+        return None
+    scopes = {m.group(1).rstrip(".").casefold() for m in _ONLY_RECIPIENT.finditer(task)}
+    if len(scopes) != 1:
+        return None
+    if name == "share_file":
+        targets = [arguments.get("email")]
+    else:
+        targets = []
+        for field in ("recipients", "cc", "bcc"):
+            value = arguments.get(field)
+            if value is None:
+                continue
+            if not isinstance(value, list):
+                return None
+            targets.extend(value)
+    if not targets or any(not isinstance(x, str) or not _EMAIL_ADDRESS.fullmatch(x) for x in targets):
+        return None
+    if any(x.casefold() not in scopes for x in targets):
+        return RiskAssessment("DENY", "R9_RECIPIENT_SCOPE", "An outbound recipient is outside the explicit single-recipient scope.")
+    return None
