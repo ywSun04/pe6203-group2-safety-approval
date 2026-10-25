@@ -291,6 +291,7 @@ def test_gate_records_late_usage_without_keeping_the_shared_counter(tmp_path):
         time.sleep(0.05)
     assert "late_reviewer_usage" in late_text
     assert '"late_reviewer_tokens": 99' in late_text
+    assert '"included_in_task_total": true' in late_text
 
     class FiveTokenReviewer:
         name = "five-reviewer"
@@ -304,6 +305,45 @@ def test_gate_records_late_usage_without_keeping_the_shared_counter(tmp_path):
     ask(executor, functions, [one_call(args={"path": "other.txt"}, call_id="call-2")])
     task = executor.finish_task(False, False)
     assert task["tokens"]["reviewer"] == 104
+    assert read_file.executed == []
+
+
+def test_late_usage_after_the_task_record_is_not_included(tmp_path):
+    executor = gate(tmp_path, FullApprove(), FakeReviewer(), k=0)
+    task = executor._task
+    written = executor.finish_task(False, False)
+    executor._record_late_usage(task, "run-1-1", 40)
+    text = executor.gate_logger.calls_path.read_text(encoding="utf-8")
+    assert written["tokens"]["reviewer"] == 0
+    assert '"included_in_task_total": false' in text
+    assert '"late_reviewer_tokens": 40' in text
+
+
+def test_expired_queued_review_does_not_start(tmp_path):
+    functions = runtime()
+
+    class SlowReviewer:
+        name = "slow-reviewer"
+        last_token_usage = 0
+        calls = 0
+
+        def review(self, request, timeout_seconds=None):
+            SlowReviewer.calls += 1
+            time.sleep(1.0)
+            self.last_token_usage = 3
+            return {"decision": "APPROVE", "reason": "finished"}
+
+    executor = gate(tmp_path, FullEscalate(), SlowReviewer(), k=2, timeout=0.2)
+    ask(
+        executor,
+        functions,
+        [
+            one_call(args={"path": "a.txt"}, call_id="a"),
+            one_call(args={"path": "b.txt"}, call_id="b"),
+        ],
+    )
+    time.sleep(1.3)
+    assert SlowReviewer.calls == 1
     assert read_file.executed == []
 
 

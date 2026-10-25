@@ -5,8 +5,8 @@ technical retries. reviewer_retry_tokens is the retry portion already included
 in that total. Do not add the two numbers together.
 
 A timed-out review can append a later row with record_type late_reviewer_usage.
-That cost is also added to the open task. If the task row was already written,
-add late_reviewer_tokens from the call log as well.
+included_in_task_total says whether that cost is already in the task row.
+Add late_reviewer_tokens only when that field is false.
 """
 
 from __future__ import annotations

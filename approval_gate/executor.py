@@ -8,6 +8,7 @@ finish_task.
 
 from __future__ import annotations
 
+import threading
 from ast import literal_eval
 from dataclasses import dataclass
 from typing import Any, Sequence
@@ -67,17 +68,19 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         self.k = k
         self.reviewer_timeout_seconds = reviewer_timeout_seconds
         self._task: OpenTask | None = None
+        self._task_lock = threading.Lock()
         self._on_late_usage = None
         self._late_call_id: str | None = None
 
     def start_task(self, run_id: str, task_id: str, k: int | None = None) -> None:
         """Reset the budget. This is per task run, not per agent turn."""
-        if self._task is not None:
-            raise RuntimeError("Finish the open task before starting another one")
         budget = self.k if k is None else k
         if budget < 0:
             raise ValueError("k must be >= 0")
-        self._task = OpenTask(run_id=run_id, task_id=task_id, k=budget, remaining=budget)
+        with self._task_lock:
+            if self._task is not None:
+                raise RuntimeError("Finish the open task before starting another one")
+            self._task = OpenTask(run_id=run_id, task_id=task_id, k=budget, remaining=budget)
 
     def add_agent_tokens(self, count: int) -> None:
         """Record model-call tokens once per request. Do not call this per tool."""
@@ -86,27 +89,28 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
 
     def finish_task(self, task_completed: bool | None, security_passed: bool | None) -> dict:
         """Write the task row. Completion and safety come from the benchmark, not this gate."""
-        task = self._require_task()
-        record = {
-            "run_id": task.run_id,
-            "task_id": task.task_id,
-            "policy_name": component_name(self.policy, "policy"),
-            "k": task.k,
-            "task_completed": task_completed,
-            "security_passed": security_passed,
-            "actual_escalation_count": task.actual_escalations,
-            "requested_escalation_count": task.requested_escalations,
-            "tokens": {
-                "agent": task.agent_tokens,
-                "policy": task.policy_tokens,
-                "reviewer": task.reviewer_tokens,
-            },
-            "reviewer_retry_count": task.reviewer_retry_count,
-            "reviewer_retry_tokens": task.reviewer_retry_tokens,
-        }
-        self.gate_logger.write_task(record)
-        self._task = None
-        return record
+        with self._task_lock:
+            task = self._require_task()
+            record = {
+                "run_id": task.run_id,
+                "task_id": task.task_id,
+                "policy_name": component_name(self.policy, "policy"),
+                "k": task.k,
+                "task_completed": task_completed,
+                "security_passed": security_passed,
+                "actual_escalation_count": task.actual_escalations,
+                "requested_escalation_count": task.requested_escalations,
+                "tokens": {
+                    "agent": task.agent_tokens,
+                    "policy": task.policy_tokens,
+                    "reviewer": task.reviewer_tokens,
+                },
+                "reviewer_retry_count": task.reviewer_retry_count,
+                "reviewer_retry_tokens": task.reviewer_retry_tokens,
+            }
+            self.gate_logger.write_task(record)
+            self._task = None
+            return record
 
     def query(
         self,
@@ -268,16 +272,19 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         return _tool_message(tool_call, content, error), True, error
 
     def _record_late_usage(self, task: OpenTask, call_id: str, tokens: int) -> None:
-        self.gate_logger.write_call(
-            {
-                "record_type": "late_reviewer_usage",
-                "run_id": task.run_id,
-                "call_id": call_id,
-                "late_reviewer_tokens": tokens,
-            }
-        )
-        if self._task is task:
-            task.reviewer_tokens += tokens
+        with self._task_lock:
+            included = self._task is task
+            if included:
+                task.reviewer_tokens += tokens
+            self.gate_logger.write_call(
+                {
+                    "record_type": "late_reviewer_usage",
+                    "run_id": task.run_id,
+                    "call_id": call_id,
+                    "late_reviewer_tokens": tokens,
+                    "included_in_task_total": included,
+                }
+            )
 
     def _write_call(self, task, tool_call, budget_before, outcome, execution_attempted, tool_error, call_id=None) -> None:
         if call_id is None:

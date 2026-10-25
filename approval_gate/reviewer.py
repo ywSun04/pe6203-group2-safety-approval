@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import inspect
 import threading
+import time
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
@@ -66,19 +67,20 @@ def invoke_reviewer(
     call does not read the reviewer's shared counter. If that call later finishes,
     on_late_usage receives the final token count once.
 
-    token_usage is the latest attempt, including a failed one. retry_tokens counts
-    earlier technical retries only. The gate adds both into tokens.reviewer.
-    A real reviewer must pass this same timeout to its model client.
+    A second call that is still waiting for the reviewer lock does not start the
+    model after its own deadline. A real reviewer must pass the supplied
+    timeout_seconds to its model client.
     """
     if timeout_seconds <= 0:
         raise ValueError("timeout_seconds must be > 0")
+    deadline = time.monotonic() + timeout_seconds
     box: dict[str, Any] = {}
     state = {"closed": False}
     lock = threading.Lock()
 
     def run() -> None:
         try:
-            result = _invoke_reviewer_once(reviewer, request, timeout_seconds)
+            result = _invoke_reviewer_once(reviewer, request, deadline)
         except Exception as error:
             result = ReviewerCall(None, f"{type(error).__name__}: {error}", 0, 0, 0, f"{type(error).__name__}: {error}")
         with lock:
@@ -106,10 +108,17 @@ def invoke_reviewer(
     return ReviewerCall(None, "Reviewer timed out", 0, 0, 0, "Reviewer timed out")
 
 
-def _invoke_reviewer_once(reviewer: Any, request: dict, timeout_seconds: float) -> ReviewerCall:
-    with _reviewer_lock(reviewer):
+def _invoke_reviewer_once(reviewer: Any, request: dict, deadline: float) -> ReviewerCall:
+    reviewer_lock = _reviewer_lock(reviewer)
+    remaining = deadline - time.monotonic()
+    if remaining <= 0 or not reviewer_lock.acquire(timeout=remaining):
+        return _timeout_before_model_call()
+    try:
+        if time.monotonic() >= deadline:
+            return _timeout_before_model_call()
+        client_timeout = max(deadline - time.monotonic(), 0.001)
         try:
-            payload = _call_review(reviewer, request, timeout_seconds)
+            payload = _call_review(reviewer, request, client_timeout)
             decision, reason = parse_reviewer_output(payload)
         except ReviewerTimeout as error:
             return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
@@ -118,6 +127,13 @@ def _invoke_reviewer_once(reviewer: Any, request: dict, timeout_seconds: float) 
         except Exception as error:
             return _failed_review(reviewer, error, 0, 0)
         return ReviewerCall(decision, reason, take_token_usage(reviewer), 0, 0, None)
+    finally:
+        reviewer_lock.release()
+
+
+def _timeout_before_model_call() -> ReviewerCall:
+    message = "Reviewer timed out before the model call"
+    return ReviewerCall(None, message, 0, 0, 0, message)
 
 
 def _call_review(reviewer: Any, request: dict, timeout_seconds: float) -> Any:
