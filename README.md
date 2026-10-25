@@ -27,7 +27,7 @@ A reviewer call stops waiting after 30 seconds. The cutoff does not read the rev
 
 `approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. The budget-aware strategy remains a separate comparison.
 
-See `docs/risk-policy.md` for the rule rationale, interface, installation, and examples. `docs/policy-validation.md` records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
+See [Risk policy](docs/risk-policy.md) for the rule rationale, interface, installation, and examples. [Validation record](docs/policy-validation.md) records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
 
 ```text
 python scripts/check_agentdojo.py
