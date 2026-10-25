@@ -1,0 +1,2 @@
+# Pinned for the whole group. PyPI agentdojo==0.1.35 is older and does not include this commit.
+agentdojo @ git+https://github.com/ethz-spylab/agentdojo.git@089ed468cf3ed0322acc66b0211f26d9d90dbf60

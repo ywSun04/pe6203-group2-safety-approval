@@ -1,0 +1,5 @@
+commit=089ed468cf3ed0322acc66b0211f26d9d90dbf60
+date=2026-06-02
+pypi_release=0.1.35
+source=https://github.com/ethz-spylab/agentdojo/commit/089ed468cf3ed0322acc66b0211f26d9d90dbf60
+note=Use this commit, not whatever latest pip happens to resolve. It is the revision the approval gate was written against.
