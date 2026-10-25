@@ -22,3 +22,18 @@ Unknown tool names and nested tool calls are rejected before the policy runs, so
 A reviewer call stops waiting after 30 seconds. The cutoff does not read the reviewer's shared token counter. If the call finishes later, its cost is appended as `late_reviewer_usage` with `included_in_task_total`. Add that cost again only when the field is false. A call that is still queued when its deadline passes does not start the model. A real reviewer must use the supplied timeout on its model client. `tokens.reviewer` includes failed calls and retries. `reviewer_retry_tokens` is the retry portion already included in that total.
 
 `pipeline.name` includes the model, policy, `k`, and a config id. AgentDojo stores results under that name, so those runs do not reuse one another's cache.
+
+## Member 3 basic risk policy
+
+`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. Member 6's budget-aware strategy remains a separate comparison.
+
+See `docs/member3-risk-policy.md` for the rule rationale, interface, installation, and examples. `docs/member3-validation.md` records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
+
+```text
+python scripts/check_member3_environment.py
+python -m pytest -q
+python -m examples.member3_policy
+python -m examples.member3_gate_smoke --log-dir logs/member3-smoke
+```
+
+The policy example and gate smoke use synthetic inputs and no live model. Smoke logs are wiring checks, not benchmark results. Real experiments still use `build_approval_pipeline` and the model/reviewer supplied by the experiment team.
