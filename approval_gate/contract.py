@@ -9,8 +9,11 @@ OPTIONAL_FIELDS = ("history", "tool_metadata")
 POLICY_DECISIONS = ("APPROVE", "DENY", "ESCALATE")
 REVIEWER_DECISIONS = ("APPROVE", "DENY")
 
-# Never copy these from the benchmark into a request, even if a caller has them.
-FORBIDDEN_FIELDS = ("task", "ground_truth", "attack", "attack_annotation", "oracle")
+# Benchmark objects that must not be copied into history or tool metadata.
+# These names are not stripped from tool arguments. A real tool parameter may use the same name.
+PRIVATE_CONTEXT_FIELDS = ("task", "ground_truth", "attack", "attack_annotation", "oracle")
+VISIBLE_MESSAGE_FIELDS = ("role", "content", "tool_calls", "tool_call", "tool_call_id", "error")
+VISIBLE_METADATA_FIELDS = ("name", "description", "parameters")
 
 
 class PolicyFormatError(ValueError):
@@ -35,21 +38,28 @@ class ReviewerTimeout(TimeoutError):
         self.retry_tokens = retry_tokens
 
 
-def without_forbidden(value: Any) -> Any:
-    """Serialize a value and drop benchmark secrets at every level."""
-    return _strip_forbidden(to_jsonable(value))
+def project_history(history: list) -> list:
+    """Keep chat fields only. Do not attach the benchmark task, labels, or attacks."""
+    projected = []
+    for message in to_jsonable(history):
+        if not isinstance(message, dict):
+            continue
+        projected.append(
+            {
+                key: message[key]
+                for key in VISIBLE_MESSAGE_FIELDS
+                if key in message and key not in PRIVATE_CONTEXT_FIELDS
+            }
+        )
+    return projected
 
 
-def _strip_forbidden(value: Any) -> Any:
-    if isinstance(value, dict):
-        return {
-            key: _strip_forbidden(item)
-            for key, item in value.items()
-            if key not in FORBIDDEN_FIELDS
-        }
-    if isinstance(value, list):
-        return [_strip_forbidden(item) for item in value]
-    return value
+def project_tool_metadata(metadata: dict) -> dict:
+    """Keep the tool schema only. Parameter names are left intact."""
+    raw = to_jsonable(metadata)
+    if not isinstance(raw, dict):
+        return {}
+    return {key: raw[key] for key in VISIBLE_METADATA_FIELDS if key in raw}
 
 
 def to_jsonable(value: Any) -> Any:
@@ -73,17 +83,21 @@ def build_request(
     history: list | None = None,
     tool_metadata: dict | None = None,
 ) -> dict:
-    """Build the only dict a policy or reviewer is allowed to see."""
+    """Build the only dict a policy or reviewer is allowed to see.
+
+    tool_arguments is the full argument dict that will be executed.
+    history and tool_metadata are projected to visible chat and schema fields.
+    """
     request = {
         "user_task": user_task,
         "tool_name": tool_name,
-        "tool_arguments": without_forbidden(tool_arguments),
+        "tool_arguments": to_jsonable(tool_arguments),
         "remaining_budget": int(remaining_budget),
     }
     if history is not None:
-        request["history"] = without_forbidden(history)
+        request["history"] = project_history(history)
     if tool_metadata is not None:
-        request["tool_metadata"] = without_forbidden(tool_metadata)
+        request["tool_metadata"] = project_tool_metadata(tool_metadata)
     return request
 
 

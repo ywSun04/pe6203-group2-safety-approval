@@ -2,14 +2,15 @@
 
 from __future__ import annotations
 
+import inspect
 import threading
+from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
 
 from approval_gate.contract import (
     ReviewerFormatError,
     ReviewerTimeout,
-    call_component,
     parse_reviewer_output,
     take_token_usage,
 )
@@ -57,47 +58,95 @@ def invoke_reviewer(
     reviewer: Any,
     request: dict,
     timeout_seconds: float = DEFAULT_REVIEWER_TIMEOUT_SECONDS,
+    on_late_usage: Callable[[int], None] | None = None,
 ) -> ReviewerCall:
     """Call the reviewer and stop waiting after timeout_seconds.
 
-    token_usage is the latest attempt, including a failed one.
-    retry_tokens counts earlier technical retries only. The gate adds both into
-    tokens.reviewer, and also stores retry_tokens on its own so the retry portion
-    can be reported without adding it a second time.
+    The returned usage is a snapshot taken when the attempt finishes. A timed-out
+    call does not read the reviewer's shared counter. If that call later finishes,
+    on_late_usage receives the final token count once.
+
+    token_usage is the latest attempt, including a failed one. retry_tokens counts
+    earlier technical retries only. The gate adds both into tokens.reviewer.
+    A real reviewer must pass this same timeout to its model client.
     """
     if timeout_seconds <= 0:
         raise ValueError("timeout_seconds must be > 0")
-    box: dict[str, ReviewerCall] = {}
+    box: dict[str, Any] = {}
+    state = {"closed": False}
+    lock = threading.Lock()
 
     def run() -> None:
-        box["result"] = _invoke_reviewer_once(reviewer, request)
+        try:
+            result = _invoke_reviewer_once(reviewer, request, timeout_seconds)
+        except Exception as error:
+            result = ReviewerCall(None, f"{type(error).__name__}: {error}", 0, 0, 0, f"{type(error).__name__}: {error}")
+        with lock:
+            if state["closed"]:
+                box["late"] = result.token_usage + result.retry_tokens
+            else:
+                box["result"] = result
 
     thread = threading.Thread(target=run, daemon=True)
     thread.start()
     thread.join(timeout_seconds)
-    if thread.is_alive():
-        return ReviewerCall(
-            None,
-            "Reviewer timed out",
-            take_token_usage(reviewer),
-            0,
-            0,
-            "Reviewer timed out",
-        )
-    return box["result"]
+    with lock:
+        if "result" in box:
+            return box["result"]
+        state["closed"] = True
+
+    def watch() -> None:
+        thread.join()
+        with lock:
+            late = int(box.get("late", 0))
+        if late and on_late_usage is not None:
+            on_late_usage(late)
+
+    threading.Thread(target=watch, daemon=True).start()
+    return ReviewerCall(None, "Reviewer timed out", 0, 0, 0, "Reviewer timed out")
 
 
-def _invoke_reviewer_once(reviewer: Any, request: dict) -> ReviewerCall:
+def _invoke_reviewer_once(reviewer: Any, request: dict, timeout_seconds: float) -> ReviewerCall:
+    with _reviewer_lock(reviewer):
+        try:
+            payload = _call_review(reviewer, request, timeout_seconds)
+            decision, reason = parse_reviewer_output(payload)
+        except ReviewerTimeout as error:
+            return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
+        except ReviewerFormatError as error:
+            return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
+        except Exception as error:
+            return _failed_review(reviewer, error, 0, 0)
+        return ReviewerCall(decision, reason, take_token_usage(reviewer), 0, 0, None)
+
+
+def _call_review(reviewer: Any, request: dict, timeout_seconds: float) -> Any:
+    method = getattr(reviewer, "review", None)
+    if not callable(method):
+        if not callable(reviewer):
+            raise TypeError(f"{reviewer!r} is not callable and has no review()")
+        method = reviewer
+    kwargs = {}
     try:
-        payload = call_component(reviewer, request, "review")
-        decision, reason = parse_reviewer_output(payload)
-    except ReviewerTimeout as error:
-        return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
-    except ReviewerFormatError as error:
-        return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
-    except Exception as error:
-        return _failed_review(reviewer, error, 0, 0)
-    return ReviewerCall(decision, reason, take_token_usage(reviewer), 0, 0, None)
+        parameters = inspect.signature(method).parameters
+    except (TypeError, ValueError):
+        parameters = {}
+    if "timeout_seconds" in parameters:
+        kwargs["timeout_seconds"] = timeout_seconds
+    return method(request, **kwargs)
+
+
+_REVIEWER_LOCKS: dict[int, threading.Lock] = {}
+_REVIEWER_LOCKS_GUARD = threading.Lock()
+
+
+def _reviewer_lock(reviewer: Any) -> threading.Lock:
+    with _REVIEWER_LOCKS_GUARD:
+        lock = _REVIEWER_LOCKS.get(id(reviewer))
+        if lock is None:
+            lock = threading.Lock()
+            _REVIEWER_LOCKS[id(reviewer)] = lock
+        return lock
 
 
 def _failed_review(reviewer: Any, error: Exception, retry_count: int, retry_tokens: int) -> ReviewerCall:

@@ -60,18 +60,50 @@ def test_payload_rejects_missing_or_extra_fields():
         parse_reviewer_output({"decision": "ESCALATE", "reason": "no"})
 
 
-def test_request_strips_forbidden_fields():
+def test_tool_arguments_match_the_executed_call():
     request = build_request(
         "Organize project files",
         "read_file",
-        {"path": "temp.txt", "ground_truth": "secret"},
+        {"path": "temp.txt", "task": "delete_all", "ground_truth": "secret"},
         1,
-        history=[{"role": "user", "attack": "ignore"}],
-        tool_metadata={"name": "read_file", "oracle": "yes"},
+        history=[{"role": "user", "content": "go", "attack": "ignore", "ground_truth": "label"}],
+        tool_metadata={"name": "read_file", "description": "Read", "oracle": "yes", "parameters": {"task": "string"}},
     )
-    assert "ground_truth" not in request["tool_arguments"]
-    assert "attack" not in request["history"][0]
-    assert "oracle" not in request["tool_metadata"]
+    assert request["tool_arguments"] == {"path": "temp.txt", "task": "delete_all", "ground_truth": "secret"}
+    assert request["history"] == [{"role": "user", "content": "go"}]
+    assert request["tool_metadata"] == {
+        "name": "read_file",
+        "description": "Read",
+        "parameters": {"task": "string"},
+    }
+
+
+def test_seen_arguments_are_the_arguments_that_run(tmp_path):
+    def write_note(task: str) -> str:
+        """Write a note.
+
+        :param task: The note to write.
+        """
+        write_note.executed.append(task)
+        return task
+
+    write_note.executed = []
+    functions = FunctionsRuntime()
+    functions.register_function(write_note)
+    seen = {}
+
+    class Capture:
+        name = "capture"
+        last_token_usage = 0
+
+        def decide(self, request):
+            seen.update(request["tool_arguments"])
+            return {"decision": "APPROVE", "reason": "args match"}
+
+    executor = gate(tmp_path, Capture(), FakeReviewer(), k=0)
+    ask(executor, functions, [one_call(name="write_note", args={"task": "delete_all"})])
+    assert seen == {"task": "delete_all"}
+    assert write_note.executed == ["delete_all"]
 
 
 def test_reviewer_approve_executes_and_deny_does_not(tmp_path):
@@ -234,22 +266,45 @@ def test_failed_review_keeps_token_usage(tmp_path):
     assert task["actual_escalation_count"] == 1
 
 
-def test_gate_stops_waiting_for_a_slow_reviewer(tmp_path):
+def test_gate_records_late_usage_without_keeping_the_shared_counter(tmp_path):
     functions = runtime()
 
     class SlowReviewer:
         name = "slow-reviewer"
-        last_token_usage = 4
+        last_token_usage = 17
 
-        def review(self, request):
-            time.sleep(2)
+        def review(self, request, timeout_seconds=None):
+            time.sleep(1.2)
+            self.last_token_usage = 99
             return {"decision": "APPROVE", "reason": "too late"}
 
-    executor = gate(tmp_path, FullEscalate(), SlowReviewer(), k=1, timeout=0.2)
+    executor = gate(tmp_path, FullEscalate(), SlowReviewer(), k=2, timeout=0.2)
     ask(executor, functions, [one_call(args={"path": "temp.txt"})])
     assert read_file.executed == []
+    deadline = time.time() + 3
+    late_text = ""
+    while time.time() < deadline:
+        if executor.gate_logger.calls_path.exists():
+            late_text = executor.gate_logger.calls_path.read_text(encoding="utf-8")
+            if "late_reviewer_usage" in late_text:
+                break
+        time.sleep(0.05)
+    assert "late_reviewer_usage" in late_text
+    assert '"late_reviewer_tokens": 99' in late_text
+
+    class FiveTokenReviewer:
+        name = "five-reviewer"
+        last_token_usage = 0
+
+        def review(self, request):
+            self.last_token_usage = 5
+            return {"decision": "DENY", "reason": "next call"}
+
+    executor.reviewer = FiveTokenReviewer()
+    ask(executor, functions, [one_call(args={"path": "other.txt"}, call_id="call-2")])
     task = executor.finish_task(False, False)
-    assert task["tokens"]["reviewer"] == 4
+    assert task["tokens"]["reviewer"] == 104
+    assert read_file.executed == []
 
 
 class ScriptedLLM(BasePipelineElement):
@@ -280,5 +335,8 @@ def test_pipeline_uses_the_approval_executor(tmp_path):
     )
     pipeline = build_approval_pipeline(config, executor)
     assert pipeline.elements[-1].elements[0] is executor
+    assert pipeline.name == "scripted__full_approve__k0__default"
+    other = build_approval_pipeline(config, gate(tmp_path / "other", FullEscalate(), FakeReviewer(), k=2), "attack")
+    assert other.name == "scripted__full_escalate__k2__attack"
     pipeline.query("Organize project files", functions)
     assert read_file.executed == ["temp.txt"]

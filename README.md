@@ -17,4 +17,8 @@ The group uses AgentDojo commit `089ed468cf3ed0322acc66b0211f26d9d90dbf60` (2026
 
 The executor owns the budget. It resets to `k` at the start of a task. Every tool call in that task shares the budget. Starting a review spends one, even when the reviewer denies. When the budget is `0`, only `ESCALATE` becomes a denial. A direct `APPROVE` still runs.
 
-Unknown tool names and nested tool calls are rejected before the policy runs, so they do not spend budget. A reviewer call stops after 30 seconds. `tokens.reviewer` includes failed calls and retries. `reviewer_retry_tokens` is the retry portion already included in that total.
+Unknown tool names and nested tool calls are rejected before the policy runs, so they do not spend budget. The arguments shown to a policy are the arguments that will be executed. History keeps chat fields only, so a benchmark task object, label, or attack is not attached.
+
+A reviewer call stops waiting after 30 seconds. The cutoff does not read the reviewer's shared token counter. If the call finishes later, its cost is appended as `late_reviewer_usage` and added to the open task. A real reviewer must use this same timeout on its model client. `tokens.reviewer` includes failed calls and retries. `reviewer_retry_tokens` is the retry portion already included in that total.
+
+`pipeline.name` includes the model, policy, `k`, and a config id. AgentDojo stores results under that name, so those runs do not reuse one another's cache.

@@ -67,6 +67,8 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         self.k = k
         self.reviewer_timeout_seconds = reviewer_timeout_seconds
         self._task: OpenTask | None = None
+        self._on_late_usage = None
+        self._late_call_id: str | None = None
 
     def start_task(self, run_id: str, task_id: str, k: int | None = None) -> None:
         """Reset the budget. This is per task run, not per agent turn."""
@@ -147,6 +149,9 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
             message = _tool_message(tool_call, reason, tool_error or reason)
             self._write_call(task, tool_call, budget_before, outcome, False, tool_error)
             return message
+        call_id = f"{task.run_id}-{task.next_call_index}"
+        self._late_call_id = call_id
+        self._on_late_usage = lambda tokens, task=task, call_id=call_id: self._record_late_usage(task, call_id, tokens)
         request = build_request(
             user_task=query,
             tool_name=tool_call.function,
@@ -157,7 +162,8 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         )
         outcome = self._decide(task, request)
         message, execution_attempted, tool_error = self._apply(runtime, env, tool_call, outcome)
-        self._write_call(task, tool_call, budget_before, outcome, execution_attempted, tool_error)
+        self._write_call(task, tool_call, budget_before, outcome, execution_attempted, tool_error, call_id)
+        self._on_late_usage = None
         return message
 
     def _decide(self, task: OpenTask, request: dict) -> dict:
@@ -214,7 +220,12 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
 
         task.remaining -= 1
         task.actual_escalations += 1
-        review = invoke_reviewer(self.reviewer, request, timeout_seconds=self.reviewer_timeout_seconds)
+        review = invoke_reviewer(
+            self.reviewer,
+            request,
+            timeout_seconds=self.reviewer_timeout_seconds,
+            on_late_usage=self._on_late_usage,
+        )
         task.reviewer_tokens += review.token_usage + review.retry_tokens
         task.reviewer_retry_count += review.retry_count
         task.reviewer_retry_tokens += review.retry_tokens
@@ -256,10 +267,25 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         content = self.output_formatter(result)
         return _tool_message(tool_call, content, error), True, error
 
-    def _write_call(self, task, tool_call, budget_before, outcome, execution_attempted, tool_error) -> None:
+    def _record_late_usage(self, task: OpenTask, call_id: str, tokens: int) -> None:
+        self.gate_logger.write_call(
+            {
+                "record_type": "late_reviewer_usage",
+                "run_id": task.run_id,
+                "call_id": call_id,
+                "late_reviewer_tokens": tokens,
+            }
+        )
+        if self._task is task:
+            task.reviewer_tokens += tokens
+
+    def _write_call(self, task, tool_call, budget_before, outcome, execution_attempted, tool_error, call_id=None) -> None:
+        if call_id is None:
+            call_id = f"{task.run_id}-{task.next_call_index}"
         record = {
+            "record_type": "tool_call",
             "run_id": task.run_id,
-            "call_id": f"{task.run_id}-{task.next_call_index}",
+            "call_id": call_id,
             "policy_name": component_name(self.policy, "policy"),
             "tool_name": tool_call.function,
             "tool_arguments": to_jsonable(dict(tool_call.args)),
