@@ -1,4 +1,4 @@
-"""A deterministic, budget-independent tool-risk baseline for Member 3.
+"""A deterministic, budget-independent tool-risk baseline.
 
 This module uses only the public request contract. It does not import tasks,
 labels, the benchmark evaluator, a model, or a reviewer. It is a routing rule,
@@ -85,7 +85,7 @@ MAX_TEXT_CHARS = 100_000
 
 @dataclass(frozen=True)
 class RiskAssessment:
-    """Reusable fixed risk result for optional composition by Member 6."""
+    """Reusable fixed risk result for composition with a budget-aware strategy."""
 
     decision: str
     rule_id: str

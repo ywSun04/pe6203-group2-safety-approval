@@ -1,4 +1,4 @@
-"""Member 3 integration with the real gate and local fake tools/reviewer."""
+"""Risk policy integration with the real gate and local fake tools/reviewer."""
 
 import json
 

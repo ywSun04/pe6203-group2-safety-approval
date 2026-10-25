@@ -1,6 +1,6 @@
 """Offline end-to-end gate smoke check, not a live AgentDojo result.
 
-Run: python -m examples.member3_gate_smoke --log-dir logs/member3-smoke
+Run: python -m examples.gate_smoke --log-dir logs/gate-smoke
 It uses local fake tools and FakeReviewer. No model API or real outbound action.
 """
 
@@ -39,7 +39,7 @@ def send_email(recipients: list[str], body: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--log-dir", type=Path, default=Path("logs/member3-smoke"))
+    parser.add_argument("--log-dir", type=Path, default=Path("logs/gate-smoke"))
     options = parser.parse_args()
     runtime = FunctionsRuntime()
     runtime.register_function(search_files)
@@ -47,7 +47,7 @@ def main() -> None:
     gate = ApprovalGatedToolsExecutor(
         BasicRiskPolicy(), FakeReviewer("APPROVE"), GateLogger(options.log_dir), k=1,
     )
-    gate.start_task("member3-offline-" + uuid4().hex[:12], "synthetic-smoke")
+    gate.start_task("offline-gate-" + uuid4().hex[:12], "synthetic-smoke")
     calls = [
         FunctionCall(id="search", function="search_files", args={"query": "project notes"}),
         FunctionCall(id="send-1", function="send_email", args={

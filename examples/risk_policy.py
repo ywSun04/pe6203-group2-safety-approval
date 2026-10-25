@@ -1,4 +1,4 @@
-"""Run from the repository root: python -m examples.member3_policy."""
+"""Run from the repository root: python -m examples.risk_policy."""
 
 from __future__ import annotations
 

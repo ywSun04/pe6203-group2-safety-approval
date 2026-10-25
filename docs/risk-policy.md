@@ -1,12 +1,12 @@
-# Member 3 basic risk policy
+# Basic risk policy
 
 ## What is included
 
-Member 3 supplies `BasicRiskPolicy` in `approval_gate/policies/basic_risk.py`. The class exposes `decide(request)` and returns exactly `decision` and `reason`. The allowed decisions are `APPROVE`, `DENY`, and `ESCALATE`. Each reason starts with a stable rule ID. The gate already records that reason, so this module does not change the shared log format.
+`BasicRiskPolicy` is implemented in `approval_gate/policies/basic_risk.py`. The class exposes `decide(request)` and returns exactly `decision` and `reason`. The allowed decisions are `APPROVE`, `DENY`, and `ESCALATE`. Each reason starts with a stable rule ID. The gate already records that reason, so this module does not change the shared log format.
 
 The module is a fixed, conservative routing baseline. It does not call a model or a reviewer. `last_token_usage` is always zero. It does not read benchmark labels, ground-truth actions, task objects, or environment objects. Its runtime code uses the Python standard library only.
 
-The handoff follows the README and contract at repository commit `5eb4f9237ef271ac03daacbfea18199b32fadb50`, together with the group's messages requiring a callable module, examples, passing tests, and dependency instructions. That main revision does not contain `docs/module-intake.md` or a single-task CLI. This contribution does not invent or replace those shared interfaces. Member 2 still owns the experiment entry point and must call `build_approval_pipeline`.
+The integration follows `approval_gate/contract.py` and the README at commit `5eb4f9237ef271ac03daacbfea18199b32fadb50`. Experiments must use `build_approval_pipeline` so tool calls pass through the gate.
 
 ## Interface
 
@@ -49,9 +49,9 @@ R7 escalates a tool without a reviewed profile. A name beginning with `get_` or 
 
 Rule order is validation, credential egress, exact reviewed profile, then unknown. The decision does not depend on task wording for semantic authorisation. `user_task` is validated and passed to the reviewer by the gate, but the baseline does not try to infer whether a recipient, amount, or object was requested. That is a limitation, not an unstated task-intent detector. It also means a legitimate write may need review and may fail at a small review budget. Official experiments must measure that utility cost rather than claiming success from unit tests.
 
-## Relation to Member 6
+## Relation to the budget-aware strategy
 
-`BasicRiskPolicy` is an independently callable strategy for comparison. `assess_request(request)` exposes the same fixed `RiskAssessment` without spending budget. Member 6 may reuse this assessment or submit a separate strategy, but must document that choice and use a different `name`. Do not overwrite this baseline or relabel it as budget-aware. Both strategies must use the same task set, model, attacks, and k settings when compared. Only the gate resets and decrements the budget.
+`BasicRiskPolicy` is an independently callable strategy for comparison. `assess_request(request)` exposes the same fixed `RiskAssessment` without spending budget. The budget-aware strategy may reuse this assessment or submit a separate strategy, but must document that choice and use a different `name`. Do not overwrite this baseline or relabel it as budget-aware. Both strategies must use the same task set, model, attacks, and k settings when compared. Only the gate resets and decrements the budget.
 
 ## Gate connection
 
@@ -61,18 +61,18 @@ from approval_gate.pipeline import build_approval_pipeline
 from approval_gate.policies import BasicRiskPolicy
 from approval_gate.records import GateLogger
 
-# config and real_reviewer are supplied by Members 2 and 4.
+# Supply the experiment configuration and reviewer implementation here.
 gate = ApprovalGatedToolsExecutor(
     policy=BasicRiskPolicy(),
     reviewer=real_reviewer,
     gate_logger=GateLogger("logs/experiment"),
     k=3,
 )
-pipeline = build_approval_pipeline(config, gate, config_id="member3-basic-v1")
+pipeline = build_approval_pipeline(config, gate, config_id="basic-risk-v1")
 # The experiment runner calls start_task once, runs the task, then finish_task.
 ```
 
-This is a connection snippet, not a runnable experiment with hidden defaults. The reviewer, model configuration, suite version, tasks, attacks, and official output path remain the experiment team's choices. The module does not load evaluation answers to make decisions. `examples/member3_gate_smoke.py` provides a fully runnable offline connection check with fake local tools and `FakeReviewer`.
+This is a connection snippet, not a runnable experiment with hidden defaults. The reviewer, model configuration, suite version, tasks, attacks, and official output path remain the experiment team's choices. The module does not load evaluation answers to make decisions. `examples/gate_smoke.py` provides a fully runnable offline connection check with fake local tools and `FakeReviewer`.
 
 ## Install and run
 
@@ -89,10 +89,10 @@ $env:GIT_CONFIG_COUNT = '1'
 $env:GIT_CONFIG_KEY_0 = 'core.longpaths'
 $env:GIT_CONFIG_VALUE_0 = 'true'
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-dev.txt
-.\.venv\Scripts\python.exe scripts/check_member3_environment.py
+.\.venv\Scripts\python.exe scripts/check_agentdojo.py
 .\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe -m examples.member3_policy
-.\.venv\Scripts\python.exe -m examples.member3_gate_smoke --log-dir logs/member3-smoke
+.\.venv\Scripts\python.exe -m examples.risk_policy
+.\.venv\Scripts\python.exe -m examples.gate_smoke --log-dir logs/gate-smoke
 ```
 
 If `py` is not installed, use an available Python 3.11 interpreter for the first line. The tested local environment used Python 3.11.9. No API key or model configuration is needed for these checks. The runtime dependency pin is unchanged. `requirements-dev.txt` adds pytest only. On Linux/macOS use the corresponding `.venv/bin/python` commands; the Windows temporary-path workaround is not normally needed.
@@ -101,9 +101,9 @@ If `py` is not installed, use an available Python 3.11 interpreter for the first
 
 Policy tests cover operation routing, literal credential cases, benign discussions, malicious optional context, malformed inputs, state/budget independence, and processing bounds. Gate tests verify actual execution/no-execution and the call/task records. They check a shared budget across turns, per-task reset, reviewer-denial cost, an exhausted escalation that does not count as actual review, and a direct query still running at zero.
 
-The offline smoke script uses fake functions named `search_files` and `send_email`. It does not send mail or run a model. It writes `task_completed` and `security_passed` as null because no benchmark evaluator ran. Logs are generated under the chosen local directory and are not committed as experimental data. The late-reviewer-cost accounting and nested-call handling remain owned by the shared gate; this module does not alter either. Member 5 can use existing `policy_reason` rule IDs and `policy_name=basic_risk_v1` without new log fields.
+The offline smoke script uses fake functions named `search_files` and `send_email`. It does not send mail or run a model. It writes `task_completed` and `security_passed` as null because no benchmark evaluator ran. Logs are generated under the chosen local directory and are not committed as experimental data. The late-reviewer-cost accounting and nested-call handling remain owned by the shared gate; this module does not alter either. The metrics code can use existing `policy_reason` rule IDs and `policy_name=basic_risk_v1` without new log fields.
 
-The original workspace ground-truth replay is an existing connection test. It is not consulted by the policy and must not be presented as a new security evaluation. Actual counts and commands from this handoff are recorded in `docs/member3-validation.md` after execution.
+The original workspace ground-truth replay is an existing connection test. It is not consulted by the policy and must not be presented as a new security evaluation. Actual counts and commands from this handoff are recorded in `docs/policy-validation.md` after execution.
 
 ## Works Cited
 
@@ -113,4 +113,4 @@ AgentDojo Contributors. “Tools.” *AgentDojo*, commit 089ed468cf3ed0322acc66b
 
 “Approval Gate.” *PE6203 Group 2 Safety Approval*, README.md and approval_gate/contract.py, commit 5eb4f9237ef271ac03daacbfea18199b32fadb50, https://github.com/ywSun04/pe6203-group2-safety-approval. Accessed 26 Oct. 2026.
 
-The source explains tool effects and the shared interface. The rule grouping, credential pattern, and processing limits are Member 3 design choices. Tests use constructed examples, not hidden attack annotations. Codex assisted with implementation, source inspection and test preparation; no formal experiment results are claimed.
+The source explains tool effects and the shared interface. The rule grouping, credential pattern, and processing limits are baseline design choices. Tests use constructed examples, not hidden attack annotations. Development assistance: Codex was used for implementation, source checks, and test preparation. Formal experiments have not been run.

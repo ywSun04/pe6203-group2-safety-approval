@@ -23,17 +23,17 @@ A reviewer call stops waiting after 30 seconds. The cutoff does not read the rev
 
 `pipeline.name` includes the model, policy, `k`, and a config id. AgentDojo stores results under that name, so those runs do not reuse one another's cache.
 
-## Member 3 basic risk policy
+## Basic risk policy
 
-`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. Member 6's budget-aware strategy remains a separate comparison.
+`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. The budget-aware strategy remains a separate comparison.
 
-See `docs/member3-risk-policy.md` for the rule rationale, interface, installation, and examples. `docs/member3-validation.md` records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
+See `docs/risk-policy.md` for the rule rationale, interface, installation, and examples. `docs/policy-validation.md` records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
 
 ```text
-python scripts/check_member3_environment.py
+python scripts/check_agentdojo.py
 python -m pytest -q
-python -m examples.member3_policy
-python -m examples.member3_gate_smoke --log-dir logs/member3-smoke
+python -m examples.risk_policy
+python -m examples.gate_smoke --log-dir logs/gate-smoke
 ```
 
 The policy example and gate smoke use synthetic inputs and no live model. Smoke logs are wiring checks, not benchmark results. Real experiments still use `build_approval_pipeline` and the model/reviewer supplied by the experiment team.
