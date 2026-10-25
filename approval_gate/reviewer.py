@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import threading
 from dataclasses import dataclass
 from typing import Any
 
@@ -49,15 +50,56 @@ class ReviewerCall:
     error: str | None
 
 
-def invoke_reviewer(reviewer: Any, request: dict) -> ReviewerCall:
-    """Call the reviewer. On timeout or a bad payload, return an error instead of raising."""
+DEFAULT_REVIEWER_TIMEOUT_SECONDS = 30.0
+
+
+def invoke_reviewer(
+    reviewer: Any,
+    request: dict,
+    timeout_seconds: float = DEFAULT_REVIEWER_TIMEOUT_SECONDS,
+) -> ReviewerCall:
+    """Call the reviewer and stop waiting after timeout_seconds.
+
+    token_usage is the latest attempt, including a failed one.
+    retry_tokens counts earlier technical retries only. The gate adds both into
+    tokens.reviewer, and also stores retry_tokens on its own so the retry portion
+    can be reported without adding it a second time.
+    """
+    if timeout_seconds <= 0:
+        raise ValueError("timeout_seconds must be > 0")
+    box: dict[str, ReviewerCall] = {}
+
+    def run() -> None:
+        box["result"] = _invoke_reviewer_once(reviewer, request)
+
+    thread = threading.Thread(target=run, daemon=True)
+    thread.start()
+    thread.join(timeout_seconds)
+    if thread.is_alive():
+        return ReviewerCall(
+            None,
+            "Reviewer timed out",
+            take_token_usage(reviewer),
+            0,
+            0,
+            "Reviewer timed out",
+        )
+    return box["result"]
+
+
+def _invoke_reviewer_once(reviewer: Any, request: dict) -> ReviewerCall:
     try:
         payload = call_component(reviewer, request, "review")
         decision, reason = parse_reviewer_output(payload)
     except ReviewerTimeout as error:
-        return ReviewerCall(None, str(error), 0, error.retry_count, error.retry_tokens, str(error))
+        return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
     except ReviewerFormatError as error:
-        return ReviewerCall(None, str(error), 0, error.retry_count, error.retry_tokens, str(error))
+        return _failed_review(reviewer, error, error.retry_count, error.retry_tokens)
     except Exception as error:
-        return ReviewerCall(None, f"{type(error).__name__}: {error}", 0, 0, 0, f"{type(error).__name__}: {error}")
+        return _failed_review(reviewer, error, 0, 0)
     return ReviewerCall(decision, reason, take_token_usage(reviewer), 0, 0, None)
+
+
+def _failed_review(reviewer: Any, error: Exception, retry_count: int, retry_tokens: int) -> ReviewerCall:
+    message = str(error) or type(error).__name__
+    return ReviewerCall(None, message, take_token_usage(reviewer), retry_count, retry_tokens, message)

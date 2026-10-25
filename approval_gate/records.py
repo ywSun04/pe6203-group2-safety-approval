@@ -1,4 +1,9 @@
-"""Two JSONL logs: one row per tool call, one row per task run."""
+"""Two JSONL logs: one row per tool call, one row per task run.
+
+tokens.reviewer is the total reviewer spend. It includes failed calls and
+technical retries. reviewer_retry_tokens is the retry portion already included
+in that total. Do not add the two numbers together.
+"""
 
 from __future__ import annotations
 

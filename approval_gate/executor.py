@@ -1,8 +1,9 @@
 """Approval gate in front of AgentDojo tool execution.
 
-This class does not replace ToolsExecutor inside AgentPipeline.from_config.
-That wiring is a later step. Call start_task once per task, query on each
-agent turn, then finish_task.
+AgentPipeline.from_config still builds a plain ToolsExecutor. Use
+approval_gate.pipeline.build_approval_pipeline so this executor is the one
+that runs. Call start_task once per task, query on each agent turn, then
+finish_task.
 """
 
 from __future__ import annotations
@@ -13,7 +14,7 @@ from typing import Any, Sequence
 
 from agentdojo.agent_pipeline.llms.google_llm import EMPTY_FUNCTION_NAME
 from agentdojo.agent_pipeline.tool_execution import ToolsExecutor, is_string_list, tool_result_to_str
-from agentdojo.functions_runtime import EmptyEnv, Env, FunctionsRuntime
+from agentdojo.functions_runtime import EmptyEnv, Env, FunctionCall, FunctionsRuntime
 from agentdojo.types import ChatMessage, ChatToolResultMessage, text_content_block_from_string
 
 from approval_gate.contract import (
@@ -26,7 +27,7 @@ from approval_gate.contract import (
     to_jsonable,
 )
 from approval_gate.records import GateLogger
-from approval_gate.reviewer import invoke_reviewer
+from approval_gate.reviewer import DEFAULT_REVIEWER_TIMEOUT_SECONDS, invoke_reviewer
 
 
 @dataclass
@@ -53,14 +54,18 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         gate_logger: GateLogger,
         k: int,
         tool_output_formatter=tool_result_to_str,
+        reviewer_timeout_seconds: float = DEFAULT_REVIEWER_TIMEOUT_SECONDS,
     ) -> None:
         super().__init__(tool_output_formatter)
         if k < 0:
             raise ValueError("k must be >= 0")
+        if reviewer_timeout_seconds <= 0:
+            raise ValueError("reviewer_timeout_seconds must be > 0")
         self.policy = policy
         self.reviewer = reviewer
         self.gate_logger = gate_logger
         self.k = k
+        self.reviewer_timeout_seconds = reviewer_timeout_seconds
         self._task: OpenTask | None = None
 
     def start_task(self, run_id: str, task_id: str, k: int | None = None) -> None:
@@ -129,6 +134,19 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         task = self._require_task()
         self._coerce_string_lists(tool_call)
         budget_before = task.remaining
+        blocked = _pre_approval_block(runtime, tool_call)
+        if blocked is not None:
+            reason, tool_error = blocked
+            outcome = _outcome(
+                policy_decision="NOT_EVALUATED",
+                policy_reason="",
+                final_decision="DENY",
+                deny_reason=reason,
+                budget_after=budget_before,
+            )
+            message = _tool_message(tool_call, reason, tool_error or reason)
+            self._write_call(task, tool_call, budget_before, outcome, False, tool_error)
+            return message
         request = build_request(
             user_task=query,
             tool_name=tool_call.function,
@@ -147,6 +165,7 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         try:
             payload = call_component(self.policy, request, "decide")
         except Exception as error:
+            task.policy_tokens += take_token_usage(self.policy)
             return _outcome(
                 policy_decision="INVALID",
                 policy_reason=str(error),
@@ -195,8 +214,8 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
 
         task.remaining -= 1
         task.actual_escalations += 1
-        review = invoke_reviewer(self.reviewer, request)
-        task.reviewer_tokens += review.token_usage
+        review = invoke_reviewer(self.reviewer, request, timeout_seconds=self.reviewer_timeout_seconds)
+        task.reviewer_tokens += review.token_usage + review.retry_tokens
         task.reviewer_retry_count += review.retry_count
         task.reviewer_retry_tokens += review.retry_tokens
         if review.error is not None or review.decision is None:
@@ -230,12 +249,9 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         if outcome["final_decision"] != "APPROVE":
             reason = outcome["deny_reason"] or "Approval denied"
             return _tool_message(tool_call, reason, reason), False, None
-        if tool_call.function == EMPTY_FUNCTION_NAME:
-            error = "Empty function name provided. Provide a valid function name."
-            return _tool_message(tool_call, "", error), False, error
-        if tool_call.function not in runtime.functions:
-            error = f"Invalid tool {tool_call.function} provided."
-            return _tool_message(tool_call, "", error), False, error
+        if _contains_function_call(tool_call.args) or not _known_tool(runtime, tool_call.function):
+            reason = "Tool call was approved but cannot be executed"
+            return _tool_message(tool_call, reason, reason), False, reason
         result, error = runtime.run_function(env, tool_call.function, tool_call.args)
         content = self.output_formatter(result)
         return _tool_message(tool_call, content, error), True, error
@@ -275,6 +291,33 @@ class ApprovalGatedToolsExecutor(ToolsExecutor):
         for key, value in list(tool_call.args.items()):
             if isinstance(value, str) and is_string_list(value):
                 tool_call.args[key] = literal_eval(value)
+
+
+def _pre_approval_block(runtime: FunctionsRuntime, tool_call) -> tuple[str, str | None] | None:
+    """Reject calls that must not reach the policy or spend budget."""
+    if _contains_function_call(tool_call.args):
+        return "Nested tool calls are not allowed", None
+    if tool_call.function == EMPTY_FUNCTION_NAME:
+        error = "Empty function name provided. Provide a valid function name."
+        return error, error
+    if tool_call.function not in runtime.functions:
+        error = f"Invalid tool {tool_call.function} provided."
+        return error, error
+    return None
+
+
+def _known_tool(runtime: FunctionsRuntime, tool_name: str) -> bool:
+    return tool_name != EMPTY_FUNCTION_NAME and tool_name in runtime.functions
+
+
+def _contains_function_call(value) -> bool:
+    if isinstance(value, FunctionCall):
+        return True
+    if isinstance(value, dict):
+        return any(_contains_function_call(item) for item in value.values())
+    if isinstance(value, (list, tuple)):
+        return any(_contains_function_call(item) for item in value)
+    return False
 
 
 def _tool_metadata(runtime: FunctionsRuntime, tool_name: str) -> dict | None:

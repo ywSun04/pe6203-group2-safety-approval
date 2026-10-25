@@ -35,6 +35,23 @@ class ReviewerTimeout(TimeoutError):
         self.retry_tokens = retry_tokens
 
 
+def without_forbidden(value: Any) -> Any:
+    """Serialize a value and drop benchmark secrets at every level."""
+    return _strip_forbidden(to_jsonable(value))
+
+
+def _strip_forbidden(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: _strip_forbidden(item)
+            for key, item in value.items()
+            if key not in FORBIDDEN_FIELDS
+        }
+    if isinstance(value, list):
+        return [_strip_forbidden(item) for item in value]
+    return value
+
+
 def to_jsonable(value: Any) -> Any:
     model_dump = getattr(value, "model_dump", None)
     if callable(model_dump):
@@ -60,13 +77,13 @@ def build_request(
     request = {
         "user_task": user_task,
         "tool_name": tool_name,
-        "tool_arguments": to_jsonable(tool_arguments),
+        "tool_arguments": without_forbidden(tool_arguments),
         "remaining_budget": int(remaining_budget),
     }
     if history is not None:
-        request["history"] = to_jsonable(history)
+        request["history"] = without_forbidden(history)
     if tool_metadata is not None:
-        request["tool_metadata"] = to_jsonable(tool_metadata)
+        request["tool_metadata"] = without_forbidden(tool_metadata)
     return request
 
 
@@ -83,10 +100,10 @@ def parse_reviewer_output(payload: Any) -> tuple[str, str]:
 
 
 def _parse_output(payload: Any, allowed: tuple[str, ...]) -> tuple[str, str]:
-    if not isinstance(payload, dict):
-        raise PolicyFormatError("Decision payload must be an object with decision and reason")
-    decision = payload.get("decision")
-    reason = payload.get("reason", "")
+    if not isinstance(payload, dict) or set(payload) != {"decision", "reason"}:
+        raise PolicyFormatError("Decision payload must contain exactly decision and reason")
+    decision = payload["decision"]
+    reason = payload["reason"]
     if decision not in allowed or not isinstance(reason, str):
         allowed_text = ", ".join(allowed)
         raise PolicyFormatError(f"decision must be one of {allowed_text}, and reason must be a string")
