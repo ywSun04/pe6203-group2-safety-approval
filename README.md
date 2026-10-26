@@ -56,6 +56,19 @@ The tests cover:
 
 Local test result: 10 passed.
 
+### Preliminary Budget Comparison
+
+An initial decision-level comparison was conducted using review budgets k = 0, 1, 2, 4, and 8.
+
+- Comparison script: `tests/compare_budget_k.py`
+- Results file: `budget_k_results.txt`
+- Compared policies: Member 3's baseline risk assessment and Member 6's BudgetAwarePolicy
+- Test cases: safe read, sensitive read, external action, financial action, and unknown tool
+
+The results show that BudgetAwarePolicy preserves direct approvals for safe operations, denies escalation requests when the review budget is exhausted, and prioritizes sensitive, external, and financial actions when only one review remains.
+
+These are preliminary policy-level tests, not official AgentDojo TCR@k benchmark results.
+
 The full repository test suite can be executed using:
 
 python -m pytest tests/ -v
