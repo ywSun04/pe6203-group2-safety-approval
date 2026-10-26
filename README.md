@@ -22,3 +22,48 @@ Unknown tool names and nested tool calls are rejected before the policy runs, so
 A reviewer call stops waiting after 30 seconds. The cutoff does not read the reviewer's shared token counter. If the call finishes later, its cost is appended as `late_reviewer_usage` with `included_in_task_total`. Add that cost again only when the field is false. A call that is still queued when its deadline passes does not start the model. A real reviewer must use the supplied timeout on its model client. `tokens.reviewer` includes failed calls and retries. `reviewer_retry_tokens` is the retry portion already included in that total.
 
 `pipeline.name` includes the model, policy, `k`, and a config id. AgentDojo stores results under that name, so those runs do not reuse one another's cache.
+
+Budget-Aware Policy (Member 6)
+
+Overview
+
+The BudgetAwarePolicy implements a budget-aware approval strategy for tool calls. It combines risk assessment with the remaining human-review budget to determine whether a tool call should be approved, escalated for review, or denied.
+
+The implementation follows Approach A by reusing Member 3's "assess_request()" function from "basic_risk.py", avoiding duplicated risk assessment logic.
+
+Implementation
+
+- Policy implementation: "approval_gate/policies/budget_aware.py"
+- Risk assessment dependency: "approval_gate/policies/basic_risk.py" (Member 3)
+- Unit tests: "tests/test_budget_aware.py"
+
+The policy considers the risk of a requested tool call and the available review budget. Budget exhaustion must not cause unsafe requests to be automatically approved.
+
+Testing
+
+The Member 6 unit tests can be executed from the repository root using:
+
+python -m pytest tests/test_budget_aware.py -v
+
+The tests cover:
+
+- Policy interface compatibility
+- Safe and sensitive read operations
+- Financial actions and unknown tools
+- Explicit user prohibitions
+- Budget preservation
+- Deterministic decisions
+
+Local test result: 10 passed.
+
+The full repository test suite can be executed using:
+
+python -m pytest tests/ -v
+
+Local full-suite result: 26 passed.
+
+Integration Notes
+
+BudgetAwarePolicy depends on Member 3's risk assessment implementation. Both files must be available when running the policy.
+
+The policy is developed and tested independently on the Member 6 branch before integration into the main project.
