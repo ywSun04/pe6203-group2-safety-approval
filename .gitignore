@@ -2,5 +2,10 @@ __pycache__/
 .venv/
 .pytest_cache/
 .review-check-*/
-logs/*.jsonl
+logs/
+reports/
+presentations/
+docs/system-architecture.md
+docs/talk.md
+docs/personal-contribution.md
 .cursor/

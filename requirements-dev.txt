@@ -1,0 +1,3 @@
+# Developer tests only. AgentDojo itself is pinned in requirements.txt.
+-r requirements.txt
+pytest==9.1.1
