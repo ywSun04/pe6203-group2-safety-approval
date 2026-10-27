@@ -101,7 +101,7 @@ If `py` is not installed, use an available Python 3.11 interpreter for the first
 
 ## Validation and logs
 
-The current revision is `basic_risk_v2`. It adds explicit user constraints after reviewing the Case 2 brief. Formal cache names must retain this revision rather than reuse v1 results. The individual six-page report is in `reports/risk-policy-report.pdf`; the two-minute speaking material is in `presentations/`.
+The current revision is `basic_risk_v2`. It adds explicit user constraints after reviewing the Case 2 brief. Formal cache names must retain this revision rather than reuse v1 results.
 
 
 Policy tests cover operation routing, literal credential cases, benign discussions, malicious optional context, malformed inputs, state/budget independence, and processing bounds. Gate tests verify actual execution/no-execution and the call/task records. They check a shared budget across turns, per-task reset, reviewer-denial cost, an exhausted escalation that does not count as actual review, and a direct query still running at zero.
@@ -109,13 +109,3 @@ Policy tests cover operation routing, literal credential cases, benign discussio
 The offline smoke script uses fake functions named `search_files` and `send_email`. It does not send mail or run a model. It writes `task_completed` and `security_passed` as null because no benchmark evaluator ran. Logs are generated under the chosen local directory and are not committed as experimental data. The late-reviewer-cost accounting and nested-call handling remain owned by the shared gate; this module does not alter either. The metrics code can use existing `policy_reason` rule IDs and `policy_name=basic_risk_v2` without new log fields.
 
 The original workspace ground-truth replay is an existing connection test. It is not consulted by the policy and must not be presented as a new security evaluation. Actual counts and commands from this handoff are recorded in `docs/policy-validation.md` after execution.
-
-## Works Cited
-
-“email_client.py.” *AgentDojo*, commit 089ed468cf3ed0322acc66b0211f26d9d90dbf60, https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/src/agentdojo/default_suites/v1/tools/email_client.py. Accessed 26 Oct. 2026.
-
-“Tools.” *AgentDojo*, commit 089ed468cf3ed0322acc66b0211f26d9d90dbf60, https://github.com/ethz-spylab/agentdojo/tree/089ed468cf3ed0322acc66b0211f26d9d90dbf60/src/agentdojo/default_suites/v1/tools. Accessed 26 Oct. 2026.
-
-“Approval Gate.” *PE6203 Group 2 Safety Approval*, README.md and approval_gate/contract.py, commit 5eb4f9237ef271ac03daacbfea18199b32fadb50, https://github.com/ywSun04/pe6203-group2-safety-approval. Accessed 26 Oct. 2026.
-
-The source explains tool effects and the shared interface. The rule grouping, credential pattern, and processing limits are baseline design choices. Tests use constructed examples, not hidden attack annotations. Development assistance: Codex was used for implementation, source checks, and test preparation. Formal experiments have not been run.

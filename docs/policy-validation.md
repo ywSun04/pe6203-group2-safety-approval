@@ -22,6 +22,6 @@ The added authorisation tests check direct prohibitions, the single-recipient re
 
 The tests establish the behaviour of the rules and gate interface on these inputs. They do not show live task completion, attack success, real reviewer accuracy, formal TCR@k, or dollar cost. The wrong-object example documents a real limit of operation-based approval rather than claiming full authorisation checking. The credential rule also has documented coverage limits.
 
-The existing workspace replay remains a connection test. Ground-truth calls are used only by that existing scripted harness, not by the policy. Real model, reviewer and attack configuration are still shared experiment dependencies. The report and presentation describe this boundary and do not turn local logs into formal results.
+The existing workspace replay remains a connection test. Ground-truth calls are used only by that existing scripted harness, not by the policy. Real model, reviewer and attack configuration are still shared experiment dependencies. Local logs are not formal benchmark results.
 
 The shared full-approve and nested-call behaviour is unchanged. Selected tasks needing nested calls require a baseline caveat in the formal experiment description. Late-reviewer-cost semantics remain those of the original shared gate.

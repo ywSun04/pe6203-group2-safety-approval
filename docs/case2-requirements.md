@@ -2,7 +2,7 @@
 
 ## Source and scope
 
-This review uses the supplied English Case 2 handout, the bilingual copy of the same brief, the current repository, the group lead's interface messages, and the later individual presentation/report instruction. The screenshot assigns the risk-based policy role responsibility for rules, authorisation judgement, implementation, tests, and reporting. It is a division-of-work proposal rather than a replacement for the course requirements.
+This review uses the supplied English Case 2 handout, the bilingual copy of the same brief, the current repository, and the group lead's interface messages. The screenshot assigns the risk-based policy role responsibility for rules, authorisation judgement, implementation, tests, and reporting. It is a division-of-work proposal rather than a replacement for the course requirements.
 
 The existing uploaded code belongs to the approval-policy project. No Morning Bean design content is part of this repository. The revision keeps the same public interface and shared gate, and adds supported explicit authorisation checks to the risk rules. The policy remains separate from the budget-aware strategy.
 
@@ -17,12 +17,6 @@ The current policy name is basic_risk_v2. R8 blocks supported direct prohibition
 The revised checkout passes 117 tests: 101 policy-related checks plus 16 pre-existing shared tests. The callable example, fake-tool gate example, source-commit checker and dependency check were executed. The two constructed failure traces are reproducible with examples.policy_failure_cases. They show a blocked safe send at k=0 and an allowed wrong-object read. Their labels are external diagnostics and never enter the policy request. Shared task utility/security remain null in these local traces.
 
 This is evidence for implementation and integration. It does not replace a live AgentDojo evaluation or establish the quality of a real reviewer. The current main branch still provides only the fake reviewer and scripted connection tests. The model, real reviewer configuration, and formal run results were not supplied or assumed.
-
-## Report and presentation
-
-The individual report is six pages. Pages one and two describe implementation and validation contributions. Page three is reflection. The remaining pages explain the rule design, observed local failure evidence, evaluation requirements and MLA sources. The report's current evidence date is 26 October 2026. It is an individual component report pending the group's formal experimental section, not a claim that all Case 2 deliverables are finished.
-
-The speaking notes and two-slide deck target an individual two-minute presentation on 1 November, following the later instruction supplied for this project. The handout itself states a ten-minute group presentation and five minutes of Q&A. Six two-minute talks would exceed ten minutes, so the final group running order needs the latest class instruction. No exact extended report deadline is inferred from the statement that it will be two days later.
 
 ## Formal evaluation still required
 
