@@ -25,7 +25,7 @@ A reviewer call stops waiting after 30 seconds. The cutoff does not read the rev
 
 ## Basic risk policy
 
-`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. The budget-aware strategy remains a separate comparison. The current policy name is `basic_risk_v2`; it also checks supported explicit user prohibitions and single-recipient restrictions.
+`approval_gate.policies.BasicRiskPolicy` provides a budget-independent `decide(request)` component. It returns exactly `decision` and `reason`; the shared gate continues to own all review calls and budget changes. The current policy name is `basic_risk_v2`; it also checks supported explicit user prohibitions and single-recipient restrictions. `BudgetAwarePolicy` is the budget-aware component plugged into the same executor. See the next section.
 
 See [Risk policy](docs/risk-policy.md) for the rule rationale, interface, installation, and examples. [Validation record](docs/policy-validation.md) records the checks actually run. Install `requirements.txt` and `requirements-dev.txt`, then run these commands from the repository root:
 
@@ -37,6 +37,42 @@ python -m examples.gate_smoke --log-dir logs/gate-smoke
 ```
 
 The policy example and gate smoke use synthetic inputs and no live model. Smoke logs are wiring checks, not benchmark results. Real experiments still use `build_approval_pipeline` and the model/reviewer supplied by the experiment team.
+
+## Budget-aware policy
+
+`approval_gate.policies.BudgetAwarePolicy` (`budget_aware_v1`) is wired into the same approval executor. It calls Member 3's `assess_request()` in `basic_risk.py` and does not keep a second copy of the risk rules. A baseline `APPROVE` or `DENY` is returned unchanged. A baseline `ESCALATE` becomes:
+
+- `DENY` when `remaining_budget` is `0` (`B0_NO_REVIEW_BUDGET`)
+- `DENY` when one review remains and the rule is not a sensitive read, external action, or financial action (`B1_RESERVE_LAST_REVIEW`)
+- `ESCALATE` otherwise (`B2_REVIEW_REQUESTED`)
+
+The executor still owns the budget. This policy never changes `remaining_budget` and never turns a risky call into `APPROVE` just because a review is available. Select it when building the gate:
+
+```python
+from approval_gate.executor import ApprovalGatedToolsExecutor
+from approval_gate.pipeline import build_approval_pipeline
+from approval_gate.policies import make_policy
+
+gate = ApprovalGatedToolsExecutor(
+    make_policy("budget_aware"),
+    reviewer,
+    gate_logger,
+    k=k,
+)
+pipeline = build_approval_pipeline(config, gate)
+```
+
+`pipeline.name` then contains `budget_aware_v1` and the chosen `k`. An unregistered tool name is still rejected by the executor before this policy runs, so it does not spend budget.
+
+Checks from the repository root:
+
+```text
+python -m pytest tests/test_budget_aware.py tests/test_budget_aware_gate.py -q
+python -m tests.compare_budget_k
+python -m examples.budget_gate_smoke --log-dir logs/budget-gate-smoke
+```
+
+`tests/compare_budget_k.py` and `budget_k_results.txt` compare policy decisions at k = 0, 1, 2, 4, and 8. Those rows are preliminary decision checks, not official AgentDojo task-completion results. Formal k sweeps stay with the experiment run after the shared benchmark settings are fixed.
 
 
 ## Individual report and presentation
