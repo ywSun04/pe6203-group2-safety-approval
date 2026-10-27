@@ -1,0 +1,2 @@
+# Optional live Reviewer dependency; install alongside requirements-dev.txt.
+openai==3.39.0

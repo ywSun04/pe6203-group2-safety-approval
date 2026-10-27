@@ -217,3 +217,12 @@ python -m examples.budget_gate_smoke --log-dir logs/budget-gate-smoke
 `tests/compare_budget_k.py` and `budget_k_results.txt` compare policy decisions at k = 0, 1, 2, 4, and 8. Those rows are preliminary decision checks, not official AgentDojo task-completion results. Formal k sweeps stay with the experiment run after the shared benchmark settings are fixed.
 
 The two constructed failure examples can be reproduced with `python -m examples.policy_failure_cases --output local-traces.json`. They demonstrate a blocked safe send and an unchecked object-level read. Their diagnostic labels never enter the policy request and are not benchmark results.
+
+## LLM reviewer (Member 4)
+
+`reviewer.LlmReviewer` implements the real model-call adapter, prompt, strict
+APPROVE/DENY parsing, client timeout and latest-attempt token accounting.
+Install `requirements-reviewer.txt` and follow [Reviewer setup and validation](docs/reviewer.md).
+The existing runner still uses its stand-in until the experiment team explicitly
+constructs this reviewer and supplies it to the gate. Offline tests and the
+synthetic case set do not establish live reviewer quality or benchmark results.
