@@ -133,3 +133,13 @@ review budget is spent. There are two reviews and 34 synthetic usage tokens.
 BasicRiskPolicy requests three escalations; BudgetAwarePolicy directly denies
 the third call at zero budget and therefore requests two. Neither counter is
 changed by Reviewer. Task utility/security stay null because no benchmark ran.
+
+## Candidate v2 follow-up
+
+The 28 October candidate clarifies bounded read-only discovery and includes five
+additional cases in `reviewer/cases/discovery-regression.json`. See
+[Live rejection analysis and development checks](reviewer-followup-20261028.md).
+It has not been frozen for formal experiments. Keep its prompt hash separate
+from v1. The live case checker now accepts `--cases`, `--timeout` and
+`--connect-timeout`, and reuses Member 2's UsageLedger; install the integrated
+main runner before invoking this checker.
