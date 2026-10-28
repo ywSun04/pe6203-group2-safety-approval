@@ -1,0 +1,125 @@
+Member 5 experiment runner command groups
+
+These commands are offline preflight only. None contains --live; this script never executes them.
+Set provider keys locally. The frozen Reviewer model/endpoints and source commit are in coverage.json.
+After team approval and model budget confirmation, Member 2 may explicitly add --live to selected commands.
+
+none / user_task_0 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_0 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_0
+
+none / user_task_1 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_1 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_1
+
+none / user_task_2 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_2 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_2
+
+none / user_task_3 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_3 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_3
+
+none / user_task_6 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_6 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_6
+
+none / user_task_8 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_8 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_8
+
+none / user_task_9 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_9 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_9
+
+none / user_task_10 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_10 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_10
+
+none / user_task_14 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_14 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_14
+
+none / user_task_16 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_16 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_16
+
+none / user_task_17 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_17 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_17
+
+none / user_task_21 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_21 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_21
+
+none / user_task_22 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_22 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_22
+
+none / user_task_24 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_24 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_24
+
+none / user_task_26 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_26 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_26
+
+none / user_task_27 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_27 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_27
+
+none / user_task_28 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_28 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_28
+
+none / user_task_29 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_29 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_29
+
+none / user_task_30 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_30 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_30
+
+none / user_task_35 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_35 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack none --log-dir logs/member5-formal/none/user_task_35
+
+file / user_task_0 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_0 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_0 --attack-file attacks/member5/m5_workspace_00_goal0_v1.json --injection-task injection_task_0
+
+file / user_task_1 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_1 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_1 --attack-file attacks/member5/m5_workspace_01_goal1_v1.json --injection-task injection_task_1
+
+file / user_task_2 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_2 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_2 --attack-file attacks/member5/m5_workspace_02_goal2_v1.json --injection-task injection_task_2
+
+file / user_task_3 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_3 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_3 --attack-file attacks/member5/m5_workspace_03_goal0_v1.json --injection-task injection_task_0
+
+file / user_task_6 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_6 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_6 --attack-file attacks/member5/m5_workspace_06_goal1_v1.json --injection-task injection_task_1
+
+file / user_task_8 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_8 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_8 --attack-file attacks/member5/m5_workspace_08_goal2_v1.json --injection-task injection_task_2
+
+file / user_task_9 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_9 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_9 --attack-file attacks/member5/m5_workspace_09_goal0_v1.json --injection-task injection_task_0
+
+file / user_task_10 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_10 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_10 --attack-file attacks/member5/m5_workspace_10_goal1_v1.json --injection-task injection_task_1
+
+file / user_task_14 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_14 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_14 --attack-file attacks/member5/m5_workspace_14_goal2_v1.json --injection-task injection_task_2
+
+file / user_task_16 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_16 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_16 --attack-file attacks/member5/m5_workspace_16_goal2_v2.json --injection-task injection_task_2
+
+file / user_task_17 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_17 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_17 --attack-file attacks/member5/m5_workspace_17_goal1_v1.json --injection-task injection_task_1
+
+file / user_task_21 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_21 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_21 --attack-file attacks/member5/m5_workspace_21_goal2_v1.json --injection-task injection_task_2
+
+file / user_task_22 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_22 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_22 --attack-file attacks/member5/m5_workspace_22_goal2_v2.json --injection-task injection_task_2
+
+file / user_task_24 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_24 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_24 --attack-file attacks/member5/m5_workspace_24_goal1_v1.json --injection-task injection_task_1
+
+file / user_task_26 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_26 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_26 --attack-file attacks/member5/m5_workspace_26_goal2_v1.json --injection-task injection_task_2
+
+file / user_task_27 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_27 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_27 --attack-file attacks/member5/m5_workspace_27_goal0_v1.json --injection-task injection_task_0
+
+file / user_task_28 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_28 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_28 --attack-file attacks/member5/m5_workspace_28_goal1_v1.json --injection-task injection_task_1
+
+file / user_task_29 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_29 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_29 --attack-file attacks/member5/m5_workspace_29_goal2_v1.json --injection-task injection_task_2
+
+file / user_task_30 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_30 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_30 --attack-file attacks/member5/m5_workspace_30_goal0_v1.json --injection-task injection_task_0
+
+file / user_task_35 (60 runs)
+python experiments/run_suite.py --suite workspace --suite-version v1.2.2 --tasks user_task_35 --model-id openai/gpt-4o-mini --policies full-approve full-escalate basic_risk budget_aware --k 0 1 2 4 8 --repeat 3 --reviewer-timeout 30 --connect-timeout 2 --max-agent-requests 20 --max-output-tokens 2048 --attack file --log-dir logs/member5-formal/file/user_task_35 --attack-file attacks/member5/m5_workspace_35_goal1_v1.json --injection-task injection_task_1

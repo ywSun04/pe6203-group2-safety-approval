@@ -1,0 +1,44 @@
+{
+  "20261027T140219Z-c17a974940d0456da3d549bf9731b9d7": {
+    "evidence_kind": "smoke",
+    "experiment_id": "member2-live-smoke",
+    "security_scope": "benchmark_goal",
+    "condition": "none",
+    "repetition": 0
+  },
+  "20261027T144609Z-5d97f79f066b47cfbe4b7b2db0ac648e": {
+    "evidence_kind": "smoke",
+    "experiment_id": "member2-live-smoke",
+    "security_scope": "benchmark_goal",
+    "condition": "none",
+    "repetition": 0
+  },
+  "20261027T144618Z-1c78424cce3c43fa9f504d6a11a0f0a7": {
+    "evidence_kind": "smoke",
+    "experiment_id": "member2-live-smoke",
+    "security_scope": "benchmark_goal",
+    "condition": "none",
+    "repetition": 0
+  },
+  "20261027T140518Z-dfb0af4e1c864a43864879b9cd814135": {
+    "evidence_kind": "smoke",
+    "experiment_id": "member2-live-smoke",
+    "security_scope": "benchmark_goal",
+    "condition": "none",
+    "repetition": 0
+  },
+  "20261027T141526Z-fb49be5a688f4536905febcdcb8c251f": {
+    "evidence_kind": "smoke",
+    "experiment_id": "member2-live-smoke",
+    "security_scope": "benchmark_goal",
+    "condition": "none",
+    "repetition": 0
+  },
+  "20261027T144433Z-692c4582e6734199af0841e1fc3ff583": {
+    "evidence_kind": "smoke",
+    "experiment_id": "member2-live-smoke",
+    "security_scope": "benchmark_goal",
+    "condition": "none",
+    "repetition": 0
+  }
+}

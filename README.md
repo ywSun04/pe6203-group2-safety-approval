@@ -1,5 +1,29 @@
 # Approval gate
 
+## Member 5 evaluation and failure analysis
+
+Member 5 provides an offline evaluator, a fixed twenty-task fixture handoff,
+the audit of the six existing live smoke runs, and personal report/presentation
+materials. These do not claim a completed formal experiment.
+
+- [Evaluation and planned-run registration](docs/evaluation.md)
+- [Task-specific fixtures and offline validation](docs/member5-attacks.md)
+- [Existing live evidence and failure candidates](docs/member5-existing-evidence.md)
+- [Member 5 handoff in Chinese](docs/member5-handoff-zh.md)
+- [Report text](docs/member5-report.md)
+
+Run `python scripts/evaluate_logs.py LOG_ROOT --registry REGISTRY.json --output OUTPUT_DIR`
+to compute evidence-labelled TCR, actual HITL and component tokens. It uses no
+model API. `scripts/member5_experiment_plan.py` freezes the proposed 2,400-run
+grid and maps later UUID runs to planned slots; it never executes the paid
+commands. Run `python scripts/validate_member5_attacks.py --output VALIDATION.json`
+to check the fixed fixtures offline. Use the manifest's current fixtures;
+the two retained rejected v1 files are regression evidence only.
+
+Formal results and real over-permissive failure trajectories still require the
+agreed experiments from Members 2 and 6. Existing clean smoke runs and generated
+plans must not be presented as formal results.
+
 `AgentPipeline.from_config` still builds a plain tool executor. Experiments must call `build_approval_pipeline` in `approval_gate/pipeline.py` so the approval executor is the one that runs.
 
 The tests and the files under `demo/scripted/` use a scripted model or a fake reviewer. They do not call a live model API. One test replays the ground-truth calls of workspace `user_task_0` through this gate. That is a connection check, not an official benchmark result. A live model, a real reviewer, and the official task suite have not been run.
