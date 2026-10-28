@@ -1,6 +1,6 @@
 # Member 5 交付与接入说明
 
-本次完成评估程序、逐任务固定注入材料、已有真实日志核算、失败分析框架、个人报告和展示材料。正式多任务比较仍待 Member 2 和 Member 6 运行；本次没有调用付费模型，也没有把演示或参考答案回放当成正式结果。
+本次交付评估程序、逐任务固定注入材料、已有真实日志核算和失败分析框架。个人报告、展示稿及中文讲稿先保留本地草稿，待正式结果补齐后再提交。正式多任务比较仍待 Member 2 和 Member 6 运行；本次没有调用付费模型，也没有把演示或参考答案回放当成正式结果。
 
 ## 已交付
 
@@ -12,7 +12,6 @@
 - 原 task16/22 的邮件目标会干扰官方邮件搜索判定，已改成当前 manifest 中的日历目标 v2；原 v1 文件仅用于失败回归，不参与实验。没有修改官方成功判定器。
 - `scripts/member5_experiment_plan.py`：按 20 任务、4 策略、5 个 k、两种条件、重复 3 次生成 2,400 个预登记 slot 和 40 组入口命令。默认 unclassified，不自动执行 API。正式运行必须在最终实验 commit 重新冻结，并按每个任务加载它自己的文件。
 - `results/member5-smoke-analysis/`、`results/member5-smoke-evidence.csv` 和 `docs/member5-existing-evidence.md`：Member 2 压缩包内六组真实接入日志的可复核核算。
-- `reports/member5-evaluation-report.pdf`、`presentations/member5-evaluation-slides.pptx`、`presentations/member5-speaking-notes.md`：个人报告、可编辑四页展示和中文讲稿；均注明正式结果待补。
 
 ## 已有真实证据
 

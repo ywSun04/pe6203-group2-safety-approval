@@ -19,8 +19,6 @@ the pinned checkout before the fixture validation was accepted.
 | Six archived live smoke runs ingested | 6 task runs, 0 accounting warnings |
 | Detailed proposed grid generated | 2,400 slots, 40 command groups, 0 matched executions |
 | Saved source compiled and Git whitespace checked | Passed |
-| Six-page report | Rendered and visually checked |
-| Four-slide editable PPTX | Package, layout, font and import checks passed; all slides visually checked |
 
 The 263 tests comprise the 209-test shared baseline plus 54 added tests.
 pytest 9.1.1, OpenAI SDK 3.39.0 and HTTPX 0.28.1 were used. Tests use simulated
@@ -33,7 +31,8 @@ regression check. Their replacements pass the original official predicate;
 the predicate itself was not changed. Current hashes and provenance are in
 `configs/member5/attack-manifest.json` and the validation JSON.
 
-The report and slides contain no invented formal curves. The evaluator SVG
+Personal report, slide and speaking-note drafts are retained locally and are
+not part of this handoff. The evaluator SVG
 preserves gaps for unresolved strict TCR and explicitly labels the absence of
 formal evidence. Late tokens already included in task totals are not added
 again. Provider cost observations are diagnostic fields, not a verified bill.

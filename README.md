@@ -3,14 +3,14 @@
 ## Member 5 evaluation and failure analysis
 
 Member 5 provides an offline evaluator, a fixed twenty-task fixture handoff,
-the audit of the six existing live smoke runs, and personal report/presentation
-materials. These do not claim a completed formal experiment.
+and the audit of the six existing live smoke runs. These do not claim a
+completed formal experiment. Personal report and presentation drafts remain
+local until the formal results are available.
 
 - [Evaluation and planned-run registration](docs/evaluation.md)
 - [Task-specific fixtures and offline validation](docs/member5-attacks.md)
 - [Existing live evidence and failure candidates](docs/member5-existing-evidence.md)
 - [Member 5 handoff in Chinese](docs/member5-handoff-zh.md)
-- [Report text](docs/member5-report.md)
 
 Run `python scripts/evaluate_logs.py LOG_ROOT --registry REGISTRY.json --output OUTPUT_DIR`
 to compute evidence-labelled TCR, actual HITL and component tokens. It uses no
