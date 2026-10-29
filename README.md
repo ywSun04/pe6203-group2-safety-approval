@@ -11,6 +11,7 @@ local until the formal results are available.
 - [Task-specific fixtures and offline validation](docs/member5-attacks.md)
 - [Existing live evidence and failure candidates](docs/member5-existing-evidence.md)
 - [Member 5 handoff and first-batch checks](docs/member5-handoff.md)
+- [Fixture newline and hash fix](docs/member5-hash-fix.md)
 
 Run `python scripts/evaluate_logs.py LOG_ROOT --registry REGISTRY.json --output OUTPUT_DIR`
 to compute evidence-labelled TCR, actual HITL and component tokens. It uses no
