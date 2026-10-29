@@ -1,5 +1,10 @@
 # Member 5 audit of existing live evidence
 
+This page preserves the historical six-run smoke audit. Formal batch 01 has
+since been received and reviewed separately in `docs/member5-batch01-audit.md`.
+That batch adds 18 observations under the later frozen commit `4fc6bdfe`;
+it does not change the provenance or outcomes of the six runs below.
+
 This audit uses the six live integration runs archived in `Member2-integration-handoff.zip`, received in repository main at `41a512b`. They are six runs of the same clean `workspace/v1.2.2/user_task_0`, not six independent tasks, a formal k sweep, or injection experiments. The source manifests identify AgentDojo `089ed468cf3ed0322acc66b0211f26d9d90dbf60` and both model roles as OpenRouter `openai/gpt-4o-mini`. The corresponding source integration commit recorded by those historical manifests is `600222f9bc07ff32c4a0f0d42f7dbf19e229b262`; do not rewrite that provenance to the current checkout commit.
 
 ## Recomputed integration results
@@ -57,9 +62,9 @@ Reviewer v2 clarifies bounded read-only discovery. Its development check approve
 
 Member 5's separate reconciliation of these development reports and usage ledgers is in `docs/member5-reviewer-followup.md`. Their costs are not added to the six-run smoke totals above.
 
-## Evidence still needed for formal analysis
+## Evidence still needed when this smoke audit was written
 
-The current repository and handoff archive contain a functioning integrated runner and six complete raw smoke logs. They do **not** contain a formal multi-task clean/injected comparison or a complete k sweep.
+At the time of this smoke audit, the repository and handoff archive contained a functioning integrated runner and six complete raw smoke logs, without a formal multi-task clean/injected comparison or complete k sweep. The later first-batch review records the 18 formal runs now received and the remaining coverage.
 
 - Member 2: run and hand over the agreed formal baseline and basic-risk conditions, with per-run manifests, calls, tasks, usage, summary and complete trajectories; verify attack loading and actual payload exposure. The existing raw smoke files are already received and are not requested again.
 - Member 6: run and hand over the formal BudgetAwarePolicy k sweep using the same fixed tasks, attacks, model, deadlines and repetitions. `budget_k_results.txt` is a preliminary decision comparison, not this experiment.
@@ -70,4 +75,4 @@ Member 5 can prepare and validate metrics, attack fixtures, audit templates and 
 
 GitHub PR metadata checked on 28 October 2026 shows PRs 3, 4 and 5 merged; PR 1 remains open draft and PR 2 open. Main nevertheless contains BasicRiskPolicy, BudgetAwarePolicy, LlmReviewer and the experiment runner. PR state is therefore not evidence that these callable modules are absent. Some older README and validation prose still says the real Reviewer or live validation is pending; the newer `docs/member2-live-validation.md` and archived raw logs supersede those historical statements for the six runs only.
 
-As of the 29 October follow-up, PR #7 is merged at `babab1cea382c6de61ab42312439020dd6816a2b`, adding Reviewer v2 and its development evidence. The calendar-call assessment above is now received. PR #6 still needs Member 1's merge and final freeze announcement before formal runs. These updates do not change the source commits, prompt hashes, cost records or outcomes of the six historical v1 smoke runs.
+At the earlier 29 October follow-up, PR #7 was merged at `babab1cea382c6de61ab42312439020dd6816a2b`, adding Reviewer v2 and its development evidence; PR #6 was still awaiting merge. PRs #6 and #8 have since merged, and Member 1 announced frozen commit `4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2`. These updates do not change the source commits, prompt hashes, cost records or outcomes of the six historical v1 smoke runs.

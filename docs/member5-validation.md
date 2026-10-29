@@ -3,6 +3,27 @@
 Validation date: 28 October 2026, Asia/Shanghai. Inspected integration base:
 `41a512b9aa1453c96b902915654489785c8e7d16`.
 
+## First formal batch review on 30 October 2026
+
+Member 2's 18-run archive at frozen experiment commit
+`4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2` passes the independent registration,
+accounting, coverage and trace-supported exposure checks. Registration and
+evaluation were rerun under Python 3.11.18 and match the supplied outputs:
+18 of 2,400 slots, 0 duplicates and 0 warnings. All 18 configuration IDs and
+the recorded project/runner hashes were checked against frozen Git blobs.
+
+The separate reconciliation finds 145,627 agent tokens, 22,324 Reviewer tokens,
+15 actual reviews and complete recorded usage for 79 API attempts. There are
+no retries or late rows in this batch. Exposure matches the supplied 8/9
+classification; the unexposed run remains in the evidence. Read
+`docs/member5-batch01-audit.md` for case analysis, runtime provenance and
+continuation limits. This was an offline saved-data audit with zero new model
+API calls, not another paid experiment or a new full-suite test run. The
+experiment freeze and cost rules are unchanged. The separate annotation
+script also reconciles all 46 proposals with the trajectory and records 16
+year-disambiguation defects. Candidate scope labels remain outside the
+strict-TCR registry; all 126 input files are unchanged.
+
 ## LF and hash repair on 29 October 2026
 
 The freeze at `ccf3051c96505f655de169e7613ab6722fec6a4c` was reproduced in a

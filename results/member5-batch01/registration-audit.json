@@ -1,0 +1,150 @@
+{
+  "archive_sha256": "7c1b6ff3d2866cea118a90e4c0420288da991f39f6752f3178c9b9af82b52939",
+  "frozen_commit": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2",
+  "observed_runs": 18,
+  "planned_runs": 2400,
+  "missing_runs": 2382,
+  "duplicate_slots": 0,
+  "complete_slot_set": true,
+  "config_ids_recomputed": 18,
+  "recomputed_registration_matches": true,
+  "recomputed_evaluation_matches": true,
+  "warnings": [],
+  "recorded_profile_sha256": "ed94c6d6374d08d4eeac7308298fadd53438e54b4f6e154d06d9c707d9f5135e",
+  "configuration_signature": "ed94c6d6374d08d4",
+  "project_source_hashes_match_frozen_git_blobs": [
+    "approval_gate.executor",
+    "approval_gate.policies.basic_risk",
+    "approval_gate.policies.budget_aware",
+    "reviewer.llm_reviewer"
+  ],
+  "runner_hash_matches_frozen_git_blob": true,
+  "run_checks": [
+    {
+      "run_id": "20261029T152947Z-e3444f0c63424583931ee440a1f4f023",
+      "config_id": "10e92ff25a319d907f39",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T152947Z-e3444f0c63424583931ee440a1f4f023",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152954Z-4b8ca56f26574c5a9783de82c1696604",
+      "config_id": "10e92ff25a319d907f39",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T152954Z-4b8ca56f26574c5a9783de82c1696604",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153000Z-da21799bf1d24110a413a339bcaa577a",
+      "config_id": "10e92ff25a319d907f39",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153000Z-da21799bf1d24110a413a339bcaa577a",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153006Z-22ba234060f746278283d7a91b218d77",
+      "config_id": "fb9613603aafe0398422",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153006Z-22ba234060f746278283d7a91b218d77",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153020Z-54712ef2be314bc5b5d505861fff111f",
+      "config_id": "fb9613603aafe0398422",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153020Z-54712ef2be314bc5b5d505861fff111f",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153032Z-a454810ccfc24e938fbdeca164045d93",
+      "config_id": "fb9613603aafe0398422",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153032Z-a454810ccfc24e938fbdeca164045d93",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153040Z-59917fc220e64f0792a95b10ff3d99d4",
+      "config_id": "9cf3c791fcabd79abd3b",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153040Z-59917fc220e64f0792a95b10ff3d99d4",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153049Z-ee10a5f39a77463488ac0b4d9eaa162b",
+      "config_id": "9cf3c791fcabd79abd3b",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153049Z-ee10a5f39a77463488ac0b4d9eaa162b",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T153100Z-b82c9d415dff4fd284fad2b058874850",
+      "config_id": "9cf3c791fcabd79abd3b",
+      "directory": "logs/formal-member2-batch01/file/user_task_0/20261029T153100Z-b82c9d415dff4fd284fad2b058874850",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152556Z-5b7a63137acb4d34b0afe1cb777622b0",
+      "config_id": "5a15f0bc2d8a5ea351fc",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152556Z-5b7a63137acb4d34b0afe1cb777622b0",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152602Z-b3f1c4a0097742e18c019be9066cb923",
+      "config_id": "5a15f0bc2d8a5ea351fc",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152602Z-b3f1c4a0097742e18c019be9066cb923",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152607Z-08c45a2a8c2a466db3e1201de0a35f0d",
+      "config_id": "5a15f0bc2d8a5ea351fc",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152607Z-08c45a2a8c2a466db3e1201de0a35f0d",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152612Z-7c389d9f103f4e84bfd7bebdb680fc02",
+      "config_id": "e8eccca3d0899cf29efb",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152612Z-7c389d9f103f4e84bfd7bebdb680fc02",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152620Z-63d117fa00d34ab0bc6ded70e9c5ee4a",
+      "config_id": "e8eccca3d0899cf29efb",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152620Z-63d117fa00d34ab0bc6ded70e9c5ee4a",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152629Z-4a4e0d3a3b1c45379288f274b0e763c7",
+      "config_id": "e8eccca3d0899cf29efb",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152629Z-4a4e0d3a3b1c45379288f274b0e763c7",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152637Z-732e1d2025d0446e97c67a026c10f98b",
+      "config_id": "6f3b8d184c8b6a758940",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152637Z-732e1d2025d0446e97c67a026c10f98b",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152643Z-bfdf65afb1df4cbd8de0f40c0bfd6ae5",
+      "config_id": "6f3b8d184c8b6a758940",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152643Z-bfdf65afb1df4cbd8de0f40c0bfd6ae5",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    },
+    {
+      "run_id": "20261029T152649Z-625ef5e2e9ff402e90d39c19f18cd3d1",
+      "config_id": "6f3b8d184c8b6a758940",
+      "directory": "logs/formal-member2-batch01/none/user_task_0/20261029T152649Z-625ef5e2e9ff402e90d39c19f18cd3d1",
+      "required_files_present": true,
+      "config_id_recomputed": true
+    }
+  ]
+}

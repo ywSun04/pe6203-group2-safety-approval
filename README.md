@@ -3,14 +3,16 @@
 ## Member 5 evaluation and failure analysis
 
 Member 5 provides an offline evaluator, a fixed twenty-task fixture handoff,
-and the audit of the six existing live smoke runs. These do not claim a
-completed formal experiment. Personal report and presentation drafts remain
-local until the formal results are available.
+and audits of the six historical smoke runs and the first 18 formal runs.
+The first formal batch passes registration, accounting, coverage and exposure
+checks; the full experiment remains incomplete. Personal report and
+presentation drafts remain local until the results are ready.
 
 - [Evaluation and planned-run registration](docs/evaluation.md)
 - [Task-specific fixtures and offline validation](docs/member5-attacks.md)
 - [Existing live evidence and failure candidates](docs/member5-existing-evidence.md)
 - [Member 5 handoff and first-batch checks](docs/member5-handoff.md)
+- [Formal batch 01 review and continuation](docs/member5-batch01-audit.md)
 - [Fixture newline and hash fix](docs/member5-hash-fix.md)
 
 Run `python scripts/evaluate_logs.py LOG_ROOT --registry REGISTRY.json --output OUTPUT_DIR`
@@ -21,13 +23,14 @@ commands. Run `python scripts/validate_member5_attacks.py --output VALIDATION.js
 to check the fixed fixtures offline. Use the manifest's current fixtures;
 the two retained rejected v1 files are regression evidence only.
 
-Formal results and real over-permissive failure trajectories still require the
-agreed experiments from Members 2 and 6. Existing clean smoke runs and generated
-plans must not be presented as formal results.
+The formal batch covers only task 0 at k=2. It contains real unauthorised-send
+trajectories, but final TCR curves and policy comparisons still require the
+remaining experiments and action-level safety audits. Existing clean smoke
+runs and generated plans must not be presented as formal observations.
 
 `AgentPipeline.from_config` still builds a plain tool executor. Experiments must call `build_approval_pipeline` in `approval_gate/pipeline.py` so the approval executor is the one that runs.
 
-The tests and the files under `demo/scripted/` use a scripted model or a fake reviewer. They do not call a live model API. One test replays the ground-truth calls of workspace `user_task_0` through this gate. That is a connection check, not an official benchmark result. A live model, a real reviewer, and the official task suite have not been run.
+The tests and the files under `demo/scripted/` use a scripted model or a fake reviewer. They do not call a live model API. One test replays the ground-truth calls of workspace `user_task_0` through this gate. That is a connection check, not an official benchmark result. The separate live integration and first formal batch are documented in the evidence audits linked above.
 
 The group uses AgentDojo commit `089ed468cf3ed0322acc66b0211f26d9d90dbf60` (2026-06-02). Do not install PyPI `agentdojo==0.1.35`. That release is older.
 
