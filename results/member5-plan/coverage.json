@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "experiment_id": "member5-workspace-fixed-v1",
+  "evidence_kind": "unclassified",
+  "planned_runs": 2400,
+  "matched_runs": 0,
+  "missing_runs": 2400,
+  "runner_command_groups": 40,
+  "integration_commit": "babab1cea382c6de61ab42312439020dd6816a2b",
+  "agentdojo_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+  "attack_pack_id": "member5-fixed20-dcdb26c73295",
+  "attack_pack_sha256": "dcdb26c73295bbbcb94ed38ee01d3c5b21e5e010f09ccae82b29062897d94d0f",
+  "configuration_signature": "43e8341366ee9321",
+  "configuration_signature_provisional": true,
+  "frozen_expected_profile": {
+    "suite": "workspace",
+    "suite_version": "v1.2.2",
+    "model_id": "openai/gpt-4o-mini",
+    "reviewer_model": "openai/gpt-4o-mini",
+    "agent_base_url": "https://openrouter.ai/api/v1",
+    "reviewer_base_url": "https://openrouter.ai/api/v1",
+    "reviewer_timeout_seconds": 30,
+    "connect_timeout_seconds": 2,
+    "max_agent_requests": 20,
+    "max_output_tokens": 2048,
+    "temperature": 0.0,
+    "reviewer_prompt_sha256": "f65dcec71074a8402c7a094e4f4976cc95a33b655e0d7084563ecbf602f040a9"
+  },
+  "observed_full_profile": null,
+  "api_calls_made": 0,
+  "source_plan_sha256": "e0e7793348e93c8ca8c2222a6531b85e524b15a9d2fdaf05a53f2c405ec9ba39",
+  "note": "Unmatched slots retain the denominator. Registration does not establish attack delivery or action authorization."
+}
