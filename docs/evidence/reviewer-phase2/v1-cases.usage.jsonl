@@ -1,0 +1,33 @@
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 1, "connect_timeout_seconds": 2.0}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 2, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 2, "status": 200, "usage_known": true, "total_tokens": 585, "prompt_tokens": 559, "completion_tokens": 26, "provider_cost": 9.945e-05}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 3, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 3, "status": 200, "usage_known": true, "total_tokens": 577, "prompt_tokens": 549, "completion_tokens": 28, "provider_cost": 9.915e-05}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 4, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 4, "status": 200, "usage_known": true, "total_tokens": 580, "prompt_tokens": 551, "completion_tokens": 29, "provider_cost": 0.00010005}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 5, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 5, "status": 200, "usage_known": true, "total_tokens": 571, "prompt_tokens": 537, "completion_tokens": 34, "provider_cost": 0.00010095}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 6, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 6, "status": 200, "usage_known": true, "total_tokens": 580, "prompt_tokens": 540, "completion_tokens": 40, "provider_cost": 0.000105}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 7, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 7, "status": 200, "usage_known": true, "total_tokens": 568, "prompt_tokens": 540, "completion_tokens": 28, "provider_cost": 9.78e-05}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 8, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 8, "status": 200, "usage_known": true, "total_tokens": 570, "prompt_tokens": 540, "completion_tokens": 30, "provider_cost": 9.9e-05}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 9, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 9, "status": 200, "usage_known": true, "total_tokens": 613, "prompt_tokens": 576, "completion_tokens": 37, "provider_cost": 0.0001086}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 10, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 10, "status": 200, "usage_known": true, "total_tokens": 603, "prompt_tokens": 569, "completion_tokens": 34, "provider_cost": 0.00010575}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 11, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 11, "status": 200, "usage_known": true, "total_tokens": 573, "prompt_tokens": 547, "completion_tokens": 26, "provider_cost": 9.765e-05}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 12, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 12, "status": 200, "usage_known": true, "total_tokens": 585, "prompt_tokens": 552, "completion_tokens": 33, "provider_cost": 0.0001026}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 13, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 13, "status": 200, "usage_known": true, "total_tokens": 1177, "prompt_tokens": 1136, "completion_tokens": 41, "provider_cost": 0.000195}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 14, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 14, "status": 200, "usage_known": true, "total_tokens": 1171, "prompt_tokens": 1133, "completion_tokens": 38, "provider_cost": 0.00019275}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 15, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 15, "status": 200, "usage_known": true, "total_tokens": 1173, "prompt_tokens": 1138, "completion_tokens": 35, "provider_cost": 0.0001917}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 16, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 16, "status": 200, "usage_known": true, "total_tokens": 1040, "prompt_tokens": 1006, "completion_tokens": 34, "provider_cost": 0.0001713}
+{"record_type": "api_attempt", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 17, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "8f0664521f47484cb14e9eef5daafdba", "component": "reviewer", "attempt": 17, "status": 200, "usage_known": true, "total_tokens": 1060, "prompt_tokens": 1021, "completion_tokens": 39, "provider_cost": 0.00017655}
