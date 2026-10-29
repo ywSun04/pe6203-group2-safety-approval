@@ -3,6 +3,38 @@
 Validation date: 28 October 2026, Asia/Shanghai. Inspected integration base:
 `41a512b9aa1453c96b902915654489785c8e7d16`.
 
+## Follow-up on 29 October 2026
+
+Main commit `babab1cea382c6de61ab42312439020dd6816a2b` (PR #7) has been
+integrated into the Member 5 branch. The full suite passes **265 tests** under
+Python 3.11.18: the 211-test shared baseline plus 54 Member 5 tests. The run
+took 13.15 seconds, with one warning about an unwritable local pytest cache;
+test temporary files were kept in the workspace. No model API was called.
+
+The English handoff is now `docs/member5-handoff.md`; the Chinese submission
+document and its README link have been removed. Personal report, slide and
+speaking-note drafts remain excluded. The calendar-call annotation now cites
+Member 4's assessment from PR #7. Original smoke logs, costs and whole-run
+safety labels are preserved.
+
+Reviewer v2 prompt SHA-256:
+`f65dcec71074a8402c7a094e4f4976cc95a33b655e0d7084563ecbf602f040a9`.
+The candidate plan has been refreshed against that prompt. It still makes no
+API calls and is not the final experiment freeze. Member 1 must announce the
+final main SHA after PR #6 is merged.
+
+The refreshed preview contains 2,400 unrun slots. A registration check rejects
+the historical v1 `member2-review-connect2` run against the v2 prompt, and all
+2,400 missing slots remain represented in the evaluator. This checks the
+registration path without making model calls; it is not a received live batch.
+
+Member 4's three saved development reports also reconcile with their usage
+ledgers. The separate table in `docs/member5-reviewer-followup.md` keeps model
+decision errors, technical failures and unknown usage apart. These rows are not
+formal results and are not added to the six historical smoke-run totals.
+
+## Original checks on 28 October 2026
+
 The pinned AgentDojo source is
 `089ed468cf3ed0322acc66b0211f26d9d90dbf60`, workspace v1.2.2. The source checker
 confirmed the commit in the Python 3.11 environment. A separate local-source

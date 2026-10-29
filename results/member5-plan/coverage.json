@@ -6,11 +6,11 @@
   "matched_runs": 0,
   "missing_runs": 2400,
   "runner_command_groups": 40,
-  "integration_commit": "41a512b9aa1453c96b902915654489785c8e7d16",
+  "integration_commit": "babab1cea382c6de61ab42312439020dd6816a2b",
   "agentdojo_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
   "attack_pack_id": "member5-fixed20-dcdb26c73295",
   "attack_pack_sha256": "dcdb26c73295bbbcb94ed38ee01d3c5b21e5e010f09ccae82b29062897d94d0f",
-  "configuration_signature": "987a07f4d028db76",
+  "configuration_signature": "43e8341366ee9321",
   "configuration_signature_provisional": true,
   "frozen_expected_profile": {
     "suite": "workspace",
@@ -24,7 +24,7 @@
     "max_agent_requests": 20,
     "max_output_tokens": 2048,
     "temperature": 0.0,
-    "reviewer_prompt_sha256": "f517a63492d15953ec024410bcb029833805178b4e5a8cdc343a515ad120a4f4"
+    "reviewer_prompt_sha256": "f65dcec71074a8402c7a094e4f4976cc95a33b655e0d7084563ecbf602f040a9"
   },
   "observed_full_profile": null,
   "api_calls_made": 0,
