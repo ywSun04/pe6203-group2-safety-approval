@@ -6,11 +6,11 @@
   "matched_runs": 0,
   "missing_runs": 2400,
   "runner_command_groups": 40,
-  "integration_commit": "babab1cea382c6de61ab42312439020dd6816a2b",
+  "integration_commit": "ccf3051c96505f655de169e7613ab6722fec6a4c",
   "agentdojo_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
-  "attack_pack_id": "member5-fixed20-dcdb26c73295",
-  "attack_pack_sha256": "dcdb26c73295bbbcb94ed38ee01d3c5b21e5e010f09ccae82b29062897d94d0f",
-  "configuration_signature": "43e8341366ee9321",
+  "attack_pack_id": "member5-fixed20-a785947a3155",
+  "attack_pack_sha256": "a785947a3155e002580f729c1491f792e13f2a358254301ba44597215a7aa63b",
+  "configuration_signature": "e5a23a811768744b",
   "configuration_signature_provisional": true,
   "frozen_expected_profile": {
     "suite": "workspace",
@@ -28,6 +28,8 @@
   },
   "observed_full_profile": null,
   "api_calls_made": 0,
-  "source_plan_sha256": "e0e7793348e93c8ca8c2222a6531b85e524b15a9d2fdaf05a53f2c405ec9ba39",
-  "note": "Unmatched slots retain the denominator. Registration does not establish attack delivery or action authorization."
+  "source_plan_sha256": "0aaad72e0407555f42643b4bff51ed194cc336f6f2088c1045be63d61daa4580",
+  "note": "The recorded integration_commit is the inspected pre-fix base, not a usable new freeze. Merge the LF/hash fix, then regenerate on the newly agreed main SHA. No runs have been executed.",
+  "status": "preview_only_pending_hash_fix_merge_and_refreeze",
+  "invalidated_freeze_commit": "ccf3051c96505f655de169e7613ab6722fec6a4c"
 }

@@ -3,7 +3,27 @@
 Validation date: 28 October 2026, Asia/Shanghai. Inspected integration base:
 `41a512b9aa1453c96b902915654489785c8e7d16`.
 
-## Follow-up on 29 October 2026
+## LF and hash repair on 29 October 2026
+
+The freeze at `ccf3051c96505f655de169e7613ab6722fec6a4c` was reproduced in a
+clean LF copy: **263 passed, 2 failed**. All 20 fixture hashes matched a CRLF
+conversion, not the LF Git blobs. This explains why the earlier Windows
+validation passed but did not transfer to an LF checkout.
+
+Member 2's patch pins fixture/configuration JSON to LF and updates the 20
+manifest hashes. All 22 fixture blobs, including retired files, are unchanged.
+The repaired suite passes **267 tests in 13.61 seconds** under Python 3.11.18:
+the original 265 plus two checkout regression cases. The cases exercise Git
+checkout conversion under both autocrlf settings. Offline validation again
+passes all 20 task/fixture pairs. No model API was called.
+
+The candidate coverage, validation JSON and matrix now use the corrected
+fingerprints. The old freeze is invalidated; a new main SHA and freshly
+generated plan are required after this fix is merged. Full reproduction and
+patch attribution are in `docs/member5-hash-fix.md`. The earlier records below
+are retained as historical validation, not evidence of LF portability.
+
+## Earlier Reviewer v2 follow-up on 29 October 2026
 
 Main commit `babab1cea382c6de61ab42312439020dd6816a2b` (PR #7) has been
 integrated into the Member 5 branch. The full suite passes **265 tests** under

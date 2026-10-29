@@ -6,7 +6,13 @@ All validation operations run only inside AgentDojo's simulated in-memory worksp
 
 ## Current result
 
-The source pin was checked against `089ed468cf3ed0322acc66b0211f26d9d90dbf60`, suite `workspace`, version `v1.2.2`. All twenty current pairings were revalidated in Python 3.11.18 after an earlier Python 3.12.14 check; the committed validation JSON records Python 3.11.18. The complete project suite passed 263 tests in both environments. The Python 3.11.18 run used pytest 9.1.1, openai 3.39.0 and httpx 0.28.1, and passed in 16.58 seconds. These are offline tests, not live model experiments.
+On 29 October, Member 2 found that the stored file hashes matched CRLF bytes
+instead of the LF bytes in Git. The repair pins the fixture/configuration JSON
+files to LF and updates the hashes. The checks below were rerun successfully
+against those corrected bytes. See `docs/member5-hash-fix.md` for the reproduced
+failure, regression checks and required refreeze.
+
+The source pin is `089ed468cf3ed0322acc66b0211f26d9d90dbf60`, suite `workspace`, version `v1.2.2`. The corrected LF fixtures were revalidated under Python 3.11.18 with pytest 9.1.1, openai 3.39.0 and httpx 0.28.1. All twenty pairings pass, and the full repaired suite passes 267 tests. The earlier Python 3.12.14 check was not rerun for this repair. These are offline tests, not live model experiments.
 
 | Check | Result | Interpretation |
 |---|---:|---|
@@ -58,7 +64,7 @@ python -m pytest tests/test_member5_attacks.py -q
 
 The first command completes and writes all twenty current records. Predicate self-check failures are recorded per pair rather than hidden by early termination; structural failures such as the wrong source pin, mismatched fixture hash, duplicate IDs or an unexpected task set still stop validation. Check `formal_compatible_count` and the per-case flags; command completion alone is not an all-pass result.
 
-Eight focused attack tests pass within the complete 263-test suite in both Python 3.11.18 and Python 3.12.14. They cover YAML wrapping, unchanged serialized text and fixture hashes, separation of unrelated fields, safe YAML parsing, source-pin rejection, all twenty current reference deliveries and predicate self-checks, a real rejected-v1 predicate failure retained as a regression, and explicit unknown live outcomes in the CSV matrix.
+The eight original attack tests cover YAML wrapping, unchanged serialized text and fixture hashes, separation of unrelated fields, safe YAML parsing, source-pin rejection, all twenty current reference deliveries and predicate self-checks, a real rejected-v1 predicate failure retained as a regression, and explicit unknown live outcomes in the CSV matrix. Two new checkout cases cover Git's LF/CRLF settings. The repaired Python 3.11.18 suite passes 267 tests. Earlier 263-test results below the original validation date were local-checkout checks and did not establish LF portability.
 
 ## Handoff to Members 2 and 6
 

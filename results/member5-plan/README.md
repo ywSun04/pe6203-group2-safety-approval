@@ -1,11 +1,14 @@
 # Candidate experiment plan
 
-coverage.json and runner-commands.* are a candidate preview refreshed on
-29 October 2026 using Reviewer v2 from main commit
-`babab1cea382c6de61ab42312439020dd6816a2b`. No runs have been executed.
-This inspected base SHA is not the final freeze: PR #6 still needs to be merged.
-Regenerate the plan on the final main commit announced by Member 1 before any
-formal run. Do not register new v2 runs with the old v1 preview.
+coverage.json and runner-commands.* are a candidate preview refreshed for the
+LF/hash repair on 29 October 2026. They use the corrected attack-pack hash and
+the unchanged Reviewer v2 prompt. No runs have been executed.
+
+The recorded integration SHA `ccf3051c96505f655de169e7613ab6722fec6a4c` is the
+inspected pre-fix base. That freeze failed the LF checks and must not be used
+for formal runs. The coverage status marks this preview as pending the fix and
+refreeze. After the fix is merged, regenerate the plan on the new main SHA
+announced by Member 1. See `docs/member5-hash-fix.md`.
 
 Generate the detailed 2,400-slot evaluation plan and registry into a new folder:
 

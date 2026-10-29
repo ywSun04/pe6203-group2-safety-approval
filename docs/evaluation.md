@@ -294,3 +294,13 @@ environment's `scripts/check_agentdojo.py` confirmed source commit
 `089ed468cf3ed0322acc66b0211f26d9d90dbf60` (`commit_matches=true`), with
 pytest 9.1.1, OpenAI SDK 3.39.0 and HTTPX 0.28.1. These are offline software
 checks, not formal model/Reviewer or attack-performance results.
+
+### Fixture bytes across platforms
+
+Fixture and configuration JSON under `attacks/member5/` and `configs/member5/`
+use LF, enforced by `.gitattributes`. File hashes remain strict SHA-256 of raw
+bytes. A newline-only manifest repair changes its pack hash even though the
+runner's parsed-payload hashes stay the same. After the 29 October repair,
+regenerate the plan on the replacement frozen main SHA; do not reuse the
+invalidated `ccf3051` freeze or relabel old logs. Details and regression checks
+are in `docs/member5-hash-fix.md`.

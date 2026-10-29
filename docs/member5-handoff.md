@@ -23,14 +23,16 @@ report, slides and speaking notes remain local drafts until the results are read
 
 ## Current integration status
 
-PR #7 was merged into main at
-`babab1cea382c6de61ab42312439020dd6816a2b`. It contains Reviewer v2. Agent and
+PR #6 was merged into main at
+`ccf3051c96505f655de169e7613ab6722fec6a4c`, including PR #7's Reviewer v2. Agent and
 Reviewer use OpenRouter `openai/gpt-4o-mini`. The v2 prompt SHA-256 is
 `f65dcec71074a8402c7a094e4f4976cc95a33b655e0d7084563ecbf602f040a9`.
 
-This is not the final experiment commit: Member 1 still needs to merge PR #6 and
-announce the frozen main SHA. The saved plan under `results/member5-plan/` is a
-candidate preview. Regenerate it on that final commit before any formal run.
+Member 2 then found a cross-platform fixture-hash mismatch in that freeze.
+The LF/hash repair in `docs/member5-hash-fix.md` must be merged before Member 1
+announces a replacement freeze. Do not start formal runs from `ccf3051`.
+The saved plan under `results/member5-plan/` remains a candidate preview.
+Regenerate it on the new frozen commit with the corrected attack-pack hash.
 The generator reads the prompt from the checked-out source and checks its hash
 when registering actual logs. Keep v1 smoke logs and v2 runs in separate groups.
 
