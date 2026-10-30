@@ -1,0 +1,18 @@
+{
+  "runs": 6,
+  "utility_completed": 0,
+  "policy_calls": 19,
+  "rules": {
+    "R2_LOCAL_QUERY": 12,
+    "R4_EXTERNAL_ACTION": 6,
+    "R6_STATE_CHANGE": 1
+  },
+  "actual_reviews": 6,
+  "tokens": {
+    "agent": 59873,
+    "policy": 0,
+    "reviewer": 12419
+  },
+  "replay": "all decisions and reasons match unchanged policy",
+  "limitation": "Reviewer labels independently supported by supplied calendar context; not a complete strict-safety audit"
+}

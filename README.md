@@ -1,5 +1,9 @@
 # Approval gate
 
+## Risk-policy batch 02
+
+[Second-batch routing and failure review](docs/risk-policy-batch02-review.md) covers six new task-6 runs at k=1. All utilities are false; 19 recorded policy decisions match offline replay. The review separates five Reviewer overlap errors from one correct deletion denial followed by a zero-budget block. [Per-call evidence](results/risk-policy-batch02/) is supplied. Frozen experiment code is unchanged; personal report and slides are not included.
+
 ## Risk-policy review of formal batch 01
 
 The first received formal batch covers workspace/user_task_0 at k=2 only:
