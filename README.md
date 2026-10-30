@@ -1,5 +1,22 @@
 # Approval gate
 
+## Risk-policy review of formal batch 01
+
+The first received formal batch covers workspace/user_task_0 at k=2 only:
+18 runs across three policies, two conditions and three repetitions. It is
+18/2,400 planned slots, not a completed comparison or a TCR curve. The risk
+policy and frozen experiment code are unchanged by this documentation update.
+
+- [Risk-policy trace review and limitations](docs/risk-policy-batch-review.md)
+- [Per-call evidence and audit counts](results/risk-policy-batch01/)
+- [Individual contribution report, updated with batch evidence](reports/risk-policy-report.pdf)
+- [Updated two-minute speaking notes](presentations/risk-policy-speaking-notes.md)
+
+These materials distinguish policy escalation from Reviewer denial and preserve
+the unexposed failed run. Historical setup and smoke-test statements elsewhere
+in this README describe earlier stages; the dated batch review records the
+new formal evidence without claiming that the remaining experiment is complete.
+
 ## Member 5 evaluation and failure analysis
 
 Member 5 provides an offline evaluator, a fixed twenty-task fixture handoff,
