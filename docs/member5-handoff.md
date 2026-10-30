@@ -39,6 +39,19 @@ PR #11 is closed and unmerged and its candidate-v3 branch is deleted; formal
 execution continues with the frozen v2. See the dated follow-up in
 `docs/member5-unified-reconciliation.md`.
 
+M2 has also acknowledged first-launch primary selection and separate retry/
+overlap accounting. M6's mapping acknowledgement remains pending and is not
+delegated to M2. The candidate missing-position list is not released for bulk
+payment; align latest launch records and final scope/budget before the next
+small batch. The acknowledgement states are recorded separately in
+`results/member5-unified-20261030/owner-acknowledgements.json`.
+
+PR #12's six-run policy annotations are now in main at `d0395585`; they add no
+experimental UUIDs. PR #14 is a different hybrid calendar development candidate,
+not an adopted replacement for v2. Its case-level results and development
+expenditure are catalogued separately. Any adoption or new comparison requires
+the team's scope/budget decision. The formal run and cost ledgers are unchanged.
+
 ## Historical preparation notes
 
 The remaining notes preserve the pre-batch handoff. Their then-current merge

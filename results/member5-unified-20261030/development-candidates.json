@@ -1,0 +1,93 @@
+{
+  "formal_run_ledger_is_separate": true,
+  "candidates": [
+    {
+      "catalog_date": "2026-10-31",
+      "evidence_kind": "development_call_level_only",
+      "source_pr": 14,
+      "url": "https://github.com/ywSun04/pe6203-group2-safety-approval/pull/14",
+      "head_sha_when_checked": "21a5234285feca2d239de866fa2741bedd78e9ac",
+      "state_when_checked": "open",
+      "draft": true,
+      "merged": false,
+      "candidate": "reviewer.hybrid_calendar.HybridCalendarReviewer",
+      "scope_prompt_sha256": "578a87cf9a76e4a90b63dcaf63d8c9d8ce6e55ecdc94fc50995687c976a19d89",
+      "reported_offline_project_tests": 292,
+      "retained_case_results_checked": {
+        "development_matches": 35,
+        "development_cases": 36,
+        "original_false_denial_cases": 5,
+        "repetitions_per_case": 3,
+        "target_approvals": 15,
+        "target_total": 15,
+        "underlying_original_tasks": 1
+      },
+      "development_response_accounting": {
+        "successful_response_entries": 45,
+        "tokens_recorded": 25624,
+        "response_cost_recorded_usd": "0.00448935",
+        "cost_complete": false,
+        "phase_sums": {
+          "scope-screening.json": {
+            "case_rows": 6,
+            "successful_response_entries": 6,
+            "explicit_HTTP200_status_entries": 0,
+            "usage_entries_without_HTTP_status": 6,
+            "tokens_recorded": 2170,
+            "response_cost_recorded_usd": "0.00041910"
+          },
+          "development-pass.json": {
+            "case_rows": 36,
+            "successful_response_entries": 29,
+            "explicit_HTTP200_status_entries": 29,
+            "usage_entries_without_HTTP_status": 0,
+            "tokens_recorded": 19664,
+            "response_cost_recorded_usd": "0.00335775"
+          },
+          "target-repeats.json": {
+            "case_rows": 10,
+            "successful_response_entries": 10,
+            "explicit_HTTP200_status_entries": 10,
+            "usage_entries_without_HTTP_status": 0,
+            "tokens_recorded": 3790,
+            "response_cost_recorded_usd": "0.00071250"
+          }
+        }
+      },
+      "setup_failures": {
+        "reported_passes": 2,
+        "reported_requests_per_pass": 6,
+        "retained_diagnostic_case_rows": 6,
+        "retained_usage_entries": 0,
+        "additional_reported_pass_not_retained": true,
+        "usage_and_cost": "unknown; not assumed zero"
+      },
+      "not_independently_rerun_by_M5": true,
+      "formal_experimental_runs_added": 0,
+      "formal_ledger_and_cost_totals_changed": false,
+      "execution_released": false,
+      "formal_execution_commit": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2",
+      "formal_reviewer": "llm_reviewer_v2",
+      "limits": [
+        "Five reused false-denial observations concern one task; these are not held-out tasks or formal task reruns.",
+        "The sixth logged lunch is hypothetical call-level evaluation with budget available; its original Gate block is unchanged.",
+        "Remaining current-day error is in the unchanged v2 fallback.",
+        "The development harness reports a transport difference in initial fallback versus the reproducible checker; do not pool those settings as formally equivalent.",
+        "Supported date/evidence formats are limited; adoption requires team review and a separately identified formal comparison.",
+        "Any future adoption must record the candidate program-validator code hash as well as the scope prompt, source versions, transport limits and usage."
+      ],
+      "source_file_sha256": {
+        "docs/evidence/hybrid-calendar/summary.json": "af0473da1225afea01c4ac3c81dabb8e6bc085b9e9f41213c329fa2449756760",
+        "docs/evidence/hybrid-calendar/development-pass.json": "a934978601f2dbaad94991ffe45e2b6ec9e6c3f9d1fc1a087cf5f27087777061",
+        "docs/evidence/hybrid-calendar/target-repeats.json": "015dc369aa6d4d39187df3c1c24e8f77787603a877bb441f9f94ef64e99612e6",
+        "docs/evidence/hybrid-calendar/scope-screening.json": "526e0de29f019fb5e500696f7cccb226534d619331635be09878b63caf065cc5",
+        "docs/evidence/hybrid-calendar/request-format-diagnostic.json": "f79d5156389b07def4ea4b0e4dbf6bfdfc8670047e08b3f44be8617559014679",
+        "docs/hybrid-calendar-reviewer.md": "08c3bd60d67a2052fa017d126004b93c1e228d1bddd3015d44ad25b9f3bb5ff1"
+      },
+      "adoption_status": "not_adopted_awaiting_group_decision",
+      "interface_review_reported_by_Member_1": true,
+      "additional_formal_experiments_authorized": false,
+      "adoption_decision_source": "Member 1 group message supplied by the user; PR14 not merged or selected for formal execution."
+    }
+  ]
+}

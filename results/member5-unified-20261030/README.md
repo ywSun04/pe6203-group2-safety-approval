@@ -17,6 +17,8 @@ mappings. Raw manifests and original file bytes are unchanged.
 | `older-handoff-check.json` | Byte identity of the older 405 records and the four added smoke UUIDs |
 | `independent-check.json` | Separate raw-source recomputation of all role counts and costs |
 | `source-provenance.json` | Original archive hashes and the curated evidence hash |
+| `owner-acknowledgements.json` | M2's accepted inclusion principle, separate pending M6 mapping confirmation and unreleased next-batch prerequisites |
+| `development-candidates.json` | PR14's separate development provenance/case checks/response costs; zero new formal runs or formal ledger charges |
 
 The four held BudgetAware top-up positions at task 0/k=1 and k=2 are included
 in the uncovered list. The earlier 106-record CSV names two additional k=2

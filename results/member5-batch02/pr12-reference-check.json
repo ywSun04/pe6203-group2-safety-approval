@@ -14,5 +14,13 @@
   ],
   "raw_call_ids_matched": 19,
   "additional_experimental_runs": 0,
-  "conclusion": "PR12 supplements the existing six second-batch UUIDs. Common policy/reviewer/final decisions, tools, execution flags and budget transitions match the raw records. Its policy replay is not another API experiment."
+  "conclusion": "PR12 supplements the existing six second-batch UUIDs. Common policy/reviewer/final decisions, tools, execution flags and budget transitions match the raw records. Its policy replay is not another API experiment.",
+  "subsequent_merge_confirmation": {
+    "checked_date": "2026-10-31",
+    "merged_main_commit": "d0395585f6273c9b7d302f4409e7e7f8a84d3f19",
+    "policy_call_table_unchanged_from_reviewed_PR_head": true,
+    "policy_call_table_sha256": "5c8165bd295c19787b6f340be31c64bce2935e4f92d05c13e83d7f81050fac1c",
+    "additional_experimental_runs": 0,
+    "frozen_execution_commit": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2"
+  }
 }

@@ -242,3 +242,64 @@ GitHub status was checked on 31 October: PR #11 is closed, unmerged, and its
 adopted for this comparison. The shared main at the check remains `d956b2b6`,
 and formal execution remains the `4fc6bdfe` freeze with Reviewer v2. No prompt,
 configuration, failed observation or frozen execution file was changed.
+
+## M2 principle acknowledgement, 31 October 2026
+
+M2 has acknowledged the first-launch primary rule and separate retention of
+retry/cross-member evidence and expenditure. M2 confirms that the received
+two batches total 24 formal runs, that the six second-batch failures remain,
+and that PR #12 adds annotations rather than experiments. This acknowledges
+the inclusion principle; M2 explicitly does not confirm M6's repetition or
+attempt mapping on behalf of its runtime owner.
+
+The distinct statuses are recorded in
+`results/member5-unified-20261030/owner-acknowledgements.json`. The 305
+scheduler-related mappings remain pending M6 acknowledgement, and the raw
+sidecar/ledger fields have not been silently changed to confirmed. The 1,476
+M2 candidate positions remain a candidate list with execution=false. Both
+owners' latest launch records must be aligned to the shared list, and final
+scope/budget agreed before allocating a small non-overlapping next batch.
+No new run, fee, source identity or frozen-v2 configuration is introduced by
+this acknowledgement.
+
+## Merged annotations and independent hybrid candidate
+
+PR #12 is now merged into main at
+`d0395585f6273c9b7d302f4409e7e7f8a84d3f19`. Its 19-row policy-call table is
+byte-identical to the previously reviewed PR head. This changes evidence
+archiving, not the six raw UUIDs, experiment counts, costs or v2 outcomes.
+
+[PR #14](https://github.com/ywSun04/pe6203-group2-safety-approval/pull/14),
+checked at `21a5234285feca2d239de866fa2741bedd78e9ac`, is a distinct, opt-in
+`HybridCalendarReviewer`: program interval checking plus model scope checking.
+It is open as a draft and has not been adopted. Member 1's interface review
+does not authorise a new formal experiment. The withdrawn prompt-only PR #11
+remains a separate, closed candidate.
+
+The retained PR14 reports reproduce 35/36 matches to manual development
+expectations. Five original false-denial observations each receive three
+approvals, 15/15 in total; they concern one underlying task. The sixth logged
+lunch is a hypothetical call replay with budget available and is not one of
+those five targets. No whole task was rerun and no formal failure is replaced.
+The remaining current-day rejection is in its v2 fallback. Supported time/
+evidence formats and the development transport difference remain explicit
+limits. The reported 292 software tests describe that candidate's branch,
+not the separately tested M5 reconciliation branch.
+
+Development response accounting is separate: 6 scope-screening usage objects,
+29 full-pass responses and 10 extra target-repeat responses total 45 retained
+usage entries, 25,624 tokens and a recorded response-cost diagnostic of
+USD 0.00448935. The 39 wrapped responses retain HTTP 200 status; the six
+screening objects retain usage without an explicit HTTP-status field.
+Source documentation reports two earlier six-request HTTP 400 setup passes;
+only one six-case diagnostic is retained and no usage was returned. Their
+cost remains unknown. These errors are request-format diagnostics before
+judgement, separate from the corrected 36-case decision pass.
+
+The provenance, retained-file hashes, case checks and separate cost sums are
+in `results/member5-unified-20261030/development-candidates.json`. No entry
+from this development catalog is added to the formal run/HITL/TCR/cost ledger.
+Future adoption requires a group decision and a separately identified
+configuration, including the program-validator code hash, scope prompt,
+source/dependency versions, supported time rules, transport settings and usage.
+Formal execution remains on `4fc6bdfe` and Reviewer v2.

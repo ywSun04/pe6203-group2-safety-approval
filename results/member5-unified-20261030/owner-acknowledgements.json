@@ -1,0 +1,34 @@
+{
+  "updated_date": "2026-10-31",
+  "source": "Member 2 group message supplied by the user in this conversation",
+  "member2_received_formal_runs": 24,
+  "member2_acknowledgement": {
+    "first_launched_attempt_retained_as_primary": true,
+    "retry_and_cross_member_overlap_evidence_and_costs_retained_separately": true,
+    "six_failed_batch02_observations_not_replaced": true,
+    "PR12_annotations_not_new_experiments": true,
+    "confirms_member6_repetition_or_attempt_mapping": false
+  },
+  "member6_mapping_acknowledgement": {
+    "status": "pending_Member_6",
+    "responsible_owner": "Member 6",
+    "scheduler_related_rows_requiring_acknowledgement": 305,
+    "delegated_acknowledgement_from_Member_2": false
+  },
+  "candidate_missing_positions": {
+    "Member 2": 1476,
+    "Member 6": 500,
+    "interpretation": "Positions not accounted for by the supplied primary evidence under the reference grid; not a batch-execution instruction."
+  },
+  "before_next_paid_batch": [
+    "Align both owners' latest launch records with missing-slots.csv.",
+    "Obtain Member 6 confirmation of the repetition mapping and attempt roles.",
+    "Agree the final experiment scope and budget.",
+    "Assign a small set of non-overlapping positions with explicit repetition/launch binding."
+  ],
+  "execution_released": false,
+  "formal_execution_commit": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2",
+  "formal_reviewer": "llm_reviewer_v2",
+  "additional_experimental_runs": 0,
+  "ledger_and_cost_totals_changed": false
+}
