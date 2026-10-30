@@ -9,9 +9,6 @@ policy and frozen experiment code are unchanged by this documentation update.
 
 - [Risk-policy trace review and limitations](docs/risk-policy-batch-review.md)
 - [Per-call evidence and audit counts](results/risk-policy-batch01/)
-- [Individual contribution report, updated with batch evidence](reports/risk-policy-report.pdf)
-- [Two-slide individual presentation](presentations/risk-policy-slides.pptx)
-- [Updated two-minute speaking notes](presentations/risk-policy-speaking-notes.md)
 
 These materials distinguish policy escalation from Reviewer denial and preserve
 the unexposed failed run. Historical setup and smoke-test statements elsewhere
