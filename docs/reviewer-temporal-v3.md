@@ -24,7 +24,7 @@ Twelve manually labeled temporal contrast cases cover a morning gap, touching bo
 
 Two new tests check v2/v3 selection and real request/response plumbing, token/timeout handling and label separation, plus independent datetime checks of fixture expectations. Mock response tests prove wiring, not model reasoning. Complete project: **269 passed** under Python 3.11.18. Initial test execution selected Apple's unavailable Git stub for two pre-existing checkout tests; using the bundled working Git resolved them without code changes.
 
-## Live comparison attempted, blocked
+## Initial live comparison: blocked (preserved)
 
 A single pass of 29 cases per version was attempted using OpenRouter `openai/gpt-4o-mini`, review limit 30s and connection cap 2s. All 58 requests returned HTTP 403. A separate minimal diagnostic confirmed provider message: “This model is not available in your region.” No successful model judgments were obtained. The diagnostic's response contained no token usage and is not included in the 58-review ledgers.
 
@@ -41,3 +41,20 @@ python -m examples.reviewer_check --live --candidate v3 --cases reviewer/cases/a
 ```
 
 Choose fresh output names; retain first failures and separate diagnostics. Only after a successful paired comparison should the team consider separate post-freeze evaluation. A future deterministic interval check needs structured evidence, explicit timezone/all-day semantics and its own validation; it is not implemented here.
+
+## Subsequent paired development pass (2026-10-31)
+
+Connection later recovered without changing the key, model, prompts or timeout settings. A fresh 29-case pass per version was run; original 403 attempts remain untouched.
+
+| Version | Matches manual expectations | Technical failures | Temporal cases | Original authorization/discovery cases | Known tokens | Known response cost (USD) |
+|---|---:|---:|---:|---:|---:|---:|
+| v2 | 22/29 | 0 | 6/12 | 16/17 | 26,540 | 0.00447105 |
+| v3 candidate | 21/29 | 1 connection timeout | 6/12 | 15/17 | 33,567 | 0.00491160 |
+
+The candidate did **not** improve any temporal decision in this pass. Both denied the morning-gap event, touching boundaries and a clear overnight gap. Both also denied current-day discovery. The 21/29 versus 22/29 difference comes from one v3 technical timeout, not an additional model judgment error. Do not combine errors and judgments as model accuracy or claim general degradation/improvement from one pass. All actual decisions in the 12 temporal cases were DENY; the 6/12 score therefore does not demonstrate temporal discrimination.
+
+The manually labeled synthetic previous-date case returns a previous-day event from a requested-day query; that fixture has evidence-completeness ambiguity and should be redesigned before stronger conclusions. The target same-day morning-gap and touching-boundary failures do not depend on that ambiguity. These cases derive from an observed failure, are not held-out, and one pass does not measure stability.
+
+Raw new results/ledgers use filenames `v2-20261031-retry1.*` and `v3-20261031-retry1.*`; the paired summary is `comparison-20261031-retry1-summary.json`. Known response cost totals USD 0.00938265, excluding the successful 12-token connection probe (USD 0.00000270). One v3 timed-out request has unknown usage, so known cost is not a guaranteed complete total. This pass is separate from all formal AgentDojo results.
+
+Recommendation: do not adopt v3 as a demonstrated fix. Retain it as a documented unsuccessful prompt-only development attempt. Consider separately designed structured temporal validation and better evidence-completeness controls; no further model runs or formal configuration changes were made.
