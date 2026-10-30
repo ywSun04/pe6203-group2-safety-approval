@@ -31,6 +31,14 @@ outcomes with a successful rerun. M3/M4 annotations of those UUIDs add analysis,
 not experimental runs. PR #9 remains closed. Personal reports, PDFs, slides and
 speaking notes remain outside the repository.
 
+## Follow-up, 31 October 2026
+
+The received M4 second-batch review has now been confirmed against the six
+original Reviewer calls and separate Gate block. It adds no runs or costs.
+PR #11 is closed and unmerged and its candidate-v3 branch is deleted; formal
+execution continues with the frozen v2. See the dated follow-up in
+`docs/member5-unified-reconciliation.md`.
+
 ## Historical preparation notes
 
 The remaining notes preserve the pre-batch handoff. Their then-current merge

@@ -66,3 +66,19 @@ intervals. It makes no model/network call and executes no tool or payload.
 audit.json contains exact JSONL source references; line numbers are one-based
 and message indices zero-based. The source ZIP SHA-256 is
 d1cc24e18949a67266d2055978cb18d8382bd59fe06030334cc0c4f94acda408.
+
+## M4 annotation confirmation received on 31 October
+
+M4's review package matches all six original Reviewer calls and the existing
+M5 classifications: five false lunch-conflict denials and one correct deletion
+denial. The Gate-only budget denial remains separate. Run IDs, arguments,
+original reasons, pre-decision references, meeting intervals, usage totals and
+diagnostic costs agree. M5 confirmation is recorded in
+`member4-review-confirmation.json`, with a reproducible checker under
+`analysis/member5-unified/confirm_member4_batch02.py`.
+
+This annotation receipt adds no experiment, token charge or resolved positive
+strict-safety label. The original M4 files remain unchanged in the curated
+English evidence archive. The input packet's Chinese narrative stays local.
+PR #11 is confirmed closed and unmerged with its branch absent; v2 remains
+the frozen formal Reviewer, and all six failed observations are retained.

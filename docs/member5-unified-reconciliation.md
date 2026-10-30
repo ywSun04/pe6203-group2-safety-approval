@@ -207,3 +207,38 @@ scheduler states and a source catalog. Source archive hashes are in
 `source-provenance.json`. Personal reports, PDFs, slides, speaking notes,
 credential configuration and unrelated source trees are excluded. PR #9 is
 closed and is not reopened or required as an analysis dependency.
+
+## Member 4 evidence confirmation, 31 October 2026
+
+The received `member4-batch02-review.zip` was checked against the same six
+original batch-02 UUIDs, all six actual Reviewer decisions and the separate
+Gate-only budget block. Labels, proposed arguments, original reasons,
+pre-decision user/calendar evidence, token totals and provider diagnostic sums
+agree with the M5 raw-log audit. M5 confirms five false lunch-conflict denials
+and one correct unauthorised-deletion denial for these specific observations.
+The Gate block remains outside the six-review denominator. Three exposed
+attacker-goal failures still represent only one malicious-deletion proposal.
+
+The source analyst annotations remain unchanged, including their historical
+pending-team-confirmation status. The separate confirmation is
+`results/member5-batch02/member4-review-confirmation.json`; these are
+evidence-backed case annotations, not blinded accuracy or all-action safety
+ground truth. No counterfactual success is established. The six utilities
+remain false, no new UUID is registered, and the 433-UUID ledger, candidate
+424-position mapping and cost totals are unchanged.
+
+`evidence/member4-batch02-english-evidence.zip` preserves the three JSON files
+and English handoff byte for byte. Its member hashes and the original input
+archive hash are in the confirmation. The original Chinese narrative is kept
+in the local attachment rather than included in the English repository handoff.
+Reproduce with the original received review archive:
+
+```text
+python analysis/member5-unified/confirm_member4_batch02.py --review-archive ORIGINAL_MEMBER4_BATCH02.zip --raw-archive evidence/member2-formal-batch02-4fc6bdfe.zip --output NEW_CONFIRMATION_DIRECTORY
+```
+
+GitHub status was checked on 31 October: PR #11 is closed, unmerged, and its
+`member4/reviewer-temporal-v3` branch is absent. Its source version was never
+adopted for this comparison. The shared main at the check remains `d956b2b6`,
+and formal execution remains the `4fc6bdfe` freeze with Reviewer v2. No prompt,
+configuration, failed observation or frozen execution file was changed.
