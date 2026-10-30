@@ -143,3 +143,7 @@ It has not been frozen for formal experiments. Keep its prompt hash separate
 from v1. The live case checker now accepts `--cases`, `--timeout` and
 `--connect-timeout`, and reuses Member 2's UsageLedger; install the integrated
 main runner before invoking this checker.
+
+## Separate hybrid calendar development candidate
+
+See [hybrid calendar Reviewer](hybrid-calendar-reviewer.md) for deterministic temporal validation combined with a separate scope check. It is opt-in and is not part of frozen formal runs.
