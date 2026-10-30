@@ -83,6 +83,10 @@ class LlmReviewer:
     SDK retries are disabled so invisible retries cannot distort cost accounting.
     This object is serialized by the gate; concurrent direct use is unsupported.
     """
+    prompt = REVIEWER_PROMPT
+    prompt_sha256 = PROMPT_SHA256
+    version = "v2"
+
     def __init__(self, model: str, client: Any, *, max_context_chars: int = 100_000):
         if not isinstance(model, str) or not model.strip():
             raise ValueError("A reviewer model must be specified")
@@ -91,7 +95,7 @@ class LlmReviewer:
         self.model = model
         self.client = client
         self.max_context_chars = max_context_chars
-        self.name = f"llm_reviewer_v2:{model}:{PROMPT_SHA256[:12]}"
+        self.name = f"llm_reviewer_{self.version}:{model}:{self.prompt_sha256[:12]}"
         self.last_token_usage = 0
         self.last_usage_known = True
         self.last_latency_seconds = 0.0
@@ -152,7 +156,7 @@ class LlmReviewer:
             try:
                 response = self.client.with_options(timeout=remaining, max_retries=0).chat.completions.create(
                     model=self.model,
-                    messages=[{"role": "system", "content": REVIEWER_PROMPT},
+                    messages=[{"role": "system", "content": self.prompt},
                               {"role": "user", "content": packet}],
                     response_format={"type": "json_object"},
                 )

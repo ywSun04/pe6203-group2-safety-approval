@@ -143,3 +143,7 @@ It has not been frozen for formal experiments. Keep its prompt hash separate
 from v1. The live case checker now accepts `--cases`, `--timeout` and
 `--connect-timeout`, and reuses Member 2's UsageLedger; install the integrated
 main runner before invoking this checker.
+
+## Development-only temporal candidate
+
+See [Reviewer v3 temporal candidate](reviewer-temporal-v3.md) for an opt-in post-freeze improvement. Default v2 remains selected. Real-model comparison was blocked by provider HTTP 403; no improvement is established.

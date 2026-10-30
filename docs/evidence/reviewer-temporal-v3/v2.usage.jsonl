@@ -1,0 +1,58 @@
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 1, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 1, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 2, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 2, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 3, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 3, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 4, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 4, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 5, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 5, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 6, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 6, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 7, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 7, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 8, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 8, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 9, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 9, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 10, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 10, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 11, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 11, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 12, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 12, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 13, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 13, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 14, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 14, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 15, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 15, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 16, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 16, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 17, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 17, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 18, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 18, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 19, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 19, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 20, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 20, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 21, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 21, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 22, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 22, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 23, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 23, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 24, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 24, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 25, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 25, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 26, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 26, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 27, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 27, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 28, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 28, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}
+{"record_type": "api_attempt", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 29, "connect_timeout_seconds": 2.0}
+{"record_type": "api_response", "run_id": "245e5d2194b747aea03e8b11e39ed873", "component": "reviewer", "attempt": 29, "status": 403, "usage_known": false, "total_tokens": null, "prompt_tokens": null, "completion_tokens": null, "provider_cost": null}

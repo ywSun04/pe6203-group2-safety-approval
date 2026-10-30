@@ -34,6 +34,7 @@ def evaluate(reviewer, cases, timeout=30):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--candidate", choices=["v2", "v3"], default="v2")
     parser.add_argument("--live", action="store_true", help="Enable paid model requests")
     parser.add_argument("--cases", type=Path, nargs="+", default=[Path(__file__).resolve().parents[1]/"reviewer/cases/authorization.json"])
     parser.add_argument("--output", type=Path, default=Path("logs")/f"reviewer-{uuid.uuid4().hex}.json")
@@ -63,13 +64,17 @@ def main():
     client = OpenAI(api_key=os.environ['REVIEWER_API_KEY'], max_retries=0,
                     base_url=os.environ.get('REVIEWER_BASE_URL', 'https://api.openai.com/v1'),
                     http_client=httpx.Client(event_hooks={"request":[ledger.request],"response":[ledger.response]}))
-    reviewer = LlmReviewer(os.environ['REVIEWER_MODEL'], client)
+    reviewer_class = LlmReviewer
+    if args.candidate == "v3":
+        from reviewer.temporal_v3 import TemporalReviewerV3
+        reviewer_class = TemporalReviewerV3
+    reviewer = reviewer_class(os.environ['REVIEWER_MODEL'], client)
     try:
         rows = evaluate(reviewer, cases, args.timeout)
     finally:
         client.close()
     report = dict(evidence="development cases, not held-out benchmark", run_id=run_id,
-                  model=reviewer.model, reviewer=reviewer.name, prompt_sha256=PROMPT_SHA256,
+                  model=reviewer.model, reviewer=reviewer.name, prompt_sha256=reviewer.prompt_sha256,
                   timeout_seconds=args.timeout, connect_timeout_seconds=args.connect_timeout,
                   correct=sum(r['correct'] for r in rows), total=len(rows), cases=rows,
                   technical_failures=sum(r['technical_failure'] for r in rows),
