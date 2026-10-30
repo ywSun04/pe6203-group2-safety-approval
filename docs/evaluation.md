@@ -304,3 +304,29 @@ runner's parsed-payload hashes stay the same. After the 29 October repair,
 regenerate the plan on the replacement frozen main SHA; do not reuse the
 invalidated `ccf3051` freeze or relabel old logs. Details and regression checks
 are in `docs/member5-hash-fix.md`.
+
+### Explicit reconciliation of saved M2/M6 evidence
+
+`scripts/reconcile_saved_runs.py` is the new offline analysis entry for the
+received combined evidence. It preserves raw files, checks an explicit mapping
+against their hashes, selects first-launched primary observations, and keeps
+retry, supplemental and smoke expenditure separate. It calls no model.
+
+The optional `reconciliation` registry object is bound to the raw manifest
+SHA-256, raw config ID, original repetition, reviewed repetition evidence and
+both raw/canonical profile hashes. Only the known LF/CRLF module and runner
+fingerprints for the `4fc6bdfe` freeze can share a canonical signature. New
+models, prompts, package versions, caps, unrecognised hashes or options are
+rejected. Without this explicit object, existing evaluation behaviour is
+unchanged; the original plan generator still rejects raw duplicate slots and
+mixed profiles. Reconciliation does not rewrite those raw records.
+
+The pure `evaluation.reconcile_usage.reconcile_run_usage` helper reports both
+recorded and fully verified token/cost amounts. An unanswered timeout attempt
+keeps its recorded zero and an unknown verified cost. Task totals are not
+added to the HTTP ledger a second time. A later retry is a distinct UUID with
+cost, not another independent planned repetition. Unknown technical outcomes
+and unaccounted positions stay visible in the denominators.
+
+See `docs/member5-unified-reconciliation.md` for the protocol, received batch
+classification, source provenance, pending owner acknowledgement and reproduction.

@@ -1,5 +1,41 @@
 # Member 5 evaluation handoff
 
+## Current handoff, 30 October 2026
+
+Use `docs/member5-unified-reconciliation.md` and
+`results/member5-unified-20261030/` for the current registration, retry, overlap,
+cost and ownership decisions. M2 batches contain 24 different runs; the M6
+project contains 409 different UUIDs. Their combined ledger has 424 candidate
+primary positions, two additional retries, three supplemental overlaps and four
+separate smoke records. Raw manifests are unchanged, and runtime-owner
+acknowledgement of the scheduler mappings is still pending.
+
+The latest work split is M2 for missing Full-escalate/BasicRiskPolicy and
+Full-approve injected positions; M6 for existing Full-approve verification
+and BudgetAwarePolicy clean/injected work; M5 for attack materials, unified
+registration, duplicates, costs, metrics and failure analysis. The reference
+grid has 1,476 not-accounted positions assigned to M2 and 500 to M6 under the
+reviewed mapping. These are not blanket payment authorisations or proof that
+the owners have not run more records elsewhere.
+
+Before new payment, M6 must acknowledge the evidence-backed mappings/attempt
+roles, supply the two claimed task-0/k=2 UUIDs absent from the available archives,
+and provide the actual safe top-up script or a no-API launch plan. Keep the
+four held BudgetAware top-up positions at task 0/k=1 and k=2 on hold. Both
+owners should reconcile their current launch ledgers against the shared list.
+
+Continue execution on `4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2` with Reviewer
+v2 and the current fixed attack pack. Candidate v3 development remains separate.
+The six new task-6 records are failures, not new opportunities to replace v2
+outcomes with a successful rerun. M3/M4 annotations of those UUIDs add analysis,
+not experimental runs. PR #9 remains closed. Personal reports, PDFs, slides and
+speaking notes remain outside the repository.
+
+## Historical preparation notes
+
+The remaining notes preserve the pre-batch handoff. Their then-current merge
+and no-formal-evidence statements are historical; use the current handoff above.
+
 This PR provides the evaluator, fixed injection fixtures, log checks and analysis
 of the six existing smoke runs. Formal experiments have not started. The personal
 report, slides and speaking notes remain local drafts until the results are ready.

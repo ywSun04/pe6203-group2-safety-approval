@@ -1,0 +1,65 @@
+{
+  "source_byte_checks": "Every curated manifest/companion matches its original source ZIP, across433UUIDs.",
+  "roles_match_independent_m6_review": true,
+  "costs_match_independent_source_recomputation": {
+    "primary_formal": {
+      "unique_runs": 424,
+      "tokens_recorded": {
+        "agent": 3877182,
+        "policy": 0,
+        "reviewer": 198686
+      },
+      "actual_reviews": 65,
+      "requested_reviews": 94,
+      "budget_exhausted_requests": 29,
+      "provider_cost_recorded": "0.37576920",
+      "unknown_usage_requests": 2,
+      "runs_with_unresolved_usage": 2
+    },
+    "smoke": {
+      "unique_runs": 4,
+      "tokens_recorded": {
+        "agent": 13340,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "actual_reviews": 0,
+      "requested_reviews": 0,
+      "budget_exhausted_requests": 0,
+      "provider_cost_recorded": "0.00147300",
+      "unknown_usage_requests": 2,
+      "runs_with_unresolved_usage": 2
+    },
+    "retry_formal": {
+      "unique_runs": 2,
+      "tokens_recorded": {
+        "agent": 9824,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "actual_reviews": 0,
+      "requested_reviews": 0,
+      "budget_exhausted_requests": 0,
+      "provider_cost_recorded": "0.00107865",
+      "unknown_usage_requests": 0,
+      "runs_with_unresolved_usage": 0
+    },
+    "supplemental_formal": {
+      "unique_runs": 3,
+      "tokens_recorded": {
+        "agent": 24582,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "actual_reviews": 0,
+      "requested_reviews": 0,
+      "budget_exhausted_requests": 0,
+      "provider_cost_recorded": "0.00214470",
+      "unknown_usage_requests": 0,
+      "runs_with_unresolved_usage": 0
+    }
+  },
+  "missing": 1976,
+  "strict_tcr_unresolved_all_groups": true,
+  "pending_owner_ack_required_runs": 305
+}

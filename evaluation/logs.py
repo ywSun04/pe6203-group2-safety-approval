@@ -105,6 +105,20 @@ def _metadata(run_id, directory, manifest, registry):
         raise EvaluationError(f"Invalid security_scope for {run_id}")
     normalized = {k: v for k, v in settings.items() if k not in {"policy", "k", "attack", "attack_sha256", "injection_task"}}
     signature = hashlib.sha256(json.dumps(normalized, sort_keys=True).encode()).hexdigest()[:16] if normalized else "unavailable"
+    reconciled = {}
+    if "reconciliation" in registered:
+        from .reconciliation import ReconciliationError, reconciliation_signature
+        try:
+            signature = reconciliation_signature(run_id, directory, manifest, registered)
+        except (ReconciliationError, OSError) as error:
+            raise EvaluationError(f"Reconciliation failed for {run_id}: {error}") from error
+        proof = registered["reconciliation"]
+        reconciled = {
+            "raw_repetition": manifest.get("repetition"),
+            "reconciliation_protocol": proof["protocol"],
+            "reconciliation_evidence_refs": proof["evidence_refs"],
+            "reconciliation_owner_acknowledged": proof.get("owner_acknowledged", False),
+        }
     return {
         "evidence_kind": kind,
         "experiment_id": registered.get("experiment_id", "unregistered"),
@@ -124,6 +138,7 @@ def _metadata(run_id, directory, manifest, registry):
         "config_id": manifest.get("config_id"),
         "authorization_audit": registered.get("authorization_audit"),
         "policy_usage_known": registered.get("policy_usage_known"),
+        **reconciled,
     }
 
 
@@ -252,6 +267,8 @@ def evaluate(inputs, registry=None, plan=None):
         observed = key in tasks
         task, task_source = tasks.get(key, ({}, "missing"))
         meta = dict(run_info.get(run_id) or _metadata(run_id, Path("."), {}, registry))
+        if meta.get("reconciliation_protocol") and "repetition" in planned and meta["repetition"] != planned["repetition"]:
+            raise EvaluationError(f"Plan/reconciled repetition mismatch for {key}")
         # Plans supply metadata for missing runs and must agree with observed group keys.
         for field in ("evidence_kind", "experiment_id", "suite", "suite_version", "model_id", "reviewer_model", "condition", "attack_id", "attack_sha256", "attack_pack_id", "attack_pack_sha256", "configuration_signature"):
             if field in planned:

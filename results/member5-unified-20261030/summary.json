@@ -1,0 +1,119 @@
+{
+  "protocol": "member5-frozen4fc-reconciliation-v1",
+  "execution_freeze": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2",
+  "source_archive_sha256": "8a6edbf7cea7f0cff0cd64081202e90829dc29d7514cf8954f0b5c1f6f0276d8",
+  "unique_raw_runs": 433,
+  "raw_records_by_owner": {
+    "Member 2": 24,
+    "Member 6": 409
+  },
+  "roles": {
+    "primary_formal": 424,
+    "smoke": 4,
+    "retry_formal": 2,
+    "supplemental_formal": 3
+  },
+  "candidate_accounted_slots": 424,
+  "planned_slots": 2400,
+  "not_accounted_slots": 1976,
+  "missing_by_owner": {
+    "Member 2": 1476,
+    "Member 6": 500
+  },
+  "held_missing_slots": 4,
+  "mapping_owner_ack_required_runs": 305,
+  "common_configuration_signature": "ed94c6d6374d08d4",
+  "evaluator_warnings": [],
+  "accounting_issues": [],
+  "costs_by_role": {
+    "primary_formal": {
+      "unique_runs": 424,
+      "tokens_recorded": {
+        "agent": 3877182,
+        "policy": 0,
+        "reviewer": 198686
+      },
+      "tokens_complete": {
+        "agent": null,
+        "policy": 0,
+        "reviewer": 198686
+      },
+      "runs_with_unresolved_usage": 2,
+      "unknown_usage_requests": 2,
+      "actual_reviews": 65,
+      "requested_reviews": 94,
+      "budget_exhausted_requests": 29,
+      "provider_cost_recorded": "0.37576920",
+      "provider_cost_complete": false
+    },
+    "retry_formal": {
+      "unique_runs": 2,
+      "tokens_recorded": {
+        "agent": 9824,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "tokens_complete": {
+        "agent": 9824,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "runs_with_unresolved_usage": 0,
+      "unknown_usage_requests": 0,
+      "actual_reviews": 0,
+      "requested_reviews": 0,
+      "budget_exhausted_requests": 0,
+      "provider_cost_recorded": "0.00107865",
+      "provider_cost_complete": true
+    },
+    "supplemental_formal": {
+      "unique_runs": 3,
+      "tokens_recorded": {
+        "agent": 24582,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "tokens_complete": {
+        "agent": 24582,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "runs_with_unresolved_usage": 0,
+      "unknown_usage_requests": 0,
+      "actual_reviews": 0,
+      "requested_reviews": 0,
+      "budget_exhausted_requests": 0,
+      "provider_cost_recorded": "0.00214470",
+      "provider_cost_complete": true
+    },
+    "smoke": {
+      "unique_runs": 4,
+      "tokens_recorded": {
+        "agent": 13340,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "tokens_complete": {
+        "agent": null,
+        "policy": 0,
+        "reviewer": 0
+      },
+      "runs_with_unresolved_usage": 2,
+      "unknown_usage_requests": 2,
+      "actual_reviews": 0,
+      "requested_reviews": 0,
+      "budget_exhausted_requests": 0,
+      "provider_cost_recorded": "0.00147300",
+      "provider_cost_complete": false
+    }
+  },
+  "new_model_api_calls": 0,
+  "execution_released": false,
+  "limitations": [
+    "Mapping review is M5 evidence verification; running-owner acknowledgement remains explicit and is not inferred.",
+    "The 1976-position remainder describes supplied evidence, not a claim of never-attempted positions or payment approval.",
+    "First-launched primary outcomes retain failures. Retry and supplemental expenditure remain separate; never add usage ledger totals twice.",
+    "Original security flags are benchmark-goal evidence. Positive strict all-action safety is not inferred.",
+    "Candidate Reviewer v3 development must not be pooled into this frozen v2 experiment."
+  ]
+}

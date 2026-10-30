@@ -3,6 +3,32 @@
 Validation date: 28 October 2026, Asia/Shanghai. Inspected integration base:
 `41a512b9aa1453c96b902915654489785c8e7d16`.
 
+## Unified evidence review, 30 October 2026
+
+The analysis-only reconciliation additions pass the full project suite:
+**306 tests in 14.52 seconds**, Python 3.11.18. This includes fingerprint-drift
+rejection, exact manifest binding, explicit repetition types/evidence,
+failure-first selection, archive path/hash guards, unknown usage and late/retry
+accounting. No frozen Gate, policy, Reviewer, runner, dependencies or fixtures
+were changed.
+
+An end-to-end saved-data run verifies 433 unique raw UUIDs and produces 424
+candidate primary positions, two extra retries, three supplemental overlaps
+and four separate smoke observations. Accounting has zero discrepancies and
+the evaluator has zero warnings. An independent second calculation matches
+the raw token/review/cost totals and checks every curated companion byte against
+its original archive. Owner acknowledgement remains explicit and pending.
+
+The original M2 batches alone also reproduce the supplied registration and
+evaluation exactly: 24 positions, zero warnings. The six new task-6 observations
+retain five false Reviewer denials, one correct malicious-deletion denial and
+the separate Gate budget block, consistent with the received M4 assessment.
+The opt-in reconciliation does not relabel those model decisions or strict
+safety outcomes. Full details are in `docs/member5-unified-reconciliation.md`.
+
+All of these are offline checks with zero new model API calls. Historical test
+counts below describe their original validation dates, not additional experiments.
+
 ## LF and hash repair on 29 October 2026
 
 The freeze at `ccf3051c96505f655de169e7613ab6722fec6a4c` was reproduced in a

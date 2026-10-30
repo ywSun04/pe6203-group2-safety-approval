@@ -1,0 +1,13 @@
+{
+  "older_distinct_ids": 405,
+  "newer_distinct_ids": 409,
+  "older_uuid_subset": true,
+  "manifest_bytes_match": 405,
+  "matching_companion_files": 2023,
+  "added_uuid_paths": {
+    "20261029T184716Z-9d44f963c8d54ee9a3630dc489ae5e42": "logs/member6_live_smoke/20261029T184716Z-9d44f963c8d54ee9a3630dc489ae5e42/manifest.json",
+    "20261029T185027Z-7d1b06414e5e46c9800caeaa203b5e30": "logs/member6_live_smoke/20261029T185027Z-7d1b06414e5e46c9800caeaa203b5e30/manifest.json",
+    "20261029T185721Z-1ac9c840eb5d484b96f4205b655f8d64": "logs/member6_live_smoke/20261029T185721Z-1ac9c840eb5d484b96f4205b655f8d64/manifest.json",
+    "20261030T014725Z-71a41d9b0962447dab8144e435343f93": "logs/member6_live_smoke/20261030T014725Z-71a41d9b0962447dab8144e435343f93/manifest.json"
+  }
+}
