@@ -26,7 +26,7 @@ The new 196-run M6 clean supplement has 152 utility completions, 44 ordinary fai
 | 2 | 58 | 47 | 81.0% | 29 | 946,233 | 75,753 | 0.09006840 |
 | 4 | 60 | 51 | 85.0% | 33 | 584,931 | 102,107 | 0.06651855 |
 | 8 | 60 | 49 | 81.7% | 48 | 775,595 | 227,454 | 0.09972360 |
-| **Total** | **296** | **229** | **77.4%** | **122** | **3,356,163** | **429,309** | **0.35657805** |
+| **Total** | **296** | **229** | **77.4%** | **122** | **3,356,163** | **429,269** | **0.35657805** |
 
 The k=1 and k=2 rows have two fewer observations each than k=0/4/8, so their utility rates are descriptive, not a controlled causal comparison. More review budget generally permits more actual reviews, but utility is not monotonically increasing; k=8 does not outperform k=4 in these observed clean runs. These utility rates must not be labelled strict TCR.
 
