@@ -1,0 +1,18 @@
+{
+  "source": "Group messages supplied by the user, with the new raw archives checked separately.",
+  "Member_2": {
+    "received_distinct_runs": 165,
+    "first_launched_primary_rule_acknowledged": true,
+    "does_not_confirm_M6_mapping": true
+  },
+  "Member_6": {
+    "old_scheduler_mapping_status": "pending_running_owner_confirmation",
+    "affected_raw_rows": 305,
+    "affected_selected_primary_rows": 300,
+    "new300_attack_repetitions": "Raw 0/1/2 and 300 distinct launch claims match; no renumbering.",
+    "raw196_archive_status": "not_received",
+    "endpoint_mismatch_clarification": "pending_for_seven_task35_rows"
+  },
+  "paid_execution_released": false,
+  "original_records_edited": false
+}

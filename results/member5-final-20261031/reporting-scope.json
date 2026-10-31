@@ -1,0 +1,41 @@
+{
+  "scope": "Received evidence snapshot; provisional where M6 mapping acknowledgement is pending.",
+  "historical_reference_positions": 2400,
+  "received_raw_UUIDs": 874,
+  "candidate_primary_positions": 865,
+  "same_profile_primary_positions": 858,
+  "configuration_quarantined": 7,
+  "metadata_only_not_counted": 196,
+  "main_comparison": {
+    "task_ids": [
+      "user_task_0",
+      "user_task_1"
+    ],
+    "k": [
+      0,
+      1,
+      2,
+      4,
+      8
+    ],
+    "repetition": 0,
+    "conditions": [
+      "none",
+      "file"
+    ],
+    "policies": [
+      "full-approve",
+      "full-escalate",
+      "basic_risk",
+      "budget_aware"
+    ],
+    "total_runs": 80,
+    "strict_TCR_authorization_audit_available": true,
+    "runs_per_policy_condition": 10
+  },
+  "broader_matched_comparison_runs": 176,
+  "call_rows_authorization_reviewed": 464,
+  "new_model_calls": 0,
+  "paid_execution_released": false,
+  "PR14_formal_runs_added": 0
+}

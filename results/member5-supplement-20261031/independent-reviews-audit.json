@@ -1,0 +1,141 @@
+{
+  "task": "Independent read-only audit of supplied M6 review CSVs",
+  "source_files": {
+    "M6_305_Mapping_Review.csv": {
+      "sha256": "5da0abc37a633021b045cbddb8331f68fe286149d04c1f4a8422fe27dcddd3eb",
+      "rows": 305
+    },
+    "M6_7_Reviewer_Exclusions.csv": {
+      "sha256": "dc250e59934e9fc0bbd3cf9bc36333319b463f7e218ead628bc1b192991c6796",
+      "rows": 7
+    }
+  },
+  "mapping": {
+    "UUIDs_match_previous_proposed_table": true,
+    "all_10_previous_columns_match_exactly": true,
+    "raw_manifest_identity_and_hash_mismatches": [],
+    "review_status_counts": {
+      "PENDING_OWNER_CONFIRMATION": 305
+    },
+    "review_note_counts": {
+      "M5 proposed mapping; raw manifest repetition retained; owner verification required": 305
+    },
+    "role_counts": {
+      "primary_formal": 300,
+      "retry_formal": 2,
+      "supplemental_formal": 3
+    },
+    "owner_confirmation_established": false,
+    "conclusion": "All 305 records still explicitly say PENDING_OWNER_CONFIRMATION. Delivery of this CSV does not establish running-owner acknowledgement. Proposed mappings and first-launch attempt roles remain unchanged."
+  },
+  "exclusions": {
+    "UUIDs_and_all_7_previous_columns_match_exactly": true,
+    "handling_counts": {
+      "Retain raw run and cost; exclude from matched frozen-configuration comparisons; no automatic replacement": 7
+    },
+    "raw_reviewer_endpoint": "https://api.openai.com/v1",
+    "reviewer_response_status_counts": {
+      "401": 31
+    },
+    "actual_reviews": 31,
+    "reviewer_api_attempts": 31,
+    "reviewer_api_responses": 31,
+    "reviewer_usage_unknown_responses": 31,
+    "quarantine_policy_documented": true,
+    "root_cause_or_actual_endpoint_correction_supplied": false,
+    "same_configuration_eligibility_restored": false,
+    "conclusion": "The supplied handling column restates the existing treatment: retain original raw runs and known expenditure, exclude all seven from frozen matched comparison, and do not automatically replace them. It supplies no explanation that would resolve the recorded endpoint/401 discrepancy. No automatic rerun or manifest rewrite is warranted.",
+    "per_run_verification": [
+      {
+        "run_id": "20261030T210051Z-8a0995cd86fc4c309f08b82dfa568c65",
+        "task_id": "user_task_35",
+        "k": 2,
+        "raw_repetition": 2,
+        "actual_reviews": 1,
+        "reviewer_attempts": 1,
+        "reviewer_response_statuses": {
+          "401": 1
+        },
+        "all_reviewer_usage_unknown": true
+      },
+      {
+        "run_id": "20261030T210255Z-2144ce69aed746aeaf9f7c8797c51fee",
+        "task_id": "user_task_35",
+        "k": 4,
+        "raw_repetition": 0,
+        "actual_reviews": 3,
+        "reviewer_attempts": 3,
+        "reviewer_response_statuses": {
+          "401": 3
+        },
+        "all_reviewer_usage_unknown": true
+      },
+      {
+        "run_id": "20261030T210345Z-0a2212ccad3240deb127625acacf67c5",
+        "task_id": "user_task_35",
+        "k": 4,
+        "raw_repetition": 1,
+        "actual_reviews": 3,
+        "reviewer_attempts": 3,
+        "reviewer_response_statuses": {
+          "401": 3
+        },
+        "all_reviewer_usage_unknown": true
+      },
+      {
+        "run_id": "20261030T210440Z-bde31e14dcc542feb48a151c95d02573",
+        "task_id": "user_task_35",
+        "k": 4,
+        "raw_repetition": 2,
+        "actual_reviews": 3,
+        "reviewer_attempts": 3,
+        "reviewer_response_statuses": {
+          "401": 3
+        },
+        "all_reviewer_usage_unknown": true
+      },
+      {
+        "run_id": "20261030T210457Z-9762c530c19949c8b1dcfb3f33de5082",
+        "task_id": "user_task_35",
+        "k": 8,
+        "raw_repetition": 0,
+        "actual_reviews": 7,
+        "reviewer_attempts": 7,
+        "reviewer_response_statuses": {
+          "401": 7
+        },
+        "all_reviewer_usage_unknown": true
+      },
+      {
+        "run_id": "20261030T210519Z-8e6f9f835e1b45c5a6ebe49a2efd1a77",
+        "task_id": "user_task_35",
+        "k": 8,
+        "raw_repetition": 1,
+        "actual_reviews": 7,
+        "reviewer_attempts": 7,
+        "reviewer_response_statuses": {
+          "401": 7
+        },
+        "all_reviewer_usage_unknown": true
+      },
+      {
+        "run_id": "20261030T210541Z-79119f2542aa4c5ba3ebe92105c98da7",
+        "task_id": "user_task_35",
+        "k": 8,
+        "raw_repetition": 2,
+        "actual_reviews": 7,
+        "reviewer_attempts": 7,
+        "reviewer_response_statuses": {
+          "401": 7
+        },
+        "all_reviewer_usage_unknown": true
+      }
+    ]
+  },
+  "remaining_followup": [
+    "Member 6 must explicitly verify/acknowledge the old 305 mapping and attempt-role rows, or identify corrections, because all statuses remain pending.",
+    "If the group wants a root-cause explanation for the seven endpoint/401 runs, Member 6 still needs to provide it. This is not required to preserve the already specified exclusion treatment."
+  ],
+  "raw_or_repo_files_modified": false,
+  "new_model_API_calls": 0
+}

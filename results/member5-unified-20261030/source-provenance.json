@@ -1,0 +1,11 @@
+{
+  "curated_evidence_archive": "evidence/member5-unified-20261030.zip",
+  "curated_evidence_sha256": "8a6edbf7cea7f0cff0cd64081202e90829dc29d7514cf8954f0b5c1f6f0276d8",
+  "original_sources_sha256": {
+    "Member2-formal-batch01-4fc6bdfe(1).zip": "7c1b6ff3d2866cea118a90e4c0420288da991f39f6752f3178c9b9af82b52939",
+    "Member2-formal-batch02-task6-k1-4fc6bdfe.zip": "d1cc24e18949a67266d2055978cb18d8382bd59fe06030334cc0c4f94acda408",
+    "M6_Project_For_Upload.zip": "8af6eb51a86c63718ec0f72c3d2d1214fb15568016a404c411d2278431d8a9eb"
+  },
+  "unique_run_records": 433,
+  "policy": "Original whitelisted run bytes and scheduler evidence only; no source tree, credential configuration, report, slide or speaking-note draft."
+}

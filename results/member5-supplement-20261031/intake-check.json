@@ -1,0 +1,31 @@
+{
+  "prior_raw_UUIDs": 874,
+  "new_raw_UUIDs": 196,
+  "combined_raw_UUIDs": 1070,
+  "new_UUID_overlap": 0,
+  "new196_matches_previous_candidate_list": true,
+  "new196_source_archive_matches_expected_sha256": true,
+  "combined_evidence_sha256": "2a4c4fddc8f257d2440a0e700216466f60c49856f35b56c6cbc7a9eb61abd5c8",
+  "mapping_review": {
+    "matched_rows": 305,
+    "statuses": {
+      "PENDING_OWNER_CONFIRMATION": 305
+    },
+    "owner_confirmation_established": false
+  },
+  "exclusions_review": {
+    "matched_rows": 7,
+    "handling": {
+      "Retain raw run and cost; exclude from matched frozen-configuration comparisons; no automatic replacement": 7
+    },
+    "cause_of_endpoint_change_explained": false,
+    "quarantine_retained": true
+  },
+  "source_hashes": {
+    "m6_target_rep_logs.zip": "64d6bf90a5edb1dd2a75ac47bd8eca9c6addf2c168b262c55a3c2c6876e0881b",
+    "M6_305_Mapping_Review.csv": "5da0abc37a633021b045cbddb8331f68fe286149d04c1f4a8422fe27dcddd3eb",
+    "M6_7_Reviewer_Exclusions.csv": "dc250e59934e9fc0bbd3cf9bc36333319b463f7e218ead628bc1b192991c6796"
+  },
+  "new_model_API_calls": 0,
+  "original_records_edited": false
+}

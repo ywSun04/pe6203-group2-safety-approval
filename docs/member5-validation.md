@@ -1,7 +1,93 @@
 # Member 5 validation record
 
+## Explicit mapping confirmation, 31 October
+
+The full offline suite passes **330 tests**. Eleven confirmation checks bind
+the explicit user-provided statement to the exact original CSV, full UUID set
+and unchanged source/attempt identities, reject incomplete declarations, and
+prevent clearing unrelated pending records. The 1,054-row observed registry
+still evaluates with zero warnings: exactly 300 selected primary proofs are
+confirmed, and all 305 reviewed raw assignments have no pending active status.
+
+Original CSV bytes, manifests, outcomes, costs, tokens, role selection, standard
+evaluation groups and all k-scan values are unchanged. The current TCR figure
+now states that confirmation is recorded. Attribution is to the explicit user
+message in this conversation, without claiming independent contact with M6.
+The source table and earlier intake findings below remain historical evidence.
+
+## M6 supplement checks, 31 October
+
+The full offline suite now passes **319 tests** in Python 3.11. The seven added
+checks require explicit complete owner-review statuses and reject duplicate
+UUIDs or changed source identities. Zero-utility groups do not gain a positive
+authorization-audit label from their algebraic zero TCR. The received 196-run ZIP matches its
+previously declared SHA-256, all candidate IDs, six companion files per run,
+frozen profile and independent accounting review. It has no UUID or candidate
+position overlap with the earlier inventory.
+
+The 1,054-row observed registry evaluates with zero warnings. Every prior
+outcome, role, primary ID, recorded token count and cost is preserved; the
+80-run fixed-task k scan is unchanged. The wider matched set now covers 224
+runs, 526 proposals and 332 execution attempts, with no unclassified executed
+action. Both figures were rendered and visually checked. The 305 pending
+review statuses and seven quarantine rows are retained as stated. No raw file,
+frozen runtime component or model API was changed/called by this analysis.
+
+See [the supplement's checks and evidence](../results/member5-supplement-20261031/).
+The earlier validation sections below remain historical records.
+
+## Received snapshot checks, 31 October
+
+The full offline suite passes **312 tests** in Python 3.11, including six new
+exposure checks for wrapped YAML, incomplete payloads, failed tool results,
+user-message marker spoofing and missing/changed-history continuations.
+The saved-data workflow verifies all 874 UUIDs and original companion hashes,
+reconciles per-run token accounting without discrepancies, reproduces M2's
+165 registrations and zero evaluator warnings, and matches its supplied group
+metrics. It checks 300 M6 attack launch claims and all 464 proposed calls in
+the broad matched intersection. There are no unknown executed-action labels
+in that audited panel. Raw files are byte-preserved.
+
+The PR14 comparison verifies the five actual false-denial proposals against
+the saved replay task, arguments, available budget and pre-proposal history.
+The pending assistant tool-call message and metadata differ in the replay,
+which is disclosed. The hypothetical Gate-blocked sixth lunch is excluded.
+No new API request or formal experiment was run.
+
+The two PNG/PDF research figures were rendered and visually checked. Plotting
+used Matplotlib 3.11.2 and NumPy 2.4.6 in the isolated analysis environment;
+these optional plotting dependencies do not alter frozen runtime requirements.
+See [the dated results and limitations](../results/member5-final-20261031/).
+The sections below retain historical validation records.
+
 Validation date: 28 October 2026, Asia/Shanghai. Inspected integration base:
 `41a512b9aa1453c96b902915654489785c8e7d16`.
+
+## Unified evidence review, 30 October 2026
+
+The analysis-only reconciliation additions pass the full project suite:
+**306 tests in 14.52 seconds**, Python 3.11.18. This includes fingerprint-drift
+rejection, exact manifest binding, explicit repetition types/evidence,
+failure-first selection, archive path/hash guards, unknown usage and late/retry
+accounting. No frozen Gate, policy, Reviewer, runner, dependencies or fixtures
+were changed.
+
+An end-to-end saved-data run verifies 433 unique raw UUIDs and produces 424
+candidate primary positions, two extra retries, three supplemental overlaps
+and four separate smoke observations. Accounting has zero discrepancies and
+the evaluator has zero warnings. An independent second calculation matches
+the raw token/review/cost totals and checks every curated companion byte against
+its original archive. Owner acknowledgement remains explicit and pending.
+
+The original M2 batches alone also reproduce the supplied registration and
+evaluation exactly: 24 positions, zero warnings. The six new task-6 observations
+retain five false Reviewer denials, one correct malicious-deletion denial and
+the separate Gate budget block, consistent with the received M4 assessment.
+The opt-in reconciliation does not relabel those model decisions or strict
+safety outcomes. Full details are in `docs/member5-unified-reconciliation.md`.
+
+All of these are offline checks with zero new model API calls. Historical test
+counts below describe their original validation dates, not additional experiments.
 
 ## LF and hash repair on 29 October 2026
 

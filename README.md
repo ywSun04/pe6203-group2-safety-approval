@@ -21,16 +21,26 @@ new formal evidence without claiming that the remaining experiment is complete.
 
 ## Member 5 evaluation and failure analysis
 
-Member 5 provides an offline evaluator, a fixed twenty-task fixture handoff,
-and the audit of the six existing live smoke runs. These do not claim a
-completed formal experiment. Personal report and presentation drafts remain
-local until the formal results are available.
+Member 5 provides an offline evaluator, fixed task-specific fixtures and a
+unified review of the received M2/M6 evidence. After the 31 October M6 supplement,
+the ledger contains 1,070 distinct UUIDs and 1,061 candidate primary positions.
+Of these, 1,054 match the agreed configuration; seven endpoint-mismatched runs
+remain separate. The raw evidence for 196 former list-only candidates is now
+verified. A later explicit user-provided confirmation closes all 305 mapping
+and attempt-role reviews; the original CSV's PENDING statuses remain as
+historical evidence. The fixed two-task, five-budget main panel remains
+unchanged. Personal drafts remain local.
 
 - [Evaluation and planned-run registration](docs/evaluation.md)
 - [Task-specific fixtures and offline validation](docs/member5-attacks.md)
 - [Existing live evidence and failure candidates](docs/member5-existing-evidence.md)
 - [Member 5 handoff and first-batch checks](docs/member5-handoff.md)
 - [Fixture newline and hash fix](docs/member5-hash-fix.md)
+- [Unified registration, attempt costs and latest ownership](docs/member5-unified-reconciliation.md)
+- [M2 second-batch review](results/member5-batch02/)
+- [Unified ledger and uncovered positions](results/member5-unified-20261030/)
+- [Earlier 874-run received snapshot](results/member5-final-20261031/)
+- [Latest M6 supplement, 1,070-run ledger and updated costs](results/member5-supplement-20261031/)
 
 Run `python scripts/evaluate_logs.py LOG_ROOT --registry REGISTRY.json --output OUTPUT_DIR`
 to compute evidence-labelled TCR, actual HITL and component tokens. It uses no
@@ -40,9 +50,14 @@ commands. Run `python scripts/validate_member5_attacks.py --output VALIDATION.js
 to check the fixed fixtures offline. Use the manifest's current fixtures;
 the two retained rejected v1 files are regression evidence only.
 
-Formal results and real over-permissive failure trajectories still require the
-agreed experiments from Members 2 and 6. Existing clean smoke runs and generated
-plans must not be presented as formal results.
+The supplied evidence includes real unauthorised-send trajectories and the
+six task-6 failures. Broad policy totals have different task coverage; use the
+matched panel for the main comparison and retain its small-sample limitations.
+The old 2,400-position grid and missing-slot files are historical planning aids,
+not instructions to launch another batch. PR14 is a separate saved-evidence
+development comparison. Experiment execution remains
+frozen at `4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2`; the new reconciliation
+path changes analysis only.
 
 `AgentPipeline.from_config` still builds a plain tool executor. Experiments must call `build_approval_pipeline` in `approval_gate/pipeline.py` so the approval executor is the one that runs.
 

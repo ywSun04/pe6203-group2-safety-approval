@@ -1,0 +1,18 @@
+{
+  "checked_date": "2026-10-31",
+  "reviewer_candidate_pr": {
+    "number": 11,
+    "url": "https://github.com/ywSun04/pe6203-group2-safety-approval/pull/11",
+    "state": "closed",
+    "merged": false,
+    "head_sha": "1a99b0bc4e75649a75f8d13cd8fcd10bee05ee5a",
+    "head_ref": "member4/reviewer-temporal-v3",
+    "base_sha": "d956b2b6e307692f9507d019ebaab962e978badd",
+    "draft": true,
+    "remote_branch_exists": false
+  },
+  "main_sha_at_check": "d956b2b6e307692f9507d019ebaab962e978badd",
+  "formal_execution_commit": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2",
+  "formal_reviewer": "llm_reviewer_v2",
+  "additional_experimental_runs": 0
+}

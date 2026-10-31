@@ -1,5 +1,96 @@
 # Member 5 evaluation handoff
 
+## M6 supplement received, 31 October
+
+The [updated supplement](../results/member5-supplement-20261031/README.md)
+verifies the raw archive for all 196 formerly list-only candidates. It adds
+152 utility completions, 44 ordinary failures and USD 0.23104920 of fully
+reconciled returned cost. The ledger now has 1,070 unique UUIDs and 1,054
+same-profile candidate primaries. Observed registration has zero warnings.
+
+All 305 mapping and attempt-role reviews now have explicit user-provided
+confirmation, recorded separately with the original CSV hash and exact UUIDs.
+Its PENDING_OWNER_CONFIRMATION statuses remain as historical source evidence.
+Exactly 300 selected primary registry proofs are confirmed; the two retry and
+three cross-member supplemental roles remain unchanged.
+The seven exception rows retain their existing quarantine and cost treatment,
+without automatic replacement. The main 80-run panel, original failed outcomes,
+formal freeze and separate PR14 comparison are unchanged. No new API call or
+paid batch is released. The earlier sections below preserve prior snapshots.
+
+## Received snapshot, 31 October
+
+The [latest analysis](../results/member5-final-20261031/README.md) replaces the
+earlier coverage counts below. It reconciles 874 distinct raw UUIDs, including
+M2's cumulative 165 and M6's new 300 attack records. The candidate-primary count
+is 865; 858 share the approved configuration. Seven task-35 endpoint/HTTP401
+records remain quarantined, with their expenditure retained. The 196 new clean
+candidates still lack raw evidence and contribute no metrics or cost.
+
+The matched two-task, five-k comparison contains 80 runs and includes an
+executed-action authorization audit. Broader totals remain descriptive because
+task mix differs. M6 still needs to acknowledge its old repetition/attempt
+mapping. No further paid batch is released. Execution remains at `4fc6bdfe`
+with Reviewer v2. PR14 saved-evidence replay is reported separately and adds
+no formal task runs. Everything below records the earlier handoff stages.
+
+## Current handoff, 30 October 2026
+
+Use `docs/member5-unified-reconciliation.md` and
+`results/member5-unified-20261030/` for the current registration, retry, overlap,
+cost and ownership decisions. M2 batches contain 24 different runs; the M6
+project contains 409 different UUIDs. Their combined ledger has 424 candidate
+primary positions, two additional retries, three supplemental overlaps and four
+separate smoke records. Raw manifests are unchanged, and runtime-owner
+acknowledgement of the scheduler mappings is still pending.
+
+The latest work split is M2 for missing Full-escalate/BasicRiskPolicy and
+Full-approve injected positions; M6 for existing Full-approve verification
+and BudgetAwarePolicy clean/injected work; M5 for attack materials, unified
+registration, duplicates, costs, metrics and failure analysis. The reference
+grid has 1,476 not-accounted positions assigned to M2 and 500 to M6 under the
+reviewed mapping. These are not blanket payment authorisations or proof that
+the owners have not run more records elsewhere.
+
+Before new payment, M6 must acknowledge the evidence-backed mappings/attempt
+roles, supply the two claimed task-0/k=2 UUIDs absent from the available archives,
+and provide the actual safe top-up script or a no-API launch plan. Keep the
+four held BudgetAware top-up positions at task 0/k=1 and k=2 on hold. Both
+owners should reconcile their current launch ledgers against the shared list.
+
+Continue execution on `4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2` with Reviewer
+v2 and the current fixed attack pack. Candidate v3 development remains separate.
+The six new task-6 records are failures, not new opportunities to replace v2
+outcomes with a successful rerun. M3/M4 annotations of those UUIDs add analysis,
+not experimental runs. PR #9 remains closed. Personal reports, PDFs, slides and
+speaking notes remain outside the repository.
+
+## Follow-up, 31 October 2026
+
+The received M4 second-batch review has now been confirmed against the six
+original Reviewer calls and separate Gate block. It adds no runs or costs.
+PR #11 is closed and unmerged and its candidate-v3 branch is deleted; formal
+execution continues with the frozen v2. See the dated follow-up in
+`docs/member5-unified-reconciliation.md`.
+
+M2 has also acknowledged first-launch primary selection and separate retry/
+overlap accounting. M6's mapping acknowledgement remains pending and is not
+delegated to M2. The candidate missing-position list is not released for bulk
+payment; align latest launch records and final scope/budget before the next
+small batch. The acknowledgement states are recorded separately in
+`results/member5-unified-20261030/owner-acknowledgements.json`.
+
+PR #12's six-run policy annotations are now in main at `d0395585`; they add no
+experimental UUIDs. PR #14 is a different hybrid calendar development candidate,
+not an adopted replacement for v2. Its case-level results and development
+expenditure are catalogued separately. Any adoption or new comparison requires
+the team's scope/budget decision. The formal run and cost ledgers are unchanged.
+
+## Historical preparation notes
+
+The remaining notes preserve the pre-batch handoff. Their then-current merge
+and no-formal-evidence statements are historical; use the current handoff above.
+
 This PR provides the evaluator, fixed injection fixtures, log checks and analysis
 of the six existing smoke runs. Formal experiments have not started. The personal
 report, slides and speaking notes remain local drafts until the results are ready.

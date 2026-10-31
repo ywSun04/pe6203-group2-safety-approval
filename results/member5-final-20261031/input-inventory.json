@@ -1,0 +1,116 @@
+[
+  {
+    "file": "Member2-formal-batch03-90runs-4fc6bdfe(1).zip",
+    "bytes": 956592,
+    "sha256": "17c2e3b5569d84f1964cb63ddec46598fbb20369e231ff86747e9f43eaaf817e",
+    "members": 589,
+    "direct_manifest_occurrences": 90,
+    "unique_direct_run_ids": 90,
+    "policies": {
+      "full-approve": 18,
+      "full-escalate": 30,
+      "basic_risk": 42
+    },
+    "conditions": {
+      "file": 57,
+      "none": 33
+    },
+    "raw_repetitions": {
+      "0": 30,
+      "1": 30,
+      "2": 30
+    }
+  },
+  {
+    "file": "Member2-formal-165runs-4fc6bdfe.zip",
+    "bytes": 1809145,
+    "sha256": "a09c8092ea82043cf29888e6fc85542747891dde1324c93832cae2ccbcaf41d0",
+    "members": 1071,
+    "direct_manifest_occurrences": 165,
+    "unique_direct_run_ids": 165,
+    "policies": {
+      "basic_risk": 72,
+      "full-approve": 36,
+      "full-escalate": 57
+    },
+    "conditions": {
+      "file": 102,
+      "none": 63
+    },
+    "raw_repetitions": {
+      "2": 55,
+      "0": 55,
+      "1": 55
+    }
+  },
+  {
+    "file": "M6_Project_For_Upload(1).zip",
+    "bytes": 7903568,
+    "sha256": "8af6eb51a86c63718ec0f72c3d2d1214fb15568016a404c411d2278431d8a9eb",
+    "members": 5640,
+    "direct_manifest_occurrences": 814,
+    "unique_direct_run_ids": 409,
+    "policies": {
+      "full-approve": 604,
+      "full-escalate": 6,
+      "budget_aware": 204
+    },
+    "conditions": {
+      "none": 814
+    },
+    "raw_repetitions": {
+      "0": 814
+    }
+  },
+  {
+    "file": "M6_New_196_M5_Handoff.zip",
+    "bytes": 12895,
+    "sha256": "854bd918ce7711f89bb94fb98a7da21bb587ff7f5ee0eabe63ae64abdcc95189",
+    "members": 4,
+    "direct_manifest_occurrences": 0
+  },
+  {
+    "file": "automated_clean.zip",
+    "bytes": 2882142,
+    "sha256": "c43a86e6ec6c55716f9e133c32e86d8cc1dc1cd8de435542e3fee993fe85557e",
+    "members": 2139,
+    "direct_manifest_occurrences": 305,
+    "unique_direct_run_ids": 305,
+    "policies": {
+      "full-approve": 302,
+      "full-escalate": 3
+    },
+    "conditions": {
+      "none": 305
+    },
+    "raw_repetitions": {
+      "0": 305
+    }
+  },
+  {
+    "file": "M6_Attack_300_Evidence.zip",
+    "bytes": 4155886,
+    "sha256": "69be660dfe64172365cd3e383d6c4bd8707d9992e5aeac96d7e6fc4956109c2c",
+    "members": 2100,
+    "direct_manifest_occurrences": 300,
+    "unique_direct_run_ids": 300,
+    "policies": {
+      "budget_aware": 300
+    },
+    "conditions": {
+      "file": 300
+    },
+    "raw_repetitions": {
+      "0": 100,
+      "1": 100,
+      "2": 100
+    }
+  },
+  {
+    "file": "M6_Attack_300_Handoff.zip",
+    "bytes": 26345,
+    "sha256": "3a70d2c3ac428e4b77e6b6dcf5e675eb0476b59374e27459b3894da2c34d2afb",
+    "members": 5,
+    "direct_manifest_occurrences": 0
+  }
+]

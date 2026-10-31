@@ -1,0 +1,37 @@
+{
+  "frozen_commit": "4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2",
+  "agentdojo_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+  "proof": {
+    "approval_gate.executor": {
+      "frozen_lf_sha256": "a568667dfe029c39245424b3088701b891263cfae20e3630c5d8aff71ff48ca8",
+      "frozen_crlf_sha256": "ed1d49ee48f7f62791eb86e072814fce139e65faec33216d8fbd2177f894d653",
+      "project_source_normalized_matches_frozen": true
+    },
+    "approval_gate.policies.basic_risk": {
+      "frozen_lf_sha256": "e4546a7e122a4b655bf8669173adfd44f27cdf132cbd262c17e07ebdfd61d82a",
+      "frozen_crlf_sha256": "6a4a43ee6d81385f8e6d848fd3bffa942ec9218eed91c73ee5b408075be29182",
+      "project_source_normalized_matches_frozen": true
+    },
+    "approval_gate.policies.budget_aware": {
+      "frozen_lf_sha256": "fd365bb31783cc3328acd6df010da9fe3281308ae7a6e63161bf63b5da2ebb61",
+      "frozen_crlf_sha256": "65f8d2c0f7c074a22b7c1dfabf67b019ecf988c57d17fd0c646816670e4b7f6e",
+      "project_source_normalized_matches_frozen": true
+    },
+    "reviewer.llm_reviewer": {
+      "frozen_lf_sha256": "f06ae668da62ef4d22edbe6d8121b58bd62d5ff04e351eca4101174889e3d669",
+      "frozen_crlf_sha256": "2b8b6c55e5427ff3d6d20aea95075fd8e04b821108d0df44d64f5eccaea81e20",
+      "project_source_normalized_matches_frozen": true
+    },
+    "runner": {
+      "frozen_lf_sha256": "d788546cc4478a659d87603b143e3fe7fe037249d3562d718ff235fbcfd1ce28",
+      "frozen_crlf_sha256": "71452fc9c4b852d18774fe74d85e502920a0f7f4ef2f0c7f8c39f2ede6aa367d",
+      "project_source_normalized_matches_frozen": true
+    },
+    "agentdojo.task_suite.task_suite": {
+      "frozen_lf_sha256": "2e69da06f7e150dd6d238c53a74845b56eebeb224e07f694e1051a6e0c6a2bc1",
+      "frozen_crlf_sha256": "5a989815b0d66d87a0f1b802b1753c6a37d181d02b3dbc5933a330f2eb85fef1",
+      "installed_source_bytes_supplied": false
+    }
+  },
+  "note": "Each CRLF fingerprint is the SHA-256 of the exact newline transformation of a pinned Git blob. No recorded hash or manifest was rewritten."
+}
