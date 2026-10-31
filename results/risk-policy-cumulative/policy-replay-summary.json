@@ -1,0 +1,23 @@
+{
+  "runs": 72,
+  "calls": 150,
+  "utility_completed": 66,
+  "rules": {
+    "R2_LOCAL_QUERY": 113,
+    "R4_EXTERNAL_ACTION": 21,
+    "R6_STATE_CHANGE": 16
+  },
+  "actual_reviews": 30,
+  "tokens": {
+    "agent": 523114,
+    "policy": 0,
+    "reviewer": 58625
+  },
+  "by_task": {
+    "user_task_0": 30,
+    "user_task_6": 6,
+    "user_task_1": 30,
+    "user_task_2": 6
+  },
+  "all_replayed_decisions_and_reasons_match": true
+}

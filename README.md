@@ -1,5 +1,9 @@
 # Approval gate
 
+## Cumulative risk-policy review
+
+[BasicRiskPolicy cumulative review](docs/risk-policy-cumulative-review.md) independently replays 150 calls across 72 supplied runs. [Evidence tables](results/risk-policy-cumulative/) separate routing checks from the attributed M5 fixed 80-run matched panel. Personal reports and presentations remain outside this repository; frozen execution code is unchanged.
+
 ## Risk-policy batch 02
 
 [Second-batch routing and failure review](docs/risk-policy-batch02-review.md) covers six new task-6 runs at k=1. All utilities are false; 19 recorded policy decisions match offline replay. The review separates five Reviewer overlap errors from one correct deletion denial followed by a zero-budget block. [Per-call evidence](results/risk-policy-batch02/) is supplied. Frozen experiment code is unchanged; personal report and slides are not included.
