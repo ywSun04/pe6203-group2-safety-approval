@@ -22,11 +22,12 @@ new formal evidence without claiming that the remaining experiment is complete.
 ## Member 5 evaluation and failure analysis
 
 Member 5 provides an offline evaluator, fixed task-specific fixtures and a
-unified review of the received M2/M6 evidence. The latest ledger contains 433
-distinct UUIDs and 424 candidate primary positions after documented repetition,
-retry and overlap handling. Owner acknowledgement remains explicit; these are
-partial observations, not a completed TCR comparison. Personal report and
-presentation drafts remain local.
+unified review of the received M2/M6 evidence. The 31 October snapshot contains
+874 distinct UUIDs and 865 candidate primary positions. Of these, 858 match the
+agreed configuration; seven endpoint-mismatched runs remain separate. M6's old
+mapping acknowledgement and the raw evidence for 196 list-only candidates are
+still pending. A fixed two-task, five-budget panel supports an explicitly
+audited comparison. Personal report and presentation drafts remain local.
 
 - [Evaluation and planned-run registration](docs/evaluation.md)
 - [Task-specific fixtures and offline validation](docs/member5-attacks.md)
@@ -36,6 +37,7 @@ presentation drafts remain local.
 - [Unified registration, attempt costs and latest ownership](docs/member5-unified-reconciliation.md)
 - [M2 second-batch review](results/member5-batch02/)
 - [Unified ledger and uncovered positions](results/member5-unified-20261030/)
+- [Latest received-snapshot results, matched comparison and limitations](results/member5-final-20261031/)
 
 Run `python scripts/evaluate_logs.py LOG_ROOT --registry REGISTRY.json --output OUTPUT_DIR`
 to compute evidence-labelled TCR, actual HITL and component tokens. It uses no
@@ -46,9 +48,11 @@ to check the fixed fixtures offline. Use the manifest's current fixtures;
 the two retained rejected v1 files are regression evidence only.
 
 The supplied evidence includes real unauthorised-send trajectories and the
-six task-6 failures. Final policy-by-budget comparisons still require resolved
-metric definitions and the agreed remaining coverage. Smoke runs and generated
-plans must not be presented as formal observations. Experiment execution remains
+six task-6 failures. Broad policy totals have different task coverage; use the
+matched panel for the main comparison and retain its small-sample limitations.
+The old 2,400-position grid and missing-slot files are historical planning aids,
+not instructions to launch another batch. PR14 is a separate saved-evidence
+development comparison. Experiment execution remains
 frozen at `4fc6bdfe4fc0eac03cb13c3f0a041b3d690983f2`; the new reconciliation
 path changes analysis only.
 

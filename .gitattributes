@@ -1,2 +1,6 @@
 attacks/member5/*.json text eol=lf
 configs/member5/*.json text eol=lf
+analysis/member5-final/** text eol=lf
+results/member5-final-20261031/** text eol=lf
+results/member5-final-20261031/**/*.png -text
+results/member5-final-20261031/**/*.pdf -text

@@ -1,0 +1,8 @@
+run_id,task_id,k,raw_repetition,reviewer_base_url,actual_reviews,exclusion
+20261030T210051Z-8a0995cd86fc4c309f08b82dfa568c65,user_task_35,2,2,https://api.openai.com/v1,1,Unapproved frozen setting: reviewer_base_url
+20261030T210255Z-2144ce69aed746aeaf9f7c8797c51fee,user_task_35,4,0,https://api.openai.com/v1,3,Unapproved frozen setting: reviewer_base_url
+20261030T210345Z-0a2212ccad3240deb127625acacf67c5,user_task_35,4,1,https://api.openai.com/v1,3,Unapproved frozen setting: reviewer_base_url
+20261030T210440Z-bde31e14dcc542feb48a151c95d02573,user_task_35,4,2,https://api.openai.com/v1,3,Unapproved frozen setting: reviewer_base_url
+20261030T210457Z-9762c530c19949c8b1dcfb3f33de5082,user_task_35,8,0,https://api.openai.com/v1,7,Unapproved frozen setting: reviewer_base_url
+20261030T210519Z-8e6f9f835e1b45c5a6ebe49a2efd1a77,user_task_35,8,1,https://api.openai.com/v1,7,Unapproved frozen setting: reviewer_base_url
+20261030T210541Z-79119f2542aa4c5ba3ebe92105c98da7,user_task_35,8,2,https://api.openai.com/v1,7,Unapproved frozen setting: reviewer_base_url

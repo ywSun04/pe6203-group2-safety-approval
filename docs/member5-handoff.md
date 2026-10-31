@@ -1,5 +1,21 @@
 # Member 5 evaluation handoff
 
+## Received snapshot, 31 October
+
+The [latest analysis](../results/member5-final-20261031/README.md) replaces the
+earlier coverage counts below. It reconciles 874 distinct raw UUIDs, including
+M2's cumulative 165 and M6's new 300 attack records. The candidate-primary count
+is 865; 858 share the approved configuration. Seven task-35 endpoint/HTTP401
+records remain quarantined, with their expenditure retained. The 196 new clean
+candidates still lack raw evidence and contribute no metrics or cost.
+
+The matched two-task, five-k comparison contains 80 runs and includes an
+executed-action authorization audit. Broader totals remain descriptive because
+task mix differs. M6 still needs to acknowledge its old repetition/attempt
+mapping. No further paid batch is released. Execution remains at `4fc6bdfe`
+with Reviewer v2. PR14 saved-evidence replay is reported separately and adds
+no formal task runs. Everything below records the earlier handoff stages.
+
 ## Current handoff, 30 October 2026
 
 Use `docs/member5-unified-reconciliation.md` and

@@ -1,0 +1,22 @@
+{
+  "distinct_raw_runs": 874,
+  "all_raw_companion_hashes_verified": true,
+  "all_run_usage_accounting_consistent": true,
+  "M2_cumulative_standard_registration": 165,
+  "M2_standard_evaluation_warnings": 0,
+  "M2_supplied_group_metrics_reproduced": true,
+  "M6_attack_launch_claims_matched": 300,
+  "M6_196_metadata_UUIDs_absent_from_received_raw": 196,
+  "matched_panel_call_rows": 464,
+  "matched_panel_executed_call_rows": 270,
+  "matched_panel_unknown_executed_authorizations": 0,
+  "excluded_endpoint_reviewer_HTTP_statuses": {
+    "401": 31
+  },
+  "new_model_api_calls": 0,
+  "standard_observed_registry_matches": 858,
+  "standard_observed_evaluator_warnings": 0,
+  "full_offline_tests_passed": 312,
+  "figures_visually_checked": 2,
+  "personal_reports_or_presentations_included": false
+}

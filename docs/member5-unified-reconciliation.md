@@ -1,5 +1,11 @@
 # Member 5 unified evidence review
 
+This page preserves the earlier 433-run snapshot. Use the
+[31 October received-snapshot analysis](../results/member5-final-20261031/README.md)
+for current counts and matched results. Its bounded observed scope supersedes
+the historical missing-position lists as the reporting basis. No additional
+paid batch is released by either analysis.
+
 This review joins the supplied M2 batches and M6 records without changing raw
 manifests. It adds an offline, opt-in analysis layer for repetition mappings,
 known newline differences, attempt accounting and remaining-position ownership.

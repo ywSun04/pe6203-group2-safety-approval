@@ -1,5 +1,29 @@
 # Member 5 validation record
 
+## Received snapshot checks, 31 October
+
+The full offline suite passes **312 tests** in Python 3.11, including six new
+exposure checks for wrapped YAML, incomplete payloads, failed tool results,
+user-message marker spoofing and missing/changed-history continuations.
+The saved-data workflow verifies all 874 UUIDs and original companion hashes,
+reconciles per-run token accounting without discrepancies, reproduces M2's
+165 registrations and zero evaluator warnings, and matches its supplied group
+metrics. It checks 300 M6 attack launch claims and all 464 proposed calls in
+the broad matched intersection. There are no unknown executed-action labels
+in that audited panel. Raw files are byte-preserved.
+
+The PR14 comparison verifies the five actual false-denial proposals against
+the saved replay task, arguments, available budget and pre-proposal history.
+The pending assistant tool-call message and metadata differ in the replay,
+which is disclosed. The hypothetical Gate-blocked sixth lunch is excluded.
+No new API request or formal experiment was run.
+
+The two PNG/PDF research figures were rendered and visually checked. Plotting
+used Matplotlib 3.11.2 and NumPy 2.4.6 in the isolated analysis environment;
+these optional plotting dependencies do not alter frozen runtime requirements.
+See [the dated results and limitations](../results/member5-final-20261031/).
+The sections below retain historical validation records.
+
 Validation date: 28 October 2026, Asia/Shanghai. Inspected integration base:
 `41a512b9aa1453c96b902915654489785c8e7d16`.
 
