@@ -1,5 +1,26 @@
 # Member 5 validation record
 
+## M6 supplement checks, 31 October
+
+The full offline suite now passes **319 tests** in Python 3.11. The seven added
+checks require explicit complete owner-review statuses and reject duplicate
+UUIDs or changed source identities. Zero-utility groups do not gain a positive
+authorization-audit label from their algebraic zero TCR. The received 196-run ZIP matches its
+previously declared SHA-256, all candidate IDs, six companion files per run,
+frozen profile and independent accounting review. It has no UUID or candidate
+position overlap with the earlier inventory.
+
+The 1,054-row observed registry evaluates with zero warnings. Every prior
+outcome, role, primary ID, recorded token count and cost is preserved; the
+80-run fixed-task k scan is unchanged. The wider matched set now covers 224
+runs, 526 proposals and 332 execution attempts, with no unclassified executed
+action. Both figures were rendered and visually checked. The 305 pending
+review statuses and seven quarantine rows are retained as stated. No raw file,
+frozen runtime component or model API was changed/called by this analysis.
+
+See [the supplement's checks and evidence](../results/member5-supplement-20261031/).
+The earlier validation sections below remain historical records.
+
 ## Received snapshot checks, 31 October
 
 The full offline suite passes **312 tests** in Python 3.11, including six new

@@ -1,5 +1,20 @@
 # Member 5 evaluation handoff
 
+## M6 supplement received, 31 October
+
+The [updated supplement](../results/member5-supplement-20261031/README.md)
+verifies the raw archive for all 196 formerly list-only candidates. It adds
+152 utility completions, 44 ordinary failures and USD 0.23104920 of fully
+reconciled returned cost. The ledger now has 1,070 unique UUIDs and 1,054
+same-profile candidate primaries. Observed registration has zero warnings.
+
+The 305 supplied mapping-review statuses all remain PENDING_OWNER_CONFIRMATION;
+their source identities match, but delivery alone does not close owner review.
+The seven exception rows retain their existing quarantine and cost treatment,
+without automatic replacement. The main 80-run panel, original failed outcomes,
+formal freeze and separate PR14 comparison are unchanged. No new API call or
+paid batch is released. The earlier sections below preserve prior snapshots.
+
 ## Received snapshot, 31 October
 
 The [latest analysis](../results/member5-final-20261031/README.md) replaces the

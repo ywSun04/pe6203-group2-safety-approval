@@ -1,7 +1,7 @@
 # Member 5 unified evidence review
 
 This page preserves the earlier 433-run snapshot. Use the
-[31 October received-snapshot analysis](../results/member5-final-20261031/README.md)
+[31 October M6 supplement](../results/member5-supplement-20261031/README.md)
 for current counts and matched results. Its bounded observed scope supersedes
 the historical missing-position lists as the reporting basis. No additional
 paid batch is released by either analysis.

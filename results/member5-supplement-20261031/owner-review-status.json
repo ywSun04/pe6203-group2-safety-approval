@@ -1,0 +1,20 @@
+{
+  "Member_6_raw196": "Received and verified; prior metadata-only hold resolved.",
+  "Member_6_mapping305": {
+    "status": "Still pending explicit running-owner acknowledgement",
+    "supplied_review_status_counts": {
+      "PENDING_OWNER_CONFIRMATION": 305
+    },
+    "identity_fields_and_manifest_hashes_match": true,
+    "primary_rows_affected": 300,
+    "retry_rows_affected": 2,
+    "cross_member_supplemental_rows_affected": 3
+  },
+  "Member_6_exclusions7": {
+    "status": "Existing quarantine handling documented and retained",
+    "cause_of_endpoint_difference_explained": false,
+    "cause_required_to_publish_quarantined_snapshot": false,
+    "automatic_replacement_authorized": false
+  },
+  "new_paid_execution_released": false
+}

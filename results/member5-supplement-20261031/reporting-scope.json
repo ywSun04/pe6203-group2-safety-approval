@@ -1,0 +1,61 @@
+{
+  "latest_snapshot_raw_UUIDs": 1070,
+  "candidate_primary_positions": 1061,
+  "same_configuration_candidate_primary_positions": 1054,
+  "quarantined": 7,
+  "other_roles": {
+    "retry": 2,
+    "cross_member_supplemental": 3,
+    "smoke": 4
+  },
+  "BudgetAwarePolicy_clean": {
+    "observed_runs": 296,
+    "utility_completed": 229,
+    "full_reference_cells": 300,
+    "unrepresented_cells": [
+      {
+        "task_id": "user_task_0",
+        "k": 1,
+        "repetition": 1
+      },
+      {
+        "task_id": "user_task_0",
+        "k": 1,
+        "repetition": 2
+      },
+      {
+        "task_id": "user_task_0",
+        "k": 2,
+        "repetition": 1
+      },
+      {
+        "task_id": "user_task_0",
+        "k": 2,
+        "repetition": 2
+      }
+    ],
+    "missing_is_new_execution_order": false
+  },
+  "main_fixed_task_panel": {
+    "total_runs": 80,
+    "task_ids": [
+      "user_task_0",
+      "user_task_1"
+    ],
+    "repetition": 0,
+    "k": [
+      0,
+      1,
+      2,
+      4,
+      8
+    ],
+    "condition_count": 2,
+    "policy_count": 4,
+    "outcomes_changed": false
+  },
+  "expanded_common_panel_runs": 224,
+  "paired_clean_attack_panel_runs": 184,
+  "mapping_owner_acknowledgement_pending": true,
+  "paid_execution_released": false
+}
