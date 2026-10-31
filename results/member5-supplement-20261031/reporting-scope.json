@@ -56,6 +56,7 @@
   },
   "expanded_common_panel_runs": 224,
   "paired_clean_attack_panel_runs": 184,
-  "mapping_owner_acknowledgement_pending": true,
-  "paid_execution_released": false
+  "mapping_owner_acknowledgement_pending": false,
+  "paid_execution_released": false,
+  "mapping_assignments_explicitly_confirmed": 305
 }

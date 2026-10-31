@@ -10,9 +10,9 @@ These 196 runs have **152 utility completions, 44 ordinary task failures and no 
 
 The unified inventory now contains **1,070 distinct raw run IDs**: 165 from Member 2 and 905 from Member 6. The first-launch rule yields **1,061 candidate primary positions**, plus two retries, three cross-member supplemental attempts and four smoke runs. Of those primaries, **1,054 match the agreed configuration**; seven remain quarantined. The observed-only registry/evaluator completes with zero warnings. All previous 874 outcomes, attempt roles, tokens and costs remain unchanged.
 
-## Review tables do not close every pending item
+## Mapping confirmation recorded after the supplied review table
 
-All 305 rows of `M6_305_Mapping_Review.csv` match the earlier proposed identity fields and original manifest hashes. However, every `review_status` still says **PENDING_OWNER_CONFIRMATION**, with a note that owner verification is required. Returning that file does not establish the running owner's acknowledgement. The same 300 selected primary rows, two retries and three cross-member supplemental rows therefore remain provisional. Member 6 needs to explicitly confirm the proposed mapping/attempt roles, or identify corrections. Raw manifests must not be renumbered.
+All 305 rows of `M6_305_Mapping_Review.csv` match the proposed identity fields and original manifest hashes. The supplied file retains **PENDING_OWNER_CONFIRMATION** as the status at receipt. A later explicit user message in this conversation confirmed all 305 mappings and the primary, retry and cross-member overlap assignments. The English translation, source attribution, exact review-file hash and 305 UUIDs are recorded in `mapping-confirmation.json`. This is a user-provided confirmation, not a claim of independent contact with Member 6. The active pending count is now zero. Exactly 300 selected primary registry proofs are marked confirmed; the other two retries and three cross-member supplemental rows keep their existing roles. The raw CSV and manifests remain unchanged.
 
 The seven rows of `M6_7_Reviewer_Exclusions.csv` also match the earlier evidence. Its handling field preserves original records and costs, excludes them from frozen-configuration comparisons, and authorizes no automatic replacement. The Reviewer endpoint difference remains unexplained, but this does not prevent publishing the snapshot with those rows quarantined. The existing 31 HTTP401 responses and unknown returned Reviewer usage are retained; the rows are not reinstated as valid defensive successes.
 
@@ -65,7 +65,7 @@ PR14 remains an independent saved-evidence development comparison at the earlier
 
 ## Validation and reproduction
 
-The complete offline suite passes **319 tests**. Seven added checks prevent pending/partial review tables, duplicate UUIDs or changed source identities from being promoted to complete owner acknowledgement. Zero-utility groups explicitly label their joint TCR as an algebraic zero, without asserting an authorization audit. Two independent audits, the 1,054-row standard registration, byte hashes, unchanged old-record checks and unchanged primary-panel checks agree. These are offline validation results, not new benchmark runs.
+The complete offline suite passes **330 tests**. The earlier seven supplement checks prevent pending/partial review tables, duplicate UUIDs or changed source identities from being promoted to complete owner acknowledgement. Eleven further checks bind explicit confirmation to the exact CSV and UUID/role scope, reject incomplete or mismatched declarations, and prevent clearing unrelated pending rows. Zero-utility groups explicitly label their joint TCR as an algebraic zero, without asserting an authorization audit. Two independent audits, the 1,054-row standard registration, byte hashes, unchanged old-record checks and unchanged primary-panel checks agree. These are offline validation results, not new benchmark runs.
 
 Run the commands from the repository root in the pinned analysis environment, using new output directories:
 
@@ -73,9 +73,12 @@ Run the commands from the repository root in the pinned analysis environment, us
 python analysis/member5-supplement/intake.py --old-evidence evidence/member5-received-20261031.zip --raw-supplement evidence/member6-supplement-20261031/m6_target_rep_logs.zip --mapping-review evidence/member6-supplement-20261031/M6_305_Mapping_Review.csv --exclusions-review evidence/member6-supplement-20261031/M6_7_Reviewer_Exclusions.csv --output supplement-intake
 python analysis/member5-final/analyze_snapshot.py --evidence supplement-intake/combined-evidence.zip --mapping results/member5-unified-20261030/m6-mapping-review.json --output supplement-computed
 python analysis/member5-supplement/clarify_notes.py --snapshot supplement-computed
-python analysis/member5-supplement/register.py --snapshot supplement-computed --evidence supplement-intake/combined-evidence.zip --output supplement-registered
+python analysis/member5-supplement/confirm_mapping.py --snapshot supplement-computed --confirmation results/member5-supplement-20261031/mapping-confirmation.json --review-csv evidence/member6-supplement-20261031/M6_305_Mapping_Review.csv
+python analysis/member5-supplement/register.py --snapshot supplement-computed --evidence supplement-intake/combined-evidence.zip --confirmation results/member5-supplement-20261031/mapping-confirmation.json --output supplement-registered
 ```
 
 The original three supplied files are retained byte-for-byte under `evidence/member6-supplement-20261031/`. The deterministic merged evidence hash is `2a4c4fddc8f257d2440a0e700216466f60c49856f35b56c6cbc7a9eb61abd5c8`. The previous snapshot, input hashes and mapping proposals remain available. Analysis-only plotting uses the separately documented Matplotlib/NumPy versions.
 
-The outstanding owner action is explicit confirmation of the 305 mapping/attempt rows, or a corrected sidecar with evidence. The seven exception rows can remain excluded without blocking reporting. No new paid batch is released, no frozen runtime code changes, and no personal report or presentation is uploaded.
+The 305 mapping/attempt assignments are now explicitly confirmed via the recorded user message. No mapping confirmation remains outstanding in this snapshot. The seven exception rows can remain excluded without blocking reporting. No new paid batch is released, no frozen runtime code changes, and no personal report or presentation is uploaded.
+
+To reproduce the current TCR figure after recording confirmation, run `python analysis/member5-supplement/plot_confirmed.py results/member5-supplement-20261031`. The earlier intake checks and independent CSV review remain as historical evidence of the file at receipt; the later confirmation sidecar supplies the active status.

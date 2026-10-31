@@ -8,8 +8,11 @@ verifies the raw archive for all 196 formerly list-only candidates. It adds
 reconciled returned cost. The ledger now has 1,070 unique UUIDs and 1,054
 same-profile candidate primaries. Observed registration has zero warnings.
 
-The 305 supplied mapping-review statuses all remain PENDING_OWNER_CONFIRMATION;
-their source identities match, but delivery alone does not close owner review.
+All 305 mapping and attempt-role reviews now have explicit user-provided
+confirmation, recorded separately with the original CSV hash and exact UUIDs.
+Its PENDING_OWNER_CONFIRMATION statuses remain as historical source evidence.
+Exactly 300 selected primary registry proofs are confirmed; the two retry and
+three cross-member supplemental roles remain unchanged.
 The seven exception rows retain their existing quarantine and cost treatment,
 without automatic replacement. The main 80-run panel, original failed outcomes,
 formal freeze and separate PR14 comparison are unchanged. No new API call or

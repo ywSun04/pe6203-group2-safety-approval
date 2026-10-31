@@ -1,0 +1,15 @@
+{
+  "baseline_analysis_commit": "d9c6f748935c051ca7e012f7ab79987099e33b11",
+  "received_raw_UUIDs_unchanged": 1070,
+  "same_profile_primary_positions_unchanged": 1054,
+  "closed_mapping_pending_rows": 305,
+  "confirmed_selected_registry_entries": 300,
+  "retries_and_supplemental_roles_retained": 5,
+  "pending_mapping_rows_after_confirmation": 0,
+  "original_mapping_CSV_bytes_preserved": true,
+  "all_previous_outcomes_roles_primary_IDs_tokens_and_costs_unchanged": true,
+  "standard_evaluation_groups_unchanged": true,
+  "seven_configuration_exclusions_unchanged": true,
+  "all_group_metric_values_unchanged_except_confirmation_counts": true,
+  "new_model_API_calls": 0
+}

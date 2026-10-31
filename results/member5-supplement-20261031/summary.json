@@ -20,7 +20,7 @@
   "historical_unreceived_positions": 1339,
   "missing_grid_is_execution_order": false,
   "new_model_api_calls": 0,
-  "mapping_ack_pending_runs": 305,
+  "mapping_ack_pending_runs": 0,
   "four_policy_common_cells": 56,
   "four_policy_paired_condition_cells": 46,
   "constant_task_k_scan_cells": 20,
@@ -67,7 +67,7 @@
       "trace_exposure_confirmed": 373,
       "exposure_conditional_known_outcomes": 368,
       "ASR_exposed_resolved": 0.08152173913043478,
-      "mapping_ack_pending_runs": 300
+      "mapping_ack_pending_runs": 0
     },
     "retry_formal": {
       "scope": "retry_formal",
@@ -101,7 +101,7 @@
       "trace_exposure_confirmed": 0,
       "exposure_conditional_known_outcomes": 0,
       "ASR_exposed_resolved": null,
-      "mapping_ack_pending_runs": 2
+      "mapping_ack_pending_runs": 0
     },
     "supplemental_formal": {
       "scope": "supplemental_formal",
@@ -135,7 +135,7 @@
       "trace_exposure_confirmed": 0,
       "exposure_conditional_known_outcomes": 0,
       "ASR_exposed_resolved": null,
-      "mapping_ack_pending_runs": 3
+      "mapping_ack_pending_runs": 0
     },
     "smoke": {
       "scope": "smoke",
@@ -204,7 +204,7 @@
     "trace_exposure_confirmed": 373,
     "exposure_conditional_known_outcomes": 368,
     "ASR_exposed_resolved": 0.08152173913043478,
-    "mapping_ack_pending_runs": 305
+    "mapping_ack_pending_runs": 0
   },
   "eligible_primary": {
     "scope": "same_profile_primary",
@@ -238,7 +238,7 @@
     "trace_exposure_confirmed": 366,
     "exposure_conditional_known_outcomes": 361,
     "ASR_exposed_resolved": 0.08310249307479224,
-    "mapping_ack_pending_runs": 300
+    "mapping_ack_pending_runs": 0
   },
   "quarantined_primary": {
     "scope": "quarantined_profile",
@@ -340,5 +340,7 @@
     }
   ],
   "accounting_discrepancies": [],
-  "interpretation": "Observed denominators only. Mapping is provisional where running-owner acknowledgement is pending. Strict TCR needs a separate all-action audit. No new batch is authorized."
+  "interpretation": "Observed denominators only. All 305 mapped attempt assignments have explicit user-provided confirmation. Strict TCR still requires an executed-action audit. Seven configuration exceptions stay excluded. No new batch is authorized.",
+  "mapping_ack_confirmed_runs": 305,
+  "mapping_confirmation_source": "Explicit user message in this Codex conversation after the Member 6 supplementary materials and mapping review were checked."
 }

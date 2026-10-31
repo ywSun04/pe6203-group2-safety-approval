@@ -1,5 +1,20 @@
 # Member 5 validation record
 
+## Explicit mapping confirmation, 31 October
+
+The full offline suite passes **330 tests**. Eleven confirmation checks bind
+the explicit user-provided statement to the exact original CSV, full UUID set
+and unchanged source/attempt identities, reject incomplete declarations, and
+prevent clearing unrelated pending records. The 1,054-row observed registry
+still evaluates with zero warnings: exactly 300 selected primary proofs are
+confirmed, and all 305 reviewed raw assignments have no pending active status.
+
+Original CSV bytes, manifests, outcomes, costs, tokens, role selection, standard
+evaluation groups and all k-scan values are unchanged. The current TCR figure
+now states that confirmation is recorded. Attribution is to the explicit user
+message in this conversation, without claiming independent contact with M6.
+The source table and earlier intake findings below remain historical evidence.
+
 ## M6 supplement checks, 31 October
 
 The full offline suite now passes **319 tests** in Python 3.11. The seven added

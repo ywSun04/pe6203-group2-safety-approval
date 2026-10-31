@@ -1,14 +1,17 @@
 {
   "Member_6_raw196": "Received and verified; prior metadata-only hold resolved.",
   "Member_6_mapping305": {
-    "status": "Still pending explicit running-owner acknowledgement",
+    "status": "Confirmed by the explicit user-provided message after the supplementary review",
     "supplied_review_status_counts": {
       "PENDING_OWNER_CONFIRMATION": 305
     },
     "identity_fields_and_manifest_hashes_match": true,
     "primary_rows_affected": 300,
     "retry_rows_affected": 2,
-    "cross_member_supplemental_rows_affected": 3
+    "cross_member_supplemental_rows_affected": 3,
+    "confirmation_reference": "mapping-confirmation.json",
+    "later_explicit_confirmation_received": true,
+    "source_actor": "User in this conversation; no independent contact with Member 6"
   },
   "Member_6_exclusions7": {
     "status": "Existing quarantine handling documented and retained",

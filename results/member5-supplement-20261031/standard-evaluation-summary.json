@@ -1764,6 +1764,7 @@
     }
   ],
   "denominator": "Only received same-profile selected primary positions.",
-  "mapping_owner_ack_pending": 300,
+  "mapping_owner_ack_pending": 0,
+  "mapping_owner_ack_confirmed": 300,
   "security_scope": "benchmark_goal; strict TCR is supplied separately by the executed-action audit."
 }

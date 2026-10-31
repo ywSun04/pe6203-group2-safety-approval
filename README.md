@@ -26,9 +26,10 @@ unified review of the received M2/M6 evidence. After the 31 October M6 supplemen
 the ledger contains 1,070 distinct UUIDs and 1,061 candidate primary positions.
 Of these, 1,054 match the agreed configuration; seven endpoint-mismatched runs
 remain separate. The raw evidence for 196 former list-only candidates is now
-verified. M6's old mapping acknowledgement remains pending because all 305
-review statuses still say PENDING_OWNER_CONFIRMATION. The fixed two-task,
-five-budget main panel remains unchanged. Personal drafts remain local.
+verified. A later explicit user-provided confirmation closes all 305 mapping
+and attempt-role reviews; the original CSV's PENDING statuses remain as
+historical evidence. The fixed two-task, five-budget main panel remains
+unchanged. Personal drafts remain local.
 
 - [Evaluation and planned-run registration](docs/evaluation.md)
 - [Task-specific fixtures and offline validation](docs/member5-attacks.md)

@@ -12,11 +12,15 @@
   "expanded_matched_proposed_calls": 526,
   "expanded_matched_executed_calls": 332,
   "unclassified_executed_calls_in_audited_panel": 0,
-  "mapping_owner_confirmation_pending_rows": 305,
+  "mapping_owner_confirmation_pending_rows": 0,
   "configuration_quarantined_runs": 7,
   "raw_files_edited": false,
   "new_model_API_calls": 0,
-  "offline_test_count": 319,
+  "offline_test_count": 330,
   "figures_visually_checked": 2,
-  "zero_utility_TCR_notes_do_not_assert_an_authorization_audit": true
+  "zero_utility_TCR_notes_do_not_assert_an_authorization_audit": true,
+  "mapping_assignments_explicitly_confirmed": 305,
+  "selected_primary_mapping_proofs_confirmed": 300,
+  "confirmed_metrics_and_costs_unchanged": true,
+  "original_mapping_review_csv_bytes_preserved": true
 }
